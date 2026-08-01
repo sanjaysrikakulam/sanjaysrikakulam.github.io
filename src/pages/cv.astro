@@ -1,0 +1,116 @@
+---
+import '../styles/print.css';
+import { loadPageData, type PageData } from '../lib/page-data';
+import { pdfSectionOrder, capItems } from '../lib/pdf-sections';
+import { pdfItems } from '../lib/visibility';
+
+const data: PageData = await loadPageData();
+const { site } = data;
+const order = pdfSectionOrder(site);
+const include = (id: string) => order.includes(id);
+
+const roles = pdfItems(data.experience, true);
+const publications = capItems(pdfItems(data.publications, true), site, 'publications');
+const education = pdfItems(data.education, true);
+const skills = pdfItems(data.skills, true);
+
+const period = (start: string, end: string | null) => {
+  const format = (value: string | null) => {
+    if (!value) return 'Present';
+    const [year, month] = value.split('-');
+    return `${month}/${year}`;
+  };
+  return `${format(start)} to ${format(end)}`;
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{site.profile.name}</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    />
+  </head>
+  <body>
+    {
+      include('profile') && (
+        <header>
+          <h1>{site.profile.name}</h1>
+          <p class="meta">
+            {site.profile.location} · {site.profile.email} ·
+            {Object.values(site.links).map((url) => <> <a href={url}>{url.replace(/^https?:\/\/(www\.)?/, '')}</a></>)}
+          </p>
+          {site.profile.bio && <p>{site.profile.bio}</p>}
+        </header>
+      )
+    }
+
+    {
+      include('education') && (
+        <section>
+          <h2>Education</h2>
+          {education.map((degree) => (
+            <div class="entry">
+              <h3>{degree.degree}</h3>
+              <p class="meta">{degree.year} · {degree.institution}{degree.location ? `, ${degree.location}` : ''}</p>
+            </div>
+          ))}
+        </section>
+      )
+    }
+
+    {
+      include('experience') && (
+        <section>
+          <h2>Experience</h2>
+          {roles.map((role) => (
+            <div class="entry">
+              <h3>{role.title}</h3>
+              <p class="meta">{period(role.start, role.end)} · {role.org}{role.location ? `, ${role.location}` : ''}</p>
+              <ul>
+                {role.highlights.map((item) => <li>{item}</li>)}
+                {role.details.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+          ))}
+        </section>
+      )
+    }
+
+    {
+      include('publications') && (
+        <section>
+          <h2>Publications</h2>
+          {publications.map((entry) => (
+            <div class="pub-entry">
+              <p>
+                {entry.authors_display ? `${entry.authors_display}. ` : ''}
+                <strong>{entry.title}</strong>
+                {entry.venue ? `. ${entry.venue}` : ''}, {entry.year}.
+                {entry.doi && <> <a href={`https://doi.org/${entry.doi}`}>doi:{entry.doi}</a></>}
+                {!entry.doi && entry.zenodo_doi && (
+                  <> <a href={`https://doi.org/${entry.zenodo_doi}`}>doi:{entry.zenodo_doi}</a></>
+                )}
+              </p>
+            </div>
+          ))}
+        </section>
+      )
+    }
+
+    {
+      include('skills') && (
+        <section>
+          <h2>Technical skills</h2>
+          {skills.map((group) => (
+            <p class="entry"><strong>{group.group}:</strong> {group.items.join(', ')}</p>
+          ))}
+        </section>
+      )
+    }
+  </body>
+</html>

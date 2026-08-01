@@ -1,0 +1,65 @@
+@page {
+  size: A4;
+  margin: 16mm 15mm 18mm;
+}
+
+html {
+  font-size: 10.5pt;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  color: #111;
+  background: #fff;
+  line-height: 1.45;
+}
+
+h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 22pt;
+  line-height: 1.1;
+  margin-bottom: 2mm;
+}
+
+h2 {
+  font-size: 10pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #2f5bea;
+  border-bottom: 0.4pt solid #ccc;
+  padding-bottom: 1.5mm;
+  margin: 7mm 0 3mm;
+}
+
+h3 {
+  font-size: 11pt;
+  margin-bottom: 0.5mm;
+}
+
+a {
+  color: #2f5bea;
+  text-decoration: none;
+}
+
+ul {
+  margin: 1.5mm 0 0 4mm;
+}
+
+li {
+  margin-bottom: 0.8mm;
+}
+
+.entry,
+.pub-entry {
+  break-inside: avoid;
+  margin-bottom: 4mm;
+}
+
+h2 {
+  break-after: avoid;
+}
+
+.meta {
+  color: #555;
+  font-size: 9pt;
+}
