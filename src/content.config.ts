@@ -1,6 +1,7 @@
 import { defineCollection } from 'astro:content';
 import { file } from 'astro/loaders';
 import { yamlArrayParser } from './lib/slug';
+import { conferenceId, experienceId } from './lib/entry-ids';
 import { educationSchema } from './schemas/education';
 import { experienceSchema } from './schemas/experience';
 import { projectSchema } from './schemas/projects';
@@ -18,7 +19,7 @@ const education = defineCollection({
 
 const experience = defineCollection({
   loader: file('data/experience.yml', {
-    parser: yamlArrayParser((entry) => `${entry.org}-${entry.start}`),
+    parser: yamlArrayParser(experienceId),
   }),
   schema: experienceSchema,
 });
@@ -39,7 +40,7 @@ const publications = defineCollection({
 
 const conferences = defineCollection({
   loader: file('data/conferences.yml', {
-    parser: yamlArrayParser((entry) => `${entry.name}-${entry.year}-${entry.role}`),
+    parser: yamlArrayParser(conferenceId),
   }),
   schema: conferenceSchema,
 });
