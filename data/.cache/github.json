@@ -1,0 +1,74 @@
+{
+  "contributions": {
+    "byOrg": {
+      "galaxyproject": 39,
+      "usegalaxy-eu": 358
+    },
+    "total": 434
+  },
+  "repos": {
+    "kalininalab/alphafold_non_docker": {
+      "forks": 125,
+      "language": "Shell",
+      "pushed_at": "2023-11-24T13:09:36Z",
+      "stars": 378,
+      "url": "https://github.com/kalininalab/alphafold_non_docker"
+    },
+    "kalininalab/d-StructMAn": {
+      "forks": 0,
+      "language": "Python",
+      "pushed_at": "2022-07-05T16:22:47Z",
+      "stars": 2,
+      "url": "https://github.com/kalininalab/d-StructMAn"
+    },
+    "kalininalab/metaprofi": {
+      "forks": 2,
+      "language": "Python",
+      "pushed_at": "2022-04-14T12:49:15Z",
+      "stars": 13,
+      "url": "https://github.com/kalininalab/metaprofi"
+    },
+    "kalininalab/panpa": {
+      "forks": 0,
+      "language": null,
+      "pushed_at": "2022-11-21T16:08:13Z",
+      "stars": 0,
+      "url": "https://github.com/kalininalab/panpa"
+    },
+    "sanjaysrikakulam/esg_wp4_galaxy": {
+      "forks": 3,
+      "language": "Jinja",
+      "pushed_at": "2025-07-28T22:20:52Z",
+      "stars": 0,
+      "url": "https://github.com/sanjaysrikakulam/esg_wp4_galaxy"
+    },
+    "sanjaysrikakulam/pykvstores": {
+      "forks": 0,
+      "language": "Python",
+      "pushed_at": "2022-04-06T14:51:55Z",
+      "stars": 0,
+      "url": "https://github.com/sanjaysrikakulam/pykvstores"
+    },
+    "sanjaysrikakulam/terraform_clum2025": {
+      "forks": 0,
+      "language": null,
+      "pushed_at": "2025-10-01T12:23:24Z",
+      "stars": 0,
+      "url": "https://github.com/sanjaysrikakulam/terraform_clum2025"
+    },
+    "usegalaxy-eu/infrastructure-playbook": {
+      "forks": 115,
+      "language": "Jinja",
+      "pushed_at": "2026-07-31T08:57:48Z",
+      "stars": 25,
+      "url": "https://github.com/usegalaxy-eu/infrastructure-playbook"
+    },
+    "usegalaxy-eu/tpv-broker": {
+      "forks": 6,
+      "language": "Python",
+      "pushed_at": "2025-06-10T18:39:15Z",
+      "stars": 3,
+      "url": "https://github.com/usegalaxy-eu/tpv-broker"
+    }
+  }
+}
