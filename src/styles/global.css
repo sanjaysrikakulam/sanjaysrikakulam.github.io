@@ -15,6 +15,11 @@
   --color-line-2: #d8dbe0;
   --color-accent: #2f5bea;
   --color-accent-soft: #eef2fe;
+  /* Live-data dot and "led a hackathon" badge carry a fixed brand meaning
+     (green = synced, amber = led), so they get their own tokens instead of
+     following the ink/accent scale. Badge text is checked against these below. */
+  --color-live: #16a34a;
+  --color-led: #b45309;
   --font-display: 'Instrument Serif', serif;
   --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -31,6 +36,8 @@
   --color-line-2: #2a2f38;
   --color-accent: #7a9bff;
   --color-accent-soft: #151b2e;
+  --color-live: #22c55e;
+  --color-led: #a6490a;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -67,6 +74,63 @@
   max-width: 1120px;
   margin: 0 auto;
   padding: 0 32px;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  /* Lets the page bleed through faintly instead of a flat panel. */
+  background: color-mix(in srgb, var(--color-bg) 82%, transparent);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--color-line);
+}
+nav .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 66px;
+}
+.brand {
+  font-family: var(--font-display);
+  font-size: 21px;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+.navlinks {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+.navlinks a {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  color: var(--color-ink-2);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.18s;
+}
+.navlinks a:hover,
+.navlinks a.on {
+  color: var(--color-accent);
+}
+.tbtn {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--color-line-2);
+  border-radius: 9px;
+  background: transparent;
+  cursor: pointer;
+  color: var(--color-ink-2);
+  display: grid;
+  place-items: center;
+  transition: 0.18s;
+  font-size: 15px;
+}
+.tbtn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 section {
@@ -246,6 +310,303 @@ h1 em {
   text-transform: uppercase;
   letter-spacing: 0.04em;
   margin: 0;
+}
+
+.work {
+  display: grid;
+  gap: 20px;
+}
+.card {
+  border: 1px solid var(--color-line);
+  border-radius: 14px;
+  padding: 32px;
+  background: var(--color-bg);
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 40px;
+  transition: 0.25s;
+}
+.card:hover {
+  border-color: var(--color-line-2);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 44px -26px rgba(0, 0, 0, 0.3);
+}
+.card h3 {
+  font-family: var(--font-body);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--color-ink);
+  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  flex-wrap: wrap;
+}
+.card p {
+  font-family: var(--font-body);
+  color: var(--color-ink-2);
+  font-size: 15.5px;
+  line-height: 1.68;
+  margin: 0 0 16px;
+}
+.role {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  padding: 4px 9px;
+  border-radius: 5px;
+  font-weight: 500;
+}
+.tags {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-ink-3);
+  border: 1px solid var(--color-line);
+  padding: 3px 9px;
+  border-radius: 20px;
+}
+.stats {
+  border-left: 1px solid var(--color-line);
+  padding-left: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 0;
+}
+.stat {
+  margin: 0;
+}
+.stat .v {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 29px;
+  line-height: 1;
+  color: var(--color-ink);
+}
+.stat .k {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-3);
+  margin-top: 5px;
+}
+.synced {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-ink-3);
+  margin-top: 10px;
+}
+.synced .d {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-live);
+}
+
+.ghbar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--color-line);
+  border: 1px solid var(--color-line);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 26px;
+}
+.ghbar div {
+  background: var(--color-bg);
+  padding: 24px 26px;
+  margin: 0;
+}
+.ghbar .n {
+  font-family: var(--font-display);
+  font-size: 32px;
+  line-height: 1;
+  color: var(--color-ink);
+  margin: 0;
+}
+.ghbar .l {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--color-ink-3);
+  margin: 7px 0 0;
+}
+
+.carousel {
+  position: relative;
+}
+.repos {
+  display: grid;
+  grid-auto-flow: column;
+  /* Falls back to three per view; the data-per-view rules below take over
+     once the attribute is present on the markup. */
+  grid-auto-columns: calc((100% - 32px) / 3);
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 4px 4px 8px;
+  margin: -4px;
+}
+.repos::-webkit-scrollbar {
+  display: none;
+}
+.carousel[data-per-view='1'] .repos {
+  grid-auto-columns: 100%;
+}
+.carousel[data-per-view='2'] .repos {
+  grid-auto-columns: calc((100% - 16px) / 2);
+}
+.carousel[data-per-view='3'] .repos {
+  grid-auto-columns: calc((100% - 32px) / 3);
+}
+.carousel[data-per-view='4'] .repos {
+  grid-auto-columns: calc((100% - 48px) / 4);
+}
+.carousel[data-per-view='5'] .repos {
+  grid-auto-columns: calc((100% - 64px) / 5);
+}
+.carousel[data-per-view='6'] .repos {
+  grid-auto-columns: calc((100% - 80px) / 6);
+}
+.repo {
+  /* The container declares scroll-snap-type; each card needs its own
+     alignment or nothing actually snaps. */
+  scroll-snap-align: start;
+  border: 1px solid var(--color-line);
+  border-radius: 11px;
+  padding: 20px;
+  background: var(--color-bg);
+  transition: 0.2s;
+  display: block;
+  position: relative;
+  text-decoration: none;
+}
+.repo:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -20px rgba(0, 0, 0, 0.35);
+}
+.repo::after {
+  content: '\2197';
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 13px;
+  color: var(--color-ink-3);
+  opacity: 0;
+  transition: 0.2s;
+}
+.repo:hover::after {
+  opacity: 1;
+  color: var(--color-accent);
+}
+.repo .rn {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--color-accent);
+  word-break: break-word;
+}
+.repo .rd {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  color: var(--color-ink-2);
+  line-height: 1.55;
+  margin-bottom: 14px;
+  min-height: 44px;
+}
+.repo .rm {
+  display: flex;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--color-ink-3);
+}
+.lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.cnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 22px;
+  gap: 20px;
+}
+.dashes {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.dash {
+  width: 28px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--color-line-2);
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: 0.25s;
+}
+.dash:hover {
+  background: var(--color-ink-3);
+}
+.dash.on {
+  background: var(--color-accent);
+  width: 44px;
+}
+.arrows {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cpos {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--color-ink-3);
+}
+.arrow {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid var(--color-line-2);
+  background: var(--color-bg);
+  cursor: pointer;
+  color: var(--color-ink-2);
+  font-size: 15px;
+  transition: 0.18s;
+  display: grid;
+  place-items: center;
+}
+.arrow:hover:not(:disabled) {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+.arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
 }
 
 .edu {
@@ -615,7 +976,143 @@ h1 em {
   margin-right: 8px;
 }
 
+.hk {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.hkc {
+  border: 1px solid var(--color-line);
+  border-radius: 11px;
+  padding: 22px;
+  background: var(--color-bg);
+}
+.hkc .h {
+  font-family: var(--font-body);
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0 0 4px;
+}
+.hkc .h a {
+  color: inherit;
+  text-decoration: none;
+}
+.hkc .h a:hover {
+  color: var(--color-accent);
+}
+.hkc .m {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--color-ink-3);
+  margin: 0 0 11px;
+}
+.hkc p {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  color: var(--color-ink-2);
+  line-height: 1.6;
+  margin: 0;
+}
+/* White text; measured 5.02:1 in light and 5.87:1 in dark against #fff, both above the 4.5:1 floor. */
+.led {
+  background: var(--color-led);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-left: 9px;
+}
+
+.fgrid {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.flinks {
+  display: grid;
+  gap: 12px;
+}
+.flinks a {
+  font-family: var(--font-body);
+  font-size: 15.5px;
+  color: var(--color-ink-2);
+  transition: color 0.18s;
+  display: inline-flex;
+  gap: 9px;
+  align-items: center;
+  text-decoration: none;
+}
+.flinks a:hover {
+  color: var(--color-accent);
+}
+.flinks a span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-ink-3);
+  width: 86px;
+}
+.flinks a svg {
+  width: 17px;
+  height: 17px;
+  flex: none;
+  color: var(--color-ink-3);
+  transition: color 0.18s;
+}
+.flinks a:hover svg {
+  color: var(--color-accent);
+}
+.fnote {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--color-ink-3);
+  margin-top: 44px;
+  padding-top: 22px;
+  border-top: 1px solid var(--color-line);
+}
+
+/* The BibTeX button shares .pl's box styling; this only normalises the
+   native <button> font/line-height so it lines up with the <a> siblings. */
+.bib {
+  font: inherit;
+  line-height: inherit;
+}
+
+@media (max-width: 980px) {
+  .ghbar {
+    grid-template-columns: 1fr;
+  }
+  .carousel[data-per-view] .repos {
+    grid-auto-columns: calc((100% - 16px) / 2);
+  }
+}
+
 @media (max-width: 860px) {
+  .navlinks a {
+    display: none;
+  }
+  .card {
+    grid-template-columns: 1fr;
+  }
+  .stats {
+    border-left: 0;
+    border-top: 1px solid var(--color-line);
+    padding-left: 0;
+    padding-top: 22px;
+    flex-direction: row;
+    gap: 36px;
+  }
+  .hk {
+    grid-template-columns: 1fr;
+  }
+  .carousel[data-per-view] .repos {
+    grid-auto-columns: 100%;
+  }
   .hero .wrap {
     flex-direction: column-reverse;
     text-align: center;
