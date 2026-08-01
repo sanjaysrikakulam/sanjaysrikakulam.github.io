@@ -1,0 +1,40 @@
+---
+import { sectionConfig } from '../lib/section-config';
+import type { PageData } from '../lib/page-data';
+
+interface Props {
+  data: PageData;
+}
+const { data } = Astro.props;
+const config = sectionConfig(data.site, 'community');
+---
+
+{
+  config.visible && data.hackathons.length > 0 && (
+    <section id="community" class="alt">
+      <div class="wrap">
+        <div class="shead">
+          <p class="slabel">Community</p>
+          <h2>{config.title}</h2>
+          <p>{config.description}</p>
+        </div>
+        <div class="hk">
+          {data.hackathons.map((entry) => (
+            <article class="hkc">
+              <h4 class="h">
+                {entry.url ? (
+                  <a href={entry.url} target="_blank" rel="noopener noreferrer">{entry.name}</a>
+                ) : (
+                  entry.name
+                )}
+                {entry.led && <span class="led">Led</span>}
+              </h4>
+              <p class="m">{entry.year}{entry.location ? ` · ${entry.location}` : ''}</p>
+              {entry.summary && <p>{entry.summary}</p>}
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

@@ -1,0 +1,62 @@
+---
+import Icon from './Icon.astro';
+import { sectionConfig } from '../lib/section-config';
+import type { PageData } from '../lib/page-data';
+
+interface Props {
+  data: PageData;
+}
+const { data } = Astro.props;
+const config = sectionConfig(data.site, 'contact');
+const { profile, links } = data.site;
+
+const LABELS: Record<string, string> = {
+  github: 'GitHub',
+  scholar: 'Scholar',
+  orcid: 'ORCID',
+  researchgate: 'ResearchGate',
+  zenodo: 'Zenodo',
+  linkedin: 'LinkedIn',
+};
+
+const ICONS: Record<string, string> = {
+  github: 'github',
+  scholar: 'scholar',
+  orcid: 'orcid',
+  researchgate: 'researchgate',
+  zenodo: 'zenodo',
+  linkedin: 'linkedin',
+};
+
+const display = (url: string) => url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+---
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <h2>{config.title}</h2>
+        <p>{config.description}</p>
+      </div>
+      <div class="flinks">
+        <a href={`mailto:${profile.email}`}>
+          <Icon name="mail" /><span>Email</span>{profile.email}
+        </a>
+        {
+          Object.entries(links).map(([key, url]) => (
+            <a href={url} target="_blank" rel="noopener noreferrer">
+              <Icon name={ICONS[key] ?? 'github'} /><span>{LABELS[key] ?? key}</span>{display(url)}
+            </a>
+          ))
+        }
+        <a href="/Sanjay_Srikakulam_CV.pdf" target="_blank" rel="noopener noreferrer">
+          <Icon name="download" /><span>CV</span>Download PDF
+        </a>
+      </div>
+    </div>
+    <p class="fnote">
+      Repository figures from the GitHub API, citations from OpenAlex, downloads from Zenodo, all
+      read when the site builds.
+    </p>
+  </div>
+</footer>

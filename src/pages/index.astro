@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import ProofStrip from '../components/ProofStrip.astro';
+import Work from '../components/Work.astro';
+import Experience from '../components/Experience.astro';
+import Research from '../components/Research.astro';
+import Community from '../components/Community.astro';
+import Footer from '../components/Footer.astro';
+import { loadPageData } from '../lib/page-data';
+import { readCacheFile } from '../lib/section-config';
+
+const data = await loadPageData();
+
+// ProofStrip resolves zenodo.downloads against the raw cache, which
+// loadPageData folds into publication metrics rather than exposing directly.
+const zenodo = readCacheFile<Record<string, { views: number; downloads: number }>>('zenodo', {});
+const proofCaches = { github: data.github, zenodo, publications: data.publications };
+
+const NAV_LABELS: Record<string, string> = {
+  work: 'Work',
+  experience: 'Experience',
+  research: 'Research',
+  community: 'Community',
+  contact: 'Contact',
+};
+
+// A section with no entries renders nothing, so its nav link would be dead.
+// Conferences and hackathons start empty, which makes this reachable on day one.
+const HAS_CONTENT: Record<string, boolean> = {
+  work: data.projects.length > 0,
+  experience: data.experience.length > 0 || data.education.length > 0,
+  research: data.publications.length > 0 || data.conferences.length > 0,
+  community: data.hackathons.length > 0,
+  contact: true,
+};
+
+const navSections = data.site.sections
+  .filter((section) => section.visible && NAV_LABELS[section.id] && HAS_CONTENT[section.id])
+  .map((section) => ({ id: section.id, label: NAV_LABELS[section.id] }));
+---
+
+<Base title={data.site.profile.name} description={data.site.profile.headline}>
+  <Nav site={data.site} sections={navSections} />
+  <Hero site={data.site} />
+  <ProofStrip site={data.site} caches={proofCaches} />
+  <main id="main">
+    <Work data={data} />
+    <Experience data={data} />
+    <Research data={data} />
+    <Community data={data} />
+  </main>
+  <Footer data={data} />
+</Base>
