@@ -103,4 +103,108 @@ describe('fetchZenodo', () => {
     const result = await fetchZenodo({ dois: ['10.5281/zenodo.2'], fetchImpl });
     expect(result['10.5281/zenodo.2'].resource_type).toBe('Poster');
   });
+
+  it('reads keywords from metadata.keywords, the shape Zenodo actually returns', async () => {
+    const fetchImpl = vi.fn(async () =>
+      ok({
+        hits: {
+          hits: [
+            {
+              doi: '10.5281/zenodo.3',
+              stats: {},
+              metadata: { keywords: ['NFDI', 'de.NBI', 'EOSC'] },
+            },
+          ],
+        },
+      }),
+    );
+    const result = await fetchZenodo({ dois: ['10.5281/zenodo.3'], fetchImpl });
+    expect(result['10.5281/zenodo.3'].keywords).toEqual(['NFDI', 'de.NBI', 'EOSC']);
+  });
+
+  it('falls back to metadata.subjects when keywords is absent (InvenioRDM shape)', async () => {
+    const fetchImpl = vi.fn(async () =>
+      ok({
+        hits: {
+          hits: [
+            {
+              doi: '10.5281/zenodo.4',
+              stats: {},
+              metadata: {
+                subjects: [{ subject: 'federated infrastructure' }, { subject: 'cloud' }],
+              },
+            },
+          ],
+        },
+      }),
+    );
+    const result = await fetchZenodo({ dois: ['10.5281/zenodo.4'], fetchImpl });
+    expect(result['10.5281/zenodo.4'].keywords).toEqual(['federated infrastructure', 'cloud']);
+  });
+
+  it('returns an empty array when both keywords and subjects are absent', async () => {
+    const fetchImpl = vi.fn(async () =>
+      ok({ hits: { hits: [{ doi: '10.5281/zenodo.5', stats: {}, metadata: {} }] } }),
+    );
+    const result = await fetchZenodo({ dois: ['10.5281/zenodo.5'], fetchImpl });
+    expect(result['10.5281/zenodo.5'].keywords).toEqual([]);
+  });
+
+  it('returns an empty array when keywords is present but empty', async () => {
+    const fetchImpl = vi.fn(async () =>
+      ok({
+        hits: { hits: [{ doi: '10.5281/zenodo.6', stats: {}, metadata: { keywords: [] } }] },
+      }),
+    );
+    const result = await fetchZenodo({ dois: ['10.5281/zenodo.6'], fetchImpl });
+    expect(result['10.5281/zenodo.6'].keywords).toEqual([]);
+  });
+
+  it('returns an empty array when subjects is present but empty', async () => {
+    const fetchImpl = vi.fn(async () =>
+      ok({
+        hits: { hits: [{ doi: '10.5281/zenodo.7', stats: {}, metadata: { subjects: [] } }] },
+      }),
+    );
+    const result = await fetchZenodo({ dois: ['10.5281/zenodo.7'], fetchImpl });
+    expect(result['10.5281/zenodo.7'].keywords).toEqual([]);
+  });
+
+  it('filters out null, undefined, and non-string entries from keywords', async () => {
+    const fetchImpl = vi.fn(async () =>
+      ok({
+        hits: {
+          hits: [
+            {
+              doi: '10.5281/zenodo.8',
+              stats: {},
+              metadata: { keywords: ['GHGA', null, undefined, 42, 'GA4GH'] },
+            },
+          ],
+        },
+      }),
+    );
+    const result = await fetchZenodo({ dois: ['10.5281/zenodo.8'], fetchImpl });
+    expect(result['10.5281/zenodo.8'].keywords).toEqual(['GHGA', 'GA4GH']);
+  });
+
+  it('filters out entries with a missing or non-string subject from subjects', async () => {
+    const fetchImpl = vi.fn(async () =>
+      ok({
+        hits: {
+          hits: [
+            {
+              doi: '10.5281/zenodo.9',
+              stats: {},
+              metadata: {
+                subjects: [{ subject: 'cloud' }, { subject: null }, {}, { subject: 7 }],
+              },
+            },
+          ],
+        },
+      }),
+    );
+    const result = await fetchZenodo({ dois: ['10.5281/zenodo.9'], fetchImpl });
+    expect(result['10.5281/zenodo.9'].keywords).toEqual(['cloud']);
+  });
 });

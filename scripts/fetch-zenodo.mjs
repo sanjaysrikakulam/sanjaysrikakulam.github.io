@@ -15,6 +15,22 @@ function resourceTitle(metadata) {
   return typeof title === 'string' ? title : (title.en ?? null);
 }
 
+// The current Zenodo API returns keywords as a flat array of strings under
+// metadata.keywords. Zenodo is migrating records to InvenioRDM, which instead
+// returns metadata.subjects as an array of { subject } objects, so that shape
+// is kept as a fallback until the migration is complete.
+function resourceKeywords(metadata) {
+  const keywords = metadata?.keywords;
+  if (Array.isArray(keywords) && keywords.length) {
+    return keywords.filter((k) => typeof k === 'string');
+  }
+  const subjects = metadata?.subjects;
+  if (Array.isArray(subjects)) {
+    return subjects.map((s) => s?.subject).filter((s) => typeof s === 'string');
+  }
+  return [];
+}
+
 export async function fetchZenodo({ dois, fetchImpl = fetch }) {
   const out = {};
   for (const doi of dois) {
@@ -27,7 +43,7 @@ export async function fetchZenodo({ dois, fetchImpl = fetch }) {
         views: record.stats?.unique_views ?? 0,
         downloads: record.stats?.unique_downloads ?? 0,
         resource_type: resourceTitle(record.metadata),
-        keywords: (record.metadata?.subjects ?? []).map((s) => s.subject).filter(Boolean),
+        keywords: resourceKeywords(record.metadata),
       };
     }
   }

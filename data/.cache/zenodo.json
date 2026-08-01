@@ -7,55 +7,175 @@
   },
   "10.5281/zenodo.15362960": {
     "downloads": 130,
-    "keywords": [],
+    "keywords": [
+      "Research Data Management",
+      "Reproducible research",
+      "Data analysis workflows",
+      "Open science tools"
+    ],
     "resource_type": "Presentation",
     "views": 147
   },
   "10.5281/zenodo.15729502": {
     "downloads": 106,
-    "keywords": [],
+    "keywords": [
+      "Galaxy platform",
+      "Federated access",
+      "Identity and Access Management (IAM)",
+      "Bring Your Own Compute (BYOC)",
+      "Bring Your Own Storage (BYOS)",
+      "Pulsar",
+      "ARC middleware",
+      "DIRAC",
+      "EGI Check-in",
+      "Onedata",
+      "Cloud infrastructure",
+      "Infrastructure Manager (IM)",
+      "HTCondor",
+      "MinIO",
+      "EOSC",
+      "FAIR data",
+      "High Performance Computing (HPC)",
+      "Virtual Organisation (VO)",
+      "Distributed computing",
+      "Scientific Computing",
+      "Research Infrastructure",
+      "Data Management",
+      "European Open Science Cloud (EOSC)",
+      "Research Software and Tools"
+    ],
     "resource_type": "Project deliverable",
     "views": 242
   },
   "10.5281/zenodo.15827107": {
     "downloads": 73,
-    "keywords": [],
+    "keywords": [
+      "Smart Job Scheduling",
+      "Meta-Scheduler",
+      "Galaxy Platform",
+      "Distributed Computing",
+      "High Performance Computing (HPC)",
+      "Real-time Scheduling",
+      "EuroScienceGateway",
+      "Geolocation-based Scheduling",
+      "Job Scheduling Optimization",
+      "European Research Infrastructure"
+    ],
     "resource_type": "Project deliverable",
     "views": 216
   },
   "10.5281/zenodo.15920451": {
     "downloads": 65,
-    "keywords": [],
+    "keywords": [
+      "Galaxy Project",
+      "Pulsar",
+      "Distributed computing",
+      "Workflow execution",
+      "Open Infrastructure",
+      "Cloud deployment",
+      "High-performance computing",
+      "Terraform",
+      "Ansible",
+      "Apptainer",
+      "CVMFS",
+      "EOSC",
+      "EuroScienceGateway",
+      "Research infrastructure",
+      "Galaxy server deployment",
+      "GA4GH TES",
+      "Federated compute",
+      "Infrastructure as Code"
+    ],
     "resource_type": "Project deliverable",
     "views": 174
   },
   "10.5281/zenodo.16312227": {
     "downloads": 98,
-    "keywords": [],
+    "keywords": [
+      "Galaxy",
+      "TPV Broker",
+      "Meta-scheduler",
+      "Job scheduling",
+      "Workflow management",
+      "Scientific workflows",
+      "HPC (High-Performance Computing)",
+      "Cloud computing",
+      "Federated infrastructure",
+      "Fuzzy matchmaking",
+      "Dynamic scheduling",
+      "Resource-aware scheduling",
+      "Compute and data locality",
+      "Sustainable computing",
+      "Energy-efficient scheduling",
+      "Scalable infrastructure",
+      "Research infrastructure"
+    ],
     "resource_type": "Poster",
     "views": 179
   },
   "10.5281/zenodo.16735306": {
     "downloads": 115,
-    "keywords": [],
+    "keywords": [
+      "Interactive Tools",
+      "Galaxy",
+      "Workflows",
+      "Notebooks",
+      "Jupyter",
+      "Machine Learning"
+    ],
     "resource_type": "Conference paper",
     "views": 113
   },
   "10.5281/zenodo.16761933": {
     "downloads": 205,
-    "keywords": [],
+    "keywords": [
+      "Galaxy Project",
+      "Pulsar",
+      "Distributed Computing",
+      "High-Throughput Computing (HTC)",
+      "Cloud Infrastructure",
+      "Infrastructure Automation",
+      "Reproducible Research",
+      "EuroScienceGateway",
+      "Open Infrastructure",
+      "Terraform",
+      "Ansible",
+      "European Research Infrastructure",
+      "Job Scheduling",
+      "Federated Computing",
+      "HPC"
+    ],
     "resource_type": "Preprint",
     "views": 344
   },
   "10.5281/zenodo.19882942": {
     "downloads": 464,
-    "keywords": [],
+    "keywords": [
+      "NFDI",
+      "de.NBI",
+      "EOSC",
+      "ELIXIR",
+      "ELIXIR-DE",
+      "SPE",
+      "TRE",
+      "EHDS",
+      "de.NBI Cloud",
+      "cloud",
+      "research infrastructure",
+      "research data infrastructure",
+      "Sensitive Data",
+      "GenomDE",
+      "GHGA",
+      "GA4GH"
+    ],
     "resource_type": "Publication",
     "views": 508
   },
   "10.5281/zenodo.8335099": {
     "downloads": 66,
-    "keywords": [],
+    "keywords": [
+      "Interactive Tools, Galaxy, workflows, notebooks, Jupyter, R Studio"
+    ],
     "resource_type": "Poster",
     "views": 105
   }
