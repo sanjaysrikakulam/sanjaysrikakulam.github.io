@@ -6,7 +6,11 @@
   --color-surface-2: #f4f5f7;
   --color-ink: #0b0c0e;
   --color-ink-2: #3d434d;
-  --color-ink-3: #767d89;
+  /* Contrast constrained. This clears 4.99:1 on --color-bg and 4.78:1 on
+     --color-surface, both above the 4.5:1 AA floor for normal text. Lightening
+     it for aesthetics drops muted text below that floor, so check the contrast
+     test before changing it. */
+  --color-ink-3: #69707c;
   --color-line: #e7e9ec;
   --color-line-2: #d8dbe0;
   --color-accent: #2f5bea;
@@ -173,21 +177,17 @@ h1 em {
   line-height: 1;
   margin: 0 0 8px;
 }
-/* --color-ink-3 on --color-surface measures ~3.97:1 in the light theme, short
-   of the 4.5:1 WCAG AA floor for text this small (13.5px is not "large text"
-   under 1.4.3). --color-ink-2 clears 9.5:1 in light and stays well above 4.5:1
-   in dark, so the label and source lines use it instead of ink-3. */
 .pcell .l {
   font-family: var(--font-body);
   font-size: 0.9rem;
-  color: var(--color-ink-2);
+  color: var(--color-ink-3);
   margin: 0 0 4px;
   line-height: 1.4;
 }
 .pcell .src {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--color-ink-2);
+  color: var(--color-ink-3);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   margin: 0;
