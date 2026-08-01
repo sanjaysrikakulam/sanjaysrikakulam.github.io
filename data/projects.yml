@@ -1,0 +1,77 @@
+# yaml-language-server: $schema=../.astro/collections/projects.schema.json
+- name: AlphaFold2 non-Docker
+  repo: kalininalab/alphafold_non_docker
+  role: Author and maintainer
+  summary: >
+    AlphaFold2 ships as a Docker image, which requires root and is therefore unavailable
+    on most shared HPC clusters. This is a setup that removes the Docker dependency.
+  tags: [Python, Shell, HPC, structure prediction]
+  featured: true
+  order: 1
+
+- name: MetaProFi
+  repo: kalininalab/metaprofi
+  role: First author
+  summary: >
+    A chunked Bloom filter for protein and nucleotide sequence search. It accepts a bounded
+    false-positive rate in exchange for an index small enough to hold in memory at petabyte scale.
+  tags: [Python, Bloom filters, sequence search]
+  paper: 10.1093/bioinformatics/btad101
+  featured: true
+  order: 2
+
+- name: Galaxy Europe
+  repo: usegalaxy-eu/infrastructure-playbook
+  role: Maintainer
+  summary: >
+    Meta-scheduling, cloud infrastructure, deployment, and operations for the European Galaxy
+    instance, which serves over 170,000 registered users.
+  tags: [Terraform, Ansible, OpenStack, HTCondor]
+  featured: true
+  order: 3
+
+- name: SeqSidecar
+  repo: null
+  role: Designer and developer
+  summary: >
+    A columnar query engine for nucleotide and protein sequencing reads, supporting filtering,
+    search, deduplication, and remote index-based querying of FASTA and FASTQ at scale.
+  tags: [Python, columnar storage, sequence search]
+
+- name: TPV Broker
+  repo: usegalaxy-eu/tpv-broker
+  role: Contributor
+  summary: Meta-scheduler for Total Perspective Vortex, run as a service.
+  tags: [Python, scheduling]
+
+- name: d-StructMAn
+  repo: kalininalab/d-StructMAn
+  role: Contributor
+  summary: Containerised structural annotation, from genetic variants to whole proteomes.
+  tags: [Python, structural annotation]
+  paper: 10.1093/gigascience/giac086
+
+- name: PanPA
+  repo: kalininalab/panpa
+  role: Contributor
+  summary: Generation and alignment of panproteome graphs.
+  tags: [Python, graph alignment]
+  paper: 10.1093/bioadv/vbad167
+
+- name: Terraform training material
+  repo: sanjaysrikakulam/terraform_clum2025
+  role: Author
+  summary: Terraform training material for the joint de.KCD and de.NBI Cloud User Meeting.
+  tags: [Terraform, teaching]
+
+- name: Galaxy Europe replica
+  repo: sanjaysrikakulam/esg_wp4_galaxy
+  role: Author
+  summary: Launches a replica of the Galaxy Europe instance and its supporting services.
+  tags: [Jinja, Ansible, Galaxy]
+
+- name: pykvstores
+  repo: sanjaysrikakulam/pykvstores
+  role: Author
+  summary: Python key-value stores backing the chunked filter layout.
+  tags: [Python, storage]

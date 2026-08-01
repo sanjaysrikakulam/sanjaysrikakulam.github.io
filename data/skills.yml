@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=../.astro/collections/skills.schema.json
+- group: Programming
+  items: [Python, Shell scripting (Bash), R]
+- group: AI and LLM stack
+  items: [vLLM, PydanticAI, coding agents, pgvector, OpenAI API]
+- group: Web servers
+  items: [Apache, Nginx]
+- group: Databases
+  items: [SQL, MySQL/MariaDB, PostgreSQL]
+- group: Version control
+  items: [Git]
+- group: CI/CD
+  items: [Jenkins]
+- group: Containers and virtualisation
+  items: [Docker, LXC, KVM]
+- group: Cloud platforms and services
+  items: [OpenStack, AWS]
+- group: Infrastructure as code and configuration management
+  items: [Terraform, Ansible, RPM packaging, Pulp]
+- group: High-throughput workload scheduling
+  items: [HTCondor]
+- group: Monitoring and observability
+  items: [Icinga, Telegraf, InfluxDB, Grafana]
+- group: Security
+  items: [Firewall management, SSL/TLS certificates, Fail2ban]
+- group: Certificate management
+  items: [Let's Encrypt]
+- group: Cloud DNS
+  items: [AWS Route 53, DigitalOcean]
+- group: Storage
+  items: [NAS, DAS, JBOD, NFS, S3, CVMFS]

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../.astro/collections/hackathons.schema.json
+# Set led: true for events you organised or led.
+# Example:
+# - name: BioHackathon Europe
+#   year: 2024
+#   location: Barcelona
+#   led: true
+#   summary: Project lead on container provenance and signing.
+[]

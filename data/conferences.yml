@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=../.astro/collections/conferences.schema.json
+# Each event is entered once. role is one of: talk, poster, workshop, attended, panel.
+# Example:
+# - name: de.NBI Cloud User Meeting
+#   year: 2025
+#   location: Germany
+#   role: workshop
+#   title: Terraform for research cloud infrastructure
+#   url: https://example.org
+[]

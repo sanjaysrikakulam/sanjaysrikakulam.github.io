@@ -1,0 +1,84 @@
+profile:
+  name: Sanjay Kumar Srikakulam
+  headline: Computational methods for biology, and the infrastructure that runs them.
+  headline_accent: infrastructure
+  location: Germany
+  email: sanjaysrikakulam@gmail.com
+  avatar: /avatar.jpg
+  available: true
+  available_text: Open to collaboration and opportunities
+  bio: >
+    Postdoctoral researcher at Forschungszentrum Jülich, building small language models
+    and agentic systems for mass spectrometry, including spectral annotation for
+    lipidomics. Earlier work spans molecular dynamics and structure-based drug discovery,
+    sequence indexing at petabyte scale, and three years running Galaxy Europe for over
+    170,000 researchers.
+
+links:
+  github: https://github.com/sanjaysrikakulam
+  scholar: https://scholar.google.com/citations?user=YF_dAHMAAAAJ&hl=en
+  orcid: https://orcid.org/0000-0002-1752-5060
+  researchgate: https://www.researchgate.net/profile/Sanjay-Kumar-Srikakulam
+  linkedin: https://www.linkedin.com/in/sanjay-kumar-srikakulam
+  zenodo: https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Srikakulam%2C%20Sanjay%20Kumar%22
+
+sections:
+  - id: work
+    title: Selected projects
+    description: >
+      Projects with users outside the group that built them. All figures are read from
+      the GitHub API when the site builds.
+  - id: experience
+    title: Education and roles
+    description: >
+      Six positions since 2013, several held concurrently. Each entry lists the main
+      responsibilities, with the full set available under each role.
+  - id: research
+    title: Publications and outputs
+    description: >
+      Journal articles, conference papers, preprints, and project deliverables. Citation
+      counts come from OpenAlex, download counts from Zenodo. Every entry links to the record.
+    subsections:
+      - id: publications
+      - id: conferences
+        title: Conferences and talks
+        description: >
+          Talks, posters, and workshops, plus meetings attended without presenting.
+  - id: community
+    title: Hackathons
+    description: Events attended, and those I helped organise or lead.
+  - id: contact
+    title: Get in touch
+    description: >
+      Open to conversations about sequence indexing, research infrastructure, and
+      agentic systems for scientific data. Based in Germany.
+
+display:
+  photo: true
+  proof_strip: true
+  theme_toggle: true
+  grid_includes_featured: true
+  open_source:
+    carousel: true
+    per_view: 3
+    autoplay: true
+    autoplay_interval: 5000
+
+proof:
+  - value: '16'
+    label: Publications, deliverables and reports
+    source: OpenAlex and Zenodo
+  - value: '434'
+    label: Merged pull requests, public repositories
+    source: GitHub API
+  - value: '1,650'
+    label: Zenodo downloads
+    source: Zenodo API
+  - value: 11 yrs
+    label: Research and infrastructure
+
+pdf:
+  page_size: A4
+  sections: [profile, education, experience, publications, skills]
+  max_items:
+    publications: 10

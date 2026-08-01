@@ -1,0 +1,153 @@
+# yaml-language-server: $schema=../.astro/collections/experience.schema.json
+- title: Postdoctoral Researcher
+  org: Forschungszentrum Jülich GmbH
+  org_url: https://www.fz-juelich.de
+  location: Jülich, Germany
+  start: 2025-09
+  end: null
+  track_colour: '#7C3AED'
+  summary: Data science and bioinformatics for mass spectrometry.
+  highlights:
+    - >
+      AI and agentic frameworks for biocuration of metabolomics and lipidomics literature:
+      named entity recognition, ontologies, controlled vocabularies, and knowledge graphs.
+    - >
+      SeqSidecar, a columnar query engine for nucleotide and protein sequencing reads,
+      supporting filtering, search, deduplication, and remote index-based querying of
+      FASTA and FASTQ at scale.
+    - >
+      An OCI container registry with CVE scanning, SBOM generation, and image signing,
+      run as a European service through de.NBI and ELIXIR.
+  details:
+    - Novel algorithms and data structures for indexing and querying petabyte-scale sequencing datasets.
+    - >
+      Administration, strategic planning, and implementation of de.NBI infrastructure and
+      services, focused on cloud infrastructure, AI, and agentic frameworks.
+    - Administration and strategic expansion of de.NBI and ELIXIR Germany infrastructure and services.
+    - Demonstrated EOSC EU Node use cases through the EOSC United project.
+    - Part of the EOSC Entrust project, establishing blueprints for secure data processing environments.
+    - Talks, posters, and workshops at national and international conferences.
+    - >
+      Represented de.NBI and ELIXIR Germany in national initiatives (NFDI) and European
+      Commission projects.
+  affiliations: [de.NBI, ELIXIR Germany, EOSC United, EOSC Entrust, NFDI]
+  tags: [Python, AI, agentic systems, containers, mass spectrometry]
+
+- title: Scientific Researcher (Postdoc)
+  org: University of Freiburg
+  org_url: https://www.uni-freiburg.de
+  location: Freiburg, Germany
+  start: 2022-08
+  end: 2025-08
+  track_colour: '#DC2626'
+  summary: Application development, feature work, and research on Galaxy Europe.
+  highlights:
+    - Administration and management of Galaxy Europe, supporting over 170,000 users.
+    - >
+      Algorithms and optimisations for meta-scheduling, including reducing carbon footprint
+      through efficient scheduling and distributed remote computing.
+    - >
+      Configuration, deployment, administration, and maintenance of the Galaxy HPC OpenStack
+      cloud using Terraform, Ansible, Jenkins, Rsyslog, and the TIG stack.
+  details:
+    - Application development, feature innovation, and research.
+    - Deliverables and reports for national and EU-funded initiatives.
+    - Research data management through Galaxy.
+    - Development and deployment of configurations through GitOps and Jenkins CI/CD.
+    - Scripting and automation.
+    - Infrastructure monitoring and performance analysis.
+    - Troubleshooting, logging, and log analysis.
+    - Support and documentation.
+    - Partnering with collaborators on national and international projects.
+    - >
+      Represented the organisation at conferences through exhibition booths, presentations,
+      and scientific and industry discussions.
+  tags: [Galaxy, Terraform, Ansible, OpenStack, HTCondor]
+
+- title: Bioinformatician
+  org: Saarland University Hospital
+  org_url: https://www.uniklinikum-saarland.de
+  location: Homburg, Germany
+  start: 2021-02
+  end: 2022-02
+  track_colour: '#D97706'
+  summary: Machine learning and survival analysis on longitudinal clinical data.
+  highlights:
+    - >
+      Machine learning and survival analysis on longitudinal COPD patient data to identify
+      biomarkers.
+    - OMICS data analysis.
+  tags: [machine learning, survival analysis, OMICS]
+
+- title: System Administrator and DevOps, Bioinformatics IT Core Facility
+  org: Helmholtz Institute for Pharmaceutical Research Saarland
+  org_url: https://www.helmholtz-hips.de
+  location: Saarbrücken, Germany
+  start: 2018-10
+  end: 2023-03
+  track_colour: '#0D9488'
+  summary: Set up and ran the Drug Bioinformatics IT core facility.
+  highlights:
+    - Setup, design, and establishment of the Bioinformatics IT core facility.
+    - >
+      Installation, configuration, and maintenance of CentOS and Red Hat Linux HPC clusters,
+      servers, desktops, and workstations.
+    - >
+      Containerised web services (Gitea, MediaWiki, WordPress, Docker registry) and
+      infrastructure monitoring through Icinga.
+  details:
+    - Site reliability engineering processes.
+    - Budgeting, purchasing, and inventory.
+    - Bioinformatics application installation, configuration, deployment, and maintenance.
+    - Support and documentation for all researchers.
+    - >
+      On-demand compute provisioning, physical and virtual, with network and storage
+      allocation.
+    - Storage provisioning and administration.
+    - MariaDB database server administration.
+    - Ansible and custom RPM packages for configuration, monitoring, and maintenance.
+    - >
+      Configuration of iDRAC/IPMI, DNS, TCP/IP, TLS/SSL, LDAP, Active Directory, SSH,
+      Fail2ban, firewall, AutoFS, and printers.
+    - Troubleshooting and resolution of hardware and software issues.
+  tags: [Linux, HPC, Ansible, Docker, Icinga]
+
+- title: System Administrator (Research Assistant)
+  org: German Research Centre for Artificial Intelligence (DFKI)
+  org_url: https://www.dfki.de
+  location: Saarbrücken, Germany
+  start: 2015-09
+  end: 2022-03
+  track_colour: '#2F5BEA'
+  summary: Systems, configuration management, and build automation for the ASR group.
+  highlights:
+    - Development and maintenance of an RPM-based distributed configuration management system.
+    - >
+      Development, configuration, and maintenance of web services including MediaWiki,
+      WordPress, Gitea, and reverse proxies.
+    - Configuration and maintenance of Jenkins build automation and KVM virtual machines.
+  details:
+    - Development and maintenance of installation and configuration routines.
+    - Configuration and maintenance of network monitoring through Icinga 2.
+    - Development and maintenance of containerised applications using Docker.
+    - Scripting and automation.
+    - Monitoring and maintenance of workstations and servers.
+    - 'Atlassian stack administration: Crowd, Jira, Confluence, and Bitbucket.'
+    - Support and documentation for the DFKI-ASR user community and the team.
+  tags: [RPM, Docker, Jenkins, KVM, Icinga]
+
+- title: Project Assistant (Student)
+  org: National Institute for Research in Tuberculosis, ICMR
+  org_url: https://nirt.res.in
+  location: Chennai, India
+  start: 2013-05
+  end: 2014-07
+  track_colour: '#64748B'
+  summary: Structural bioinformatics of mycobacterial and viral proteins.
+  highlights:
+    - Maintained the Mycobacterium tuberculosis structural database (MtbSD).
+    - Sequence and structural ensemble analysis of HIV and M. tuberculosis proteins.
+    - Molecular modelling, drug design, and docking.
+  details:
+    - Statistical analysis.
+  tags: [molecular modelling, docking, structural analysis]

@@ -1,0 +1,187 @@
+# yaml-language-server: $schema=../.astro/collections/publications.schema.json
+- title: 'Galaxy for accessible, reproducible, and collaborative data analyses: 2026 update'
+  type: journal
+  venue: Nucleic Acids Research
+  year: 2026
+  authors_display: The Galaxy Community
+  author_role: consortium
+  role_note: Contributing author, Galaxy Community
+  doi: 10.1093/nar/gkag469
+
+- title: Ten common misconceptions about Galaxy (and why they are wrong!)
+  type: journal
+  venue: PLOS Computational Biology
+  year: 2026
+  authors_display: Bacon WA, Batut B, Srikakulam SK, Zierep P, Bretaudeau A, et al.
+  author_role: contributing
+  doi: 10.1371/journal.pcbi.1013869
+
+- title: >-
+    Towards Federated, Certified Infrastructures for Sensitive Data Research in Germany
+    and Europe with the de.NBI Cloud
+  type: deliverable
+  venue: Zenodo
+  year: 2026
+  authors_display: >-
+    Twardziok S, Barysch S-V, Braun M, Buchhalter I, Grüning B, Kraft P, Krüger J,
+    Kuchenbecker L, Srikakulam SK, Lawerenz C, Sczyrba A, Wagener H, Hoffmann N, Kohlbacher O
+  author_role: contributing
+  project: de.NBI Cloud
+  zenodo_doi: 10.5281/zenodo.19882942
+
+- title: Optimized Meta-Scheduling in Galaxy Using TPV Broker
+  type: conference
+  venue: ICT for Intelligent Systems (ICTIS 2025), Smart Innovation, Systems and Technologies vol 325, Springer
+  year: 2026
+  authors_display: Azab A, Geest PD, Srikakulam SK, Vondrák T, Kuntz M, Grüning B
+  author_role: contributing
+  zenodo_doi: 10.5281/zenodo.14936846
+
+- title: >-
+    Scaling Scientific Workflows in Europe: Architecture and Deployment of the
+    Galaxy-Pulsar Computational Network
+  type: preprint
+  venue: Zenodo
+  year: 2025
+  authors_display: Tangaro MA, Nicotri S, Grüning B, Srikakulam SK, Dadras A, Zambelli F
+  author_role: contributing
+  zenodo_doi: 10.5281/zenodo.16761933
+
+- title: 'Interactive Galaxy Tools: combining real-time user interaction with scientific workflows'
+  type: conference
+  venue: Zenodo
+  year: 2025
+  author_role: contributing
+  zenodo_doi: 10.5281/zenodo.16735306
+
+- title: Publication on the smart job scheduler implementation
+  type: deliverable
+  venue: Zenodo
+  year: 2025
+  author_role: contributing
+  zenodo_doi: 10.5281/zenodo.15827107
+
+- title: Bring Your Own Infrastructure
+  type: deliverable
+  venue: Zenodo
+  year: 2024
+  author_role: contributing
+  zenodo_doi: 10.5281/zenodo.15729502
+
+- title: D3.1 Operations documentation on the Open Infrastructure deployment
+  type: deliverable
+  venue: Zenodo
+  year: 2024
+  author_role: contributing
+  zenodo_doi: 10.5281/zenodo.15920451
+
+- title: 'The Galaxy platform for accessible, reproducible, and collaborative data analyses: 2024 update'
+  type: journal
+  venue: Nucleic Acids Research
+  year: 2024
+  authors_display: The Galaxy Community
+  author_role: consortium
+  role_note: Contributing author, Galaxy Community
+  doi: 10.1093/nar/gkae410
+
+- title: 'Conda, Container and Bots: How to Build and Maintain Tool Dependencies in Workflows and Training Materials'
+  type: conference
+  venue: Proceedings of the Conference on Research Data Infrastructure
+  year: 2023
+  authors_display: Zierep P, Srikakulam SK, Schaaf S, Grüning B
+  author_role: contributing
+  doi: 10.52825/cordi.v1i.417
+
+- title: 'Interactive Tools (IT) in Galaxy: Combining Synchronous and Asynchronous Workflows'
+  type: poster
+  venue: Proceedings of the Conference on Research Data Infrastructure
+  year: 2023
+  authors_display: Kayikcioglu T, Srikakulam SK, Maier W, Grüning B
+  author_role: contributing
+  zenodo_doi: 10.5281/zenodo.8335099
+
+- title: 'PanPA: generation and alignment of panproteome graphs'
+  type: journal
+  venue: Bioinformatics Advances
+  year: 2023
+  authors_display: Dabbaghie F, Srikakulam SK, Marschall T, Kalinina OV
+  author_role: contributing
+  doi: 10.1093/bioadv/vbad167
+
+- title: >-
+    MetaProFi: an ultrafast chunked Bloom filter for storing and querying protein and
+    nucleotide sequence data for accurate identification of functionally relevant genetic variants
+  type: journal
+  venue: Bioinformatics
+  year: 2023
+  authors_display: Srikakulam SK, Keller S, Dabbaghie F, Bals R, Kalinina OV
+  author_role: first
+  doi: 10.1093/bioinformatics/btad101
+  featured: true
+
+- title: 'd-StructMAn: Containerized structural annotation on the scale from genetic variants to whole proteomes'
+  type: journal
+  venue: GigaScience
+  year: 2022
+  authors_display: Gress A, Srikakulam SK, Keller S, Ramensky V, Kalinina OV
+  author_role: contributing
+  doi: 10.1093/gigascience/giac086
+
+- title: >-
+    Epistatic interactions promote persistence of NS3-Q80K in HCV infection by compensating
+    for protein folding instability
+  type: journal
+  venue: Journal of Biological Chemistry
+  year: 2021
+  authors_display: Dultz G, Srikakulam SK, Konetschnik M, Shimakami T, Doncheva NT, et al.
+  author_role: contributing
+  doi: 10.1016/j.jbc.2021.101031
+
+- title: Distinct patterns of blood cytokines beyond a cytokine storm predict mortality in COVID-19
+  type: journal
+  venue: Journal of Inflammation Research
+  year: 2021
+  authors_display: Herr C, Mang S, Mozafari B, Guenther K, Speer T, Seibert M, Srikakulam SK, et al.
+  author_role: contributing
+  doi: 10.2147/JIR.S320685
+
+- title: >-
+    A hydrogel-based in vitro assay for the fast prediction of antibiotic accumulation in
+    gram-negative bacteria
+  type: journal
+  venue: Materials Today Bio
+  year: 2020
+  authors_display: Richter R, Kamal MAM, García-Rivera MA, Kaspar J, Junk M, Srikakulam SK, et al.
+  author_role: contributing
+  doi: 10.1016/j.mtbio.2020.100084
+
+- title: A shift of dynamic equilibrium between the KIT active and inactive states causes drug resistance
+  type: journal
+  venue: Proteins
+  year: 2020
+  authors_display: Srikakulam SK, Bastys T, Kalinina OV
+  author_role: first
+  doi: 10.1002/prot.25963
+  featured: true
+
+- title: Exploring the conformational landscapes of HIV protease structural ensembles using principal component analysis
+  type: journal
+  venue: Proteins
+  year: 2018
+  authors_display: Hassan S, Srikakulam SK, Chandramohan Y, et al.
+  author_role: contributing
+  doi: 10.1002/prot.25534
+
+- title: 'Data Snack: Galaxy, a research data powerhouse from analysis to FAIR management'
+  type: presentation
+  venue: Zenodo
+  year: 2025
+  author_role: contributing
+  zenodo_doi: 10.5281/zenodo.15362960
+
+- title: Dynamic meta-scheduling in Galaxy with TPV Broker for smarter workload distribution
+  type: poster
+  venue: Zenodo
+  year: 2025
+  author_role: contributing
+  zenodo_doi: 10.5281/zenodo.16312227

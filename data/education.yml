@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=../.astro/collections/education.schema.json
+- degree: PhD, Bioinformatics
+  year: 2024
+  institution: Helmholtz Institute for Pharmaceutical Research Saarland and Saarland University
+  location: Saarbrücken, Germany
+
+- degree: M.Sc., Bioinformatics
+  year: 2018
+  institution: Saarland University
+  location: Saarbrücken, Germany
+
+- degree: B.Tech., Bioinformatics
+  year: 2014
+  institution: SRM University
+  location: Kancheepuram, India
