@@ -6,6 +6,9 @@ interface Props {
   ticks: number[];
 }
 const { bars, ticks } = Astro.props;
+
+const yearOf = (value: string) => (value === 'Present' ? 'Present' : value.split('-')[0]);
+const periodOf = (bar: Bar) => `${yearOf(bar.from)} – ${yearOf(bar.to)}`;
 ---
 
 {
@@ -16,19 +19,27 @@ const { bars, ticks } = Astro.props;
           <span>{year}</span>
         ))}
       </div>
-      {bars.map((bar) => (
-        <div class="lane">
-          <a
-            class="bar"
-            href={`#${bar.id}`}
-            style={`left:${bar.left}%;width:${bar.width}%;background:${bar.colour}`}
-            aria-label={`Jump to ${bar.sublabel} at ${bar.label}, ${bar.from} to ${bar.to}`}
-          >
-            {bar.label}
-            {bar.sublabel && <small>{bar.sublabel}</small>}
-          </a>
-        </div>
-      ))}
+      <div class="tl-lanes">
+        {bars.map((bar) => (
+          <div class="lane">
+            <div class="ll">
+              <span class="lldot" style={`background:${bar.colour}`} aria-hidden="true" />
+              <span class="llrole">{bar.sublabel}</span>
+              <span class="llorg">{bar.label}</span>
+              <span class="llper">{periodOf(bar)}</span>
+            </div>
+            <div class="track">
+              <a
+                class="bar"
+                href={`#${bar.id}`}
+                style={`left:${bar.left}%;width:${bar.width}%;background:${bar.colour}`}
+                title={`${bar.sublabel} · ${bar.label} · ${periodOf(bar)}`}
+                aria-label={`Jump to ${bar.sublabel} at ${bar.label}, ${bar.from} to ${bar.to}`}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

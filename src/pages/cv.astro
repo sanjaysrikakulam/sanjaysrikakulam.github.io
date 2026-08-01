@@ -14,6 +14,15 @@ const publications = capItems(pdfItems(data.publications, true), site, 'publicat
 const education = pdfItems(data.education, true);
 const skills = pdfItems(data.skills, true);
 
+const LINK_LABELS: Record<string, string> = {
+  github: 'GitHub',
+  scholar: 'Google Scholar',
+  orcid: 'ORCID',
+  researchgate: 'ResearchGate',
+  zenodo: 'Zenodo',
+  linkedin: 'LinkedIn',
+};
+
 const period = (start: string, end: string | null) => {
   const format = (value: string | null) => {
     if (!value) return 'Present';
@@ -41,11 +50,11 @@ const period = (start: string, end: string | null) => {
         <header>
           <h1>{site.profile.name}</h1>
           <p class="meta">
-            {site.profile.location} · {site.profile.email} ·
-            {Object.values(site.links).map((url) => (
+            {site.profile.location}
+            {Object.entries(site.links).map(([key, url]) => (
               <>
-                {' '}
-                <a href={url}>{url.replace(/^https?:\/\/(www\.)?/, '')}</a>
+                {' · '}
+                <a href={url}>{LINK_LABELS[key] ?? key}</a>
               </>
             ))}
           </p>

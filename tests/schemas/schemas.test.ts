@@ -106,7 +106,7 @@ describe('siteSchema', () => {
       headline: 'Computational methods for biology, and the infrastructure that runs them.',
       headline_accent: 'infrastructure',
       location: 'Germany',
-      email: 'sanjaysrikakulam@gmail.com',
+      email: 'a@b.co',
     },
     links: { github: 'https://github.com/sanjaysrikakulam' },
     sections: [{ id: 'work' }],

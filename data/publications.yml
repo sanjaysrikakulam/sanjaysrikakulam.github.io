@@ -19,7 +19,7 @@
 - title: >-
     Towards Federated, Certified Infrastructures for Sensitive Data Research in Germany
     and Europe with the de.NBI Cloud
-  type: deliverable
+  type: white-paper
   venue: Zenodo
   year: 2026
   authors_display: >-
@@ -91,7 +91,9 @@
   year: 2023
   authors_display: Zierep P, Srikakulam SK, Schaaf S, Grüning B
   author_role: contributing
+  tags: [poster]
   doi: 10.52825/cordi.v1i.417
+  poster: https://zenodo.org/records/18376637
 
 - title: 'Interactive Tools (IT) in Galaxy: Combining Synchronous and Asynchronous Workflows'
   type: conference
@@ -99,6 +101,7 @@
   year: 2023
   authors_display: Kayikcioglu T, Srikakulam SK, Maier W, Grüning B
   author_role: contributing
+  tags: [poster]
   zenodo_doi: 10.5281/zenodo.8335099
 
 - title: 'PanPA: generation and alignment of panproteome graphs'
@@ -181,8 +184,9 @@
   zenodo_doi: 10.5281/zenodo.15362960
 
 - title: Dynamic meta-scheduling in Galaxy with TPV Broker for smarter workload distribution
-  type: poster
+  type: conference
   venue: Zenodo
   year: 2025
   author_role: contributing
+  tags: [poster]
   zenodo_doi: 10.5281/zenodo.16312227

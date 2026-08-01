@@ -37,8 +37,11 @@ describe('pageAt', () => {
     expect(pageAt(MAX - 1, WIDE, VIEW)).toBe(3);
   });
 
-  it('rounds to the nearest page mid-scroll', () => {
-    expect(pageAt(VIEW * 1.4, WIDE, VIEW)).toBe(1);
+  it('maps a scroll position to the nearest evenly spaced page', () => {
+    // Four pages sit at 0, MAX/3, 2*MAX/3, and MAX.
+    expect(pageAt(MAX / 3, WIDE, VIEW)).toBe(1);
+    expect(pageAt((2 * MAX) / 3, WIDE, VIEW)).toBe(2);
+    expect(pageAt(MAX * 0.15, WIDE, VIEW)).toBe(0);
   });
 
   it('never reports a page beyond the last', () => {
@@ -59,12 +62,13 @@ describe('pageAt', () => {
 });
 
 describe('scrollTargetFor', () => {
-  it('targets the exact offset for an interior page', () => {
-    expect(scrollTargetFor(1, WIDE, VIEW)).toBe(VIEW);
+  it('spreads interior pages evenly across the scrollable distance', () => {
+    expect(scrollTargetFor(1, WIDE, VIEW)).toBeCloseTo(MAX / 3);
+    expect(scrollTargetFor(2, WIDE, VIEW)).toBeCloseTo((2 * MAX) / 3);
   });
 
-  it('clamps the final page to maximum scroll so it is reachable', () => {
-    expect(scrollTargetFor(3, WIDE, VIEW)).toBe(MAX);
+  it('lands the final page on maximum scroll so it is reachable', () => {
+    expect(scrollTargetFor(3, WIDE, VIEW)).toBeCloseTo(MAX);
   });
 
   it('clamps a negative page to the start', () => {
@@ -72,6 +76,25 @@ describe('scrollTargetFor', () => {
   });
 
   it('clamps an out-of-range page to the end', () => {
-    expect(scrollTargetFor(99, WIDE, VIEW)).toBe(MAX);
+    expect(scrollTargetFor(99, WIDE, VIEW)).toBeCloseTo(MAX);
+  });
+});
+
+describe('page navigation round-trip', () => {
+  // The regression at the heart of the dead-dot bug: clicking a dot scrolls to
+  // its target, and the settled position must report that same dot as active.
+  // The old page*clientWidth targeting broke this for the last dot.
+  it('reports every page target as its own page', () => {
+    for (const [wide, view] of [
+      [WIDE, VIEW],
+      [3000, 1000],
+      [5000, 900],
+      [2200, 1056],
+    ] as const) {
+      const total = pageCount(wide, view);
+      for (let page = 0; page < total; page += 1) {
+        expect(pageAt(scrollTargetFor(page, wide, view), wide, view)).toBe(page);
+      }
+    }
   });
 });

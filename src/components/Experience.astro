@@ -20,7 +20,7 @@ const config = sectionConfig(data.site, 'experience');
         <div class="shead">
           <p class="slabel">Experience</p>
           <h2>{config.title}</h2>
-          <p>{config.description}</p>
+          {config.description && <p>{config.description}</p>}
         </div>
         <Education education={data.education} />
         <Timeline bars={data.timeline.bars} ticks={data.timeline.ticks} />

@@ -332,7 +332,7 @@ h1 em {
 .proof .wrap {
   padding: 40px 24px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 .pcell .n {
@@ -368,9 +368,9 @@ h1 em {
   border-radius: 14px;
   padding: 32px;
   background: var(--color-bg);
-  display: grid;
-  grid-template-columns: 1fr 200px;
-  gap: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
   transition: 0.25s;
 }
 .card:hover {
@@ -425,11 +425,13 @@ h1 em {
   border-radius: 20px;
 }
 .stats {
-  border-left: 1px solid var(--color-line);
-  padding-left: 28px;
+  border-top: 1px solid var(--color-line);
+  padding-top: 20px;
   display: flex;
-  flex-direction: column;
-  gap: 18px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 32px;
   margin: 0;
 }
 .stat {
@@ -458,42 +460,13 @@ h1 em {
   font-family: var(--font-mono);
   font-size: 10px;
   color: var(--color-ink-3);
-  margin-top: 10px;
+  margin: 0 0 0 auto;
 }
 .synced .d {
   width: 5px;
   height: 5px;
   border-radius: 50%;
   background: var(--color-live);
-}
-
-.ghbar {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--color-line);
-  border: 1px solid var(--color-line);
-  border-radius: 14px;
-  overflow: hidden;
-  margin-bottom: 26px;
-}
-.ghbar div {
-  background: var(--color-bg);
-  padding: 24px 26px;
-  margin: 0;
-}
-.ghbar .n {
-  font-family: var(--font-display);
-  font-size: 32px;
-  line-height: 1;
-  color: var(--color-ink);
-  margin: 0;
-}
-.ghbar .l {
-  font-family: var(--font-body);
-  font-size: 13px;
-  color: var(--color-ink-3);
-  margin: 7px 0 0;
 }
 
 .carousel {
@@ -702,34 +675,68 @@ h1 em {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--color-ink-3);
-  margin: 0 0 12px;
+  margin: 0 0 20px;
 }
-.lane {
+.tl-lanes {
+  display: grid;
+  gap: 18px;
+}
+.ll {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 7px;
+}
+.lldot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: none;
+}
+.llrole {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-ink);
+  transition: color 0.15s ease;
+}
+.llorg {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--color-ink-3);
+}
+.llper {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-ink-3);
+}
+.track {
   position: relative;
-  height: 36px;
-  margin: 0 0 6px;
+  height: 13px;
+  background: var(--color-surface-2);
+  border-radius: 999px;
 }
 .bar {
   position: absolute;
   top: 0;
   height: 100%;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0 10px;
-  border-radius: 6px;
-  color: #fff;
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
+  min-width: 8px;
+  border-radius: 999px;
   text-decoration: none;
-  text-overflow: ellipsis;
+  transition:
+    filter 0.15s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
-.bar small {
-  font-weight: 400;
-  opacity: 0.85;
+.lane:hover .llrole {
+  color: var(--color-accent);
+}
+.bar:hover {
+  filter: brightness(1.07);
+  transform: scaleY(1.35);
+  box-shadow: 0 4px 14px -4px color-mix(in srgb, var(--color-ink) 30%, transparent);
 }
 
 .rolelist {
@@ -774,11 +781,18 @@ h1 em {
 }
 .role-entry ul {
   margin: 0;
-  padding: 0 0 0 18px;
+  padding: 0 0 0 20px;
+  list-style: disc;
   color: var(--color-ink-2);
   font-family: var(--font-body);
   font-size: 0.9rem;
   line-height: 1.6;
+}
+.role-entry li {
+  margin: 0 0 4px;
+}
+.role-entry li::marker {
+  color: var(--color-line-2);
 }
 .affil {
   display: flex;
@@ -803,9 +817,25 @@ h1 em {
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--color-accent);
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  width: fit-content;
+}
+.more summary::-webkit-details-marker {
+  display: none;
+}
+.more summary::before {
+  content: '\25B8';
+  font-size: 0.72em;
+  transition: transform 0.15s ease;
+}
+.more[open] summary::before {
+  transform: rotate(90deg);
 }
 .more ul {
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 .skills {
@@ -839,9 +869,15 @@ h1 em {
   padding: 28px 0;
   border-top: 1px solid var(--color-line);
 }
-.pub:first-child {
+.pub:first-child,
+.pub.lead {
   border-top: none;
   padding-top: 0;
+}
+/* .pub sets display:grid, which would otherwise win over the hidden
+   attribute's display:none and leave filtered-out entries on the page. */
+.publications .pub[hidden] {
+  display: none;
 }
 .pub .yr {
   font-family: var(--font-mono);
@@ -886,25 +922,46 @@ h1 em {
 .abadge {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.66rem;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  padding: 2px 9px;
+  padding: 3px 10px;
   border-radius: 999px;
   margin-left: 10px;
   vertical-align: middle;
-}
-.b-first {
-  background: var(--color-accent);
-  color: #fff;
-}
-.b-cons {
   border: 1px solid var(--color-line-2);
   color: var(--color-ink-3);
 }
-.b-del {
-  border: 1px solid var(--color-line-2);
-  color: var(--color-ink-3);
+
+.pubfilter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 36px;
+}
+.pf {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--color-ink-2);
+  background: none;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  padding: 7px 15px;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+.pf:hover {
+  border-color: var(--color-line-2);
+  color: var(--color-ink);
+}
+.pf.on {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-bg);
 }
 
 .plinks {
@@ -914,19 +971,25 @@ h1 em {
   margin: 0;
 }
 .pl {
+  display: inline-flex;
+  align-items: center;
   font-family: var(--font-mono);
   font-size: 0.72rem;
+  line-height: 1.4;
   color: var(--color-accent);
   background: none;
   border: 1px solid var(--color-line);
   border-radius: 999px;
-  padding: 4px 12px;
+  padding: 5px 13px;
   cursor: pointer;
   text-decoration: none;
-  transition: border-color 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease;
 }
 .pl:hover {
   border-color: var(--color-line-2);
+  color: var(--color-ink);
 }
 .pl.zen {
   color: var(--color-ink-2);
@@ -1013,13 +1076,13 @@ h1 em {
 .kind {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.66rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   color: var(--color-ink-3);
   border: 1px solid var(--color-line-2);
   border-radius: 999px;
-  padding: 2px 8px;
+  padding: 3px 10px;
   margin-right: 8px;
 }
 
@@ -1081,38 +1144,32 @@ h1 em {
   flex-wrap: wrap;
   align-items: flex-start;
 }
-.flinks {
-  display: grid;
+.ficons {
+  display: flex;
+  flex-wrap: wrap;
   gap: 12px;
 }
-.flinks a {
-  font-family: var(--font-body);
-  font-size: 15.5px;
+.ficons a {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
   color: var(--color-ink-2);
-  transition: color 0.18s;
-  display: inline-flex;
-  gap: 9px;
-  align-items: center;
-  text-decoration: none;
+  transition:
+    color 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
 }
-.flinks a:hover {
+.ficons a:hover {
   color: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
 }
-.flinks a span {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--color-ink-3);
-  width: 86px;
-}
-.flinks a svg {
-  width: 17px;
-  height: 17px;
-  flex: none;
-  color: var(--color-ink-3);
-  transition: color 0.18s;
-}
-.flinks a:hover svg {
-  color: var(--color-accent);
+.ficons a svg {
+  width: 20px;
+  height: 20px;
 }
 .fnote {
   font-family: var(--font-body);
@@ -1123,17 +1180,16 @@ h1 em {
   border-top: 1px solid var(--color-line);
 }
 
-/* The BibTeX button shares .pl's box styling; this only normalises the
-   native <button> font/line-height so it lines up with the <a> siblings. */
+/* The BibTeX control is a native <button>, so it inherits .pl's box but not
+   the page font. Restating the family and size (rather than `font: inherit`,
+   which pulls in the 17px body size) keeps it the same size as the <a> pills. */
 .bib {
-  font: inherit;
-  line-height: inherit;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.4;
 }
 
 @media (max-width: 980px) {
-  .ghbar {
-    grid-template-columns: 1fr;
-  }
   .carousel[data-per-view] .repos {
     grid-auto-columns: calc((100% - 16px) / 2);
   }
@@ -1143,16 +1199,8 @@ h1 em {
   .navlinks a {
     display: none;
   }
-  .card {
-    grid-template-columns: 1fr;
-  }
-  .stats {
-    border-left: 0;
-    border-top: 1px solid var(--color-line);
-    padding-left: 0;
-    padding-top: 22px;
-    flex-direction: row;
-    gap: 36px;
+  .llorg {
+    display: none;
   }
   .hk {
     grid-template-columns: 1fr;

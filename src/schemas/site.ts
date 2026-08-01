@@ -29,7 +29,7 @@ export const siteSchema = z
         headline: z.string().min(1),
         headline_accent: z.string().min(1),
         location: z.string().min(1),
-        email: z.email(),
+        email: z.email().optional(),
         avatar: z.string().default('/avatar.jpg'),
         bio: z.string().optional(),
         available: z.boolean().default(true),

@@ -16,67 +16,109 @@ const surnamePattern = new RegExp(`(\\b${escaped}[^,]*)`, 'g');
 const emphasise = (authors?: string) =>
   authors ? authors.replace(surnamePattern, '<b>$1</b>') : '';
 
-const ROLE_BADGE: Record<string, { label: string; className: string } | null> = {
-  first: { label: 'First author', className: 'b-first' },
-  'joint-first': { label: 'Joint first author', className: 'b-first' },
-  corresponding: { label: 'Corresponding', className: 'b-first' },
-  consortium: { label: 'Consortium', className: 'b-cons' },
-  senior: { label: 'Senior author', className: 'b-cons' },
-  contributing: null,
+const TYPE_LABEL: Record<string, string> = {
+  journal: 'Journal',
+  conference: 'Conference',
+  preprint: 'Preprint',
+  'white-paper': 'White paper',
+  deliverable: 'Deliverable',
+  poster: 'Poster',
+  presentation: 'Talk',
+  dataset: 'Dataset',
+  software: 'Software',
 };
 
-const TYPE_BADGE: Record<string, string> = {
-  deliverable: 'Deliverable',
-  'white-paper': 'White paper',
-};
+// Filter categories, in reading order. Posters fold in with conference papers
+// because a poster is a conference output; talks stay separate because they are
+// often invited or standalone (a seminar, a webinar, a lunch talk) rather than
+// part of a conference. An entry that was a conference talk can still carry both
+// `conference` and `presentation`, so it lands under Conferences and Talks.
+const CATEGORIES: { id: string; label: string; types: string[] }[] = [
+  { id: 'journal', label: 'Journal', types: ['journal'] },
+  { id: 'conference', label: 'Conferences', types: ['conference', 'poster'] },
+  { id: 'talk', label: 'Talks', types: ['presentation'] },
+  { id: 'preprint', label: 'Preprint', types: ['preprint'] },
+  { id: 'white-paper', label: 'White paper', types: ['white-paper'] },
+  { id: 'deliverable', label: 'Deliverable', types: ['deliverable'] },
+  { id: 'dataset', label: 'Dataset', types: ['dataset'] },
+  { id: 'software', label: 'Software', types: ['software'] },
+];
+const typeToCategory = new Map<string, string>();
+for (const category of CATEGORIES) {
+  for (const type of category.types) typeToCategory.set(type, category.id);
+}
+
+// The distinct type labels an entry carries: its primary type first, then any
+// extra tags, de-duplicated so [conference] + tags [poster] reads "Conference
+// Poster" rather than repeating a shared label.
+const labelsFor = (entry: MergedPublication) => [...new Set([entry.type, ...(entry.tags ?? [])])];
+const categoriesFor = (entry: MergedPublication) =>
+  [...new Set(labelsFor(entry).map((type) => typeToCategory.get(type)))].filter(
+    (id): id is string => Boolean(id),
+  );
+
+const presentCategories = new Set(entries.flatMap(categoriesFor));
+const filters = CATEGORIES.filter((category) => presentCategories.has(category.id));
 ---
+
+{
+  filters.length > 1 && (
+    <div class="pubfilter" role="group" aria-label="Filter publications by type">
+      <button type="button" class="pf on" data-filter="all" aria-pressed="true">
+        All
+      </button>
+      {filters.map((category) => (
+        <button type="button" class="pf" data-filter={category.id} aria-pressed="false">
+          {category.label}
+        </button>
+      ))}
+    </div>
+  )
+}
 
 <div class="publications">
   {
-    entries.map((entry) => {
-      const role = ROLE_BADGE[entry.author_role];
-      const typeLabel = TYPE_BADGE[entry.type];
-      return (
-        <article class="pub">
-          <p class="yr">{entry.year}</p>
-          <div>
-            <h3 class="ti">
-              {entry.links.doi || entry.links.zenodo ? (
-                <a
-                  href={entry.links.doi ?? entry.links.zenodo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {entry.title}
-                </a>
-              ) : (
-                entry.title
-              )}
-              {role && <span class={`abadge ${role.className}`}>{role.label}</span>}
-              {typeLabel && <span class="abadge b-del">{typeLabel}</span>}
-            </h3>
-            {entry.authors_display && <p class="au" set:html={emphasise(entry.authors_display)} />}
-            {entry.role_note && <p class="au">{entry.role_note}</p>}
-            {entry.venue && <p class="vn">{entry.venue}</p>}
-            <PublicationLinks entry={entry} />
-          </div>
-          <div class="cite">
-            {entry.metrics.citations !== undefined && (
-              <p>
-                <span class="c">{entry.metrics.citations}</span>
-                <span class="cl">OpenAlex citations</span>
-              </p>
+    entries.map((entry) => (
+      <article class="pub" data-cats={categoriesFor(entry).join(' ')}>
+        <p class="yr">{entry.year}</p>
+        <div>
+          <h3 class="ti">
+            {entry.links.doi || entry.links.zenodo ? (
+              <a
+                href={entry.links.doi ?? entry.links.zenodo}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {entry.title}
+              </a>
+            ) : (
+              entry.title
             )}
-            {entry.metrics.downloads !== undefined && (
-              <p class={entry.metrics.citations !== undefined ? 'u' : ''}>
-                <span class="c">{entry.metrics.downloads}</span>
-                <span class="cl">Zenodo downloads</span>
-              </p>
-            )}
-          </div>
-        </article>
-      );
-    })
+            {labelsFor(entry).map((type) => (
+              <span class="abadge">{TYPE_LABEL[type]}</span>
+            ))}
+          </h3>
+          {entry.authors_display && <p class="au" set:html={emphasise(entry.authors_display)} />}
+          {entry.role_note && <p class="au">{entry.role_note}</p>}
+          {entry.venue && <p class="vn">{entry.venue}</p>}
+          <PublicationLinks entry={entry} />
+        </div>
+        <div class="cite">
+          {entry.metrics.citations !== undefined && (
+            <p>
+              <span class="c">{entry.metrics.citations}</span>
+              <span class="cl">OpenAlex citations</span>
+            </p>
+          )}
+          {entry.metrics.downloads !== undefined && (
+            <p class={entry.metrics.citations !== undefined ? 'u' : ''}>
+              <span class="c">{entry.metrics.downloads}</span>
+              <span class="cl">Zenodo downloads</span>
+            </p>
+          )}
+        </div>
+      </article>
+    ))
   }
 </div>
 
@@ -101,6 +143,33 @@ const TYPE_BADGE: Record<string, string> = {
         button.textContent = original;
         button.classList.remove('copied');
       }, 1600);
+    });
+  }
+
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.pubfilter .pf');
+  const items = document.querySelectorAll<HTMLElement>('.publications .pub');
+  for (const tab of tabs) {
+    tab.addEventListener('click', () => {
+      const wanted = tab.dataset.filter ?? 'all';
+      for (const other of tabs) {
+        const active = other === tab;
+        other.classList.toggle('on', active);
+        other.setAttribute('aria-pressed', String(active));
+      }
+      let shownIndex = 0;
+      for (const item of items) {
+        const cats = (item.dataset.cats ?? '').split(' ');
+        const show = wanted === 'all' || cats.includes(wanted);
+        item.hidden = !show;
+        // The rule between rows sits on every entry except the first visible
+        // one, so recompute it or a filtered list opens with a stray line.
+        if (show) {
+          item.classList.toggle('lead', shownIndex === 0);
+          shownIndex += 1;
+        } else {
+          item.classList.remove('lead');
+        }
+      }
     });
   }
 </script>

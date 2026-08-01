@@ -13,7 +13,6 @@ const config = sectionConfig(data.site, 'work');
 const featured = featuredItems(data.projects);
 const citationFor = (doi?: string) =>
   doi ? data.publications.find((entry) => entry.doi === doi)?.metrics.citations : undefined;
-const org = data.github.contributions.byOrg;
 ---
 
 {
@@ -21,7 +20,7 @@ const org = data.github.contributions.byOrg;
     <section id="work">
       <div class="wrap">
         <div class="shead">
-          <p class="slabel">{config.title}</p>
+          <p class="slabel">Work</p>
           <h2>{config.title}</h2>
           <p>{config.description}</p>
         </div>
@@ -37,24 +36,9 @@ const org = data.github.contributions.byOrg;
 
         <h3 class="sub">Open source</h3>
         <p class="snote">
-          Most of my code sits in organisation repositories, so a profile page shows little of it.
-          These counts cover every public repository I have opened pull requests against. Work in
-          private and internal repositories is not counted.
+          Most of my code lives in organisation repositories. A selection of the public ones I
+          contribute to:
         </p>
-        <div class="ghbar">
-          <div>
-            <>
-              <p class="n">{data.github.contributions.total}</p>
-              <p class="l">Merged pull requests, public repositories</p>
-            </>
-          </div>
-          {Object.entries(org).map(([name, count]) => (
-            <div>
-              <p class="n">{count}</p>
-              <p class="l">Into {name}</p>
-            </div>
-          ))}
-        </div>
         <RepoCarousel projects={data.projects} github={data.github} site={data.site} />
       </div>
     </section>

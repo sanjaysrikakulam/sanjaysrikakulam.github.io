@@ -3,7 +3,6 @@ profile:
   headline: Computational methods for biology, and the infrastructure that runs them.
   headline_accent: infrastructure
   location: Germany
-  email: sanjaysrikakulam@gmail.com
   avatar: /avatar.jpg
   available: true
   available_text: Open to collaboration and opportunities
@@ -26,18 +25,13 @@ sections:
   - id: work
     title: Selected projects
     description: >
-      Projects with users outside the group that built them. All figures are read from
-      the GitHub API when the site builds.
+      Software and infrastructure I have built or contributed to.
   - id: experience
     title: Education and roles
-    description: >
-      Six positions since 2013, several held concurrently. Each entry lists the main
-      responsibilities, with the full set available under each role.
   - id: research
     title: Publications and outputs
     description: >
-      Journal articles, conference papers, preprints, and project deliverables. Citation
-      counts come from OpenAlex, download counts from Zenodo. Every entry links to the record.
+      Journal articles, conference papers, preprints, and project deliverables.
     subsections:
       - id: publications
       - id: conferences
@@ -49,9 +43,7 @@ sections:
     description: Events attended, and those I helped organise or lead.
   - id: contact
     title: Get in touch
-    description: >
-      Open to conversations about sequence indexing, research infrastructure, and
-      agentic systems for scientific data. Based in Germany.
+    description: Open to conversations, and collaborations.
 
 display:
   photo: true
@@ -67,13 +59,8 @@ display:
 proof:
   - metric: publications.count
     label: Publications, deliverables and reports
-    source: OpenAlex and Zenodo
-  - metric: github.merged_prs
-    label: Merged pull requests, public repositories
-    source: GitHub API
   - metric: zenodo.downloads
     label: Zenodo downloads
-    source: Zenodo API
   - value: 11 yrs
     label: Research and infrastructure
 

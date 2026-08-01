@@ -5,20 +5,25 @@ const rawDoi = z
   .string()
   .regex(/^10\.\d{4,9}\//, 'Store the bare DOI without the https://doi.org prefix');
 
+const pubType = z.enum([
+  'journal',
+  'conference',
+  'preprint',
+  'deliverable',
+  'white-paper',
+  'poster',
+  'presentation',
+  'dataset',
+  'software',
+]);
+
 export const publicationSchema = z
   .object({
     title: z.string().min(1),
-    type: z.enum([
-      'journal',
-      'conference',
-      'preprint',
-      'deliverable',
-      'white-paper',
-      'poster',
-      'presentation',
-      'dataset',
-      'software',
-    ]),
+    type: pubType,
+    // Extra labels beyond the primary type, e.g. a conference proceeding that
+    // was also presented as a poster carries type: conference and tags: [poster].
+    tags: z.array(pubType).optional(),
     venue: z.string().optional(),
     year: z.number().int().min(1990).max(2100),
     authors_display: z.string().optional(),

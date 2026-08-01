@@ -1,10 +1,18 @@
 # yaml-language-server: $schema=../.astro/collections/conferences.schema.json
-# Each event is entered once. role is one of: talk, poster, workshop, attended, panel.
-# Example:
-# - name: de.NBI Cloud User Meeting
-#   year: 2025
-#   location: Germany
-#   role: workshop
-#   title: Terraform for research cloud infrastructure
-#   url: https://example.org
+#
+# One entry per event. Required: name, year, role.
+# role is one of: talk, poster, workshop, attended, panel.
+#
+# Template — copy a block below the `[]`, remove the leading `#`, and delete the `[]`:
+#
+# - name: de.NBI Cloud User Meeting     # required
+#   year: 2025                          # required
+#   role: workshop                      # required: talk | poster | workshop | attended | panel
+#   location: Berlin, Germany           # optional
+#   title: Terraform for research cloud infrastructure  # optional, the talk/poster title
+#   url: https://example.org/event      # optional, link to the event or programme
+#   zenodo_doi: 10.5281/zenodo.0000000  # optional, DOI of deposited slides or poster
+#   materials: https://example.org/slides.pdf  # optional, direct link to materials
+#   featured: true                      # optional, pull to the top
+#   visible: false                      # optional, hide without deleting
 []

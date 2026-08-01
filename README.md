@@ -13,7 +13,7 @@ deploys in about two minutes. Nothing outside `data/` needs to change to add or 
 | `education.yml`    | Degrees                                                               |
 | `experience.yml`   | Roles                                                                 |
 | `projects.yml`     | Software, with the repository each one lives in                       |
-| `publications.yml` | Papers, preprints, deliverables, posters                              |
+| `publications.yml` | Papers, preprints, deliverables, posters, and talks                   |
 | `conferences.yml`  | Talks, posters, workshops, and events attended                        |
 | `hackathons.yml`   | Hackathons                                                            |
 | `skills.yml`       | Skill groups                                                          |
@@ -43,9 +43,6 @@ No figure is typed by hand. Stars and forks come from the GitHub API, citation c
 OpenAlex, and download counts from Zenodo. All three are read when the site builds and cached in
 `data/.cache/`. If an API is unavailable the build uses the cached values and logs a warning, so a
 deploy never fails because a third party is down.
-
-Pull request counts cover public repositories only. The GitHub API cannot see private or internal
-work.
 
 A scheduled run every Monday refreshes the figures without any manual step.
 

@@ -127,11 +127,6 @@ test.describe('publications', () => {
     const clipboard = await page.evaluate(() => navigator.clipboard.readText());
     expect(clipboard).toMatch(/^@\w+\{/);
   });
-
-  test('first-author entries carry a badge', async ({ page }) => {
-    await page.goto('/');
-    await expect(page.locator('.abadge.b-first').first()).toBeVisible();
-  });
 });
 
 test.describe('cv route', () => {
