@@ -58,3 +58,154 @@
 .skip:focus {
   left: 0;
 }
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.hero {
+  padding: 96px 0 64px;
+}
+.hero .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+}
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-ink-2);
+  margin: 0 0 20px;
+}
+.eyebrow .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.05;
+  color: var(--color-ink);
+  margin: 0 0 24px;
+}
+h1 em {
+  font-style: italic;
+  color: var(--color-accent);
+}
+.lede {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--color-ink-2);
+  max-width: 52ch;
+  margin: 0 0 32px;
+}
+.cta-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease;
+}
+.btn-p {
+  background: var(--color-accent);
+  color: #fff;
+}
+.btn-s {
+  background: var(--color-surface-2);
+  color: var(--color-ink);
+  border: 1px solid var(--color-line);
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn-s:hover {
+  border-color: var(--color-line-2);
+}
+.avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--color-line);
+  flex-shrink: 0;
+}
+
+.proof {
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+  background: var(--color-surface);
+}
+.proof .wrap {
+  padding: 40px 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.pcell .n {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  line-height: 1;
+  margin: 0 0 8px;
+}
+/* --color-ink-3 on --color-surface measures ~3.97:1 in the light theme, short
+   of the 4.5:1 WCAG AA floor for text this small (13.5px is not "large text"
+   under 1.4.3). --color-ink-2 clears 9.5:1 in light and stays well above 4.5:1
+   in dark, so the label and source lines use it instead of ink-3. */
+.pcell .l {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-ink-2);
+  margin: 0 0 4px;
+  line-height: 1.4;
+}
+.pcell .src {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-ink-2);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .hero .wrap {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 32px;
+  }
+  .lede {
+    max-width: none;
+  }
+  .cta-row {
+    justify-content: center;
+  }
+  .proof .wrap {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

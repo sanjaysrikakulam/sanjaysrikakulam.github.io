@@ -1,0 +1,27 @@
+---
+import type { Site } from '../schemas/site';
+import { resolveProof, type ProofCaches } from '../lib/proof';
+
+interface Props {
+  site: Site;
+  caches: ProofCaches;
+}
+const { site, caches } = Astro.props;
+const resolved = resolveProof(site.proof, caches);
+---
+
+{
+  site.display.proof_strip && resolved.length > 0 && (
+    <div class="proof">
+      <div class="wrap">
+        {resolved.map((cell) => (
+          <div class="pcell">
+            <p class="n">{cell.display}</p>
+            <p class="l">{cell.label}</p>
+            {cell.source && <p class="src">{cell.source}</p>}
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}

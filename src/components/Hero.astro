@@ -1,0 +1,47 @@
+---
+import { splitHeadline } from '../lib/headline';
+import type { Site } from '../schemas/site';
+
+interface Props {
+  site: Site;
+}
+const { site } = Astro.props;
+const { before, accent, after } = splitHeadline(
+  site.profile.headline,
+  site.profile.headline_accent,
+);
+---
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      {
+        site.profile.available && (
+          <p class="eyebrow">
+            <span class="dot" aria-hidden="true"></span>
+            {site.profile.available_text}
+          </p>
+        )
+      }
+      <h1>{before}<em>{accent}</em>{after}</h1>
+      <p class="lede" set:html={site.profile.bio} />
+      <div class="cta-row">
+        <a class="btn btn-p" href="#work">See the work</a>
+        <a class="btn btn-s" href="/Sanjay_Srikakulam_CV.pdf" target="_blank" rel="noopener noreferrer">
+          Download CV
+        </a>
+      </div>
+    </div>
+    {
+      site.display.photo && (
+        <img
+          class="avatar"
+          src={site.profile.avatar}
+          width="180"
+          height="180"
+          alt={`Portrait of ${site.profile.name}`}
+        />
+      )
+    }
+  </div>
+</header>

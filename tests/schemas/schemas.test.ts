@@ -134,4 +134,26 @@ describe('siteSchema', () => {
       siteSchema.parse({ ...valid, profile: { ...valid.profile, email: 'not-an-email' } }),
     ).toThrow();
   });
+
+  it('accepts a proof entry carrying only a metric', () => {
+    const parsed = siteSchema.parse({
+      ...valid,
+      proof: [{ metric: 'github.merged_prs', label: 'Merged pull requests' }],
+    });
+    expect(parsed.proof[0].value).toBeUndefined();
+  });
+
+  it('accepts a proof entry carrying only a literal value', () => {
+    const parsed = siteSchema.parse({
+      ...valid,
+      proof: [{ value: '11 yrs', label: 'Research and infrastructure' }],
+    });
+    expect(parsed.proof[0].metric).toBeUndefined();
+  });
+
+  it('rejects a proof entry with neither a metric nor a value', () => {
+    expect(() =>
+      siteSchema.parse({ ...valid, proof: [{ label: 'Merged pull requests' }] }),
+    ).toThrow(/metric/i);
+  });
 });

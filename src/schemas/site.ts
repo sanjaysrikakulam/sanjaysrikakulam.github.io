@@ -60,7 +60,18 @@ export const siteSchema = z
       .prefault({}),
     proof: z
       .array(
-        z.object({ value: z.string(), label: z.string(), source: z.string().optional() }).strict(),
+        z
+          .object({
+            value: z.string().optional(),
+            metric: z.string().optional(),
+            label: z.string(),
+            source: z.string().optional(),
+          })
+          .strict()
+          .refine((entry) => Boolean(entry.metric ?? entry.value), {
+            message: 'A proof entry needs a metric, a literal value, or both',
+            path: ['metric'],
+          }),
       )
       .default([]),
     pdf: z

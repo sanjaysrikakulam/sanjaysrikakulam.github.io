@@ -65,13 +65,13 @@ display:
     autoplay_interval: 5000
 
 proof:
-  - value: '16'
+  - metric: publications.count
     label: Publications, deliverables and reports
     source: OpenAlex and Zenodo
-  - value: '434'
+  - metric: github.merged_prs
     label: Merged pull requests, public repositories
     source: GitHub API
-  - value: '1,650'
+  - metric: zenodo.downloads
     label: Zenodo downloads
     source: Zenodo API
   - value: 11 yrs
