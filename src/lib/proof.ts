@@ -33,15 +33,19 @@ const PLACEHOLDER = 'n/a';
 const GITHUB_ORG_PREFIX = 'github.merged_prs.';
 
 function resolveMetric(metric: string, caches: ProofCaches): number | undefined {
-  if (metric === 'github.merged_prs') return caches.github?.contributions.total;
+  // Every step below is optional-chained because a cache file only has to
+  // parse as JSON to bypass the fallback in readCacheFile; a truncated or
+  // hand-edited file can be `{}` or missing a nested key while still being
+  // valid JSON, and that must degrade to the literal value rather than throw.
+  if (metric === 'github.merged_prs') return caches.github?.contributions?.total;
   if (metric.startsWith(GITHUB_ORG_PREFIX)) {
     const org = metric.slice(GITHUB_ORG_PREFIX.length);
-    return caches.github?.contributions.byOrg[org];
+    return caches.github?.contributions?.byOrg?.[org];
   }
   if (metric === 'zenodo.downloads' || metric === 'zenodo.views') {
     if (!caches.zenodo) return undefined;
     const field = metric === 'zenodo.downloads' ? 'downloads' : 'views';
-    return Object.values(caches.zenodo).reduce((sum, entry) => sum + entry[field], 0);
+    return Object.values(caches.zenodo).reduce((sum, entry) => sum + (entry?.[field] ?? 0), 0);
   }
   if (metric === 'publications.count') return caches.publications?.length;
   return undefined;

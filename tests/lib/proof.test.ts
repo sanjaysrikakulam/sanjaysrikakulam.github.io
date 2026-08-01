@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { resolveProof, type ProofCaches, type ProofEntry } from '../../src/lib/proof';
+import type { GithubCache } from '../../src/lib/section-config';
 
 describe('resolveProof', () => {
   it('resolves a github metric from the cache', () => {
@@ -71,5 +72,45 @@ describe('resolveProof', () => {
     const [resolved] = resolveProof(entries, {});
     expect(resolved.label).toBe('Publications');
     expect(resolved.source).toBe('OpenAlex');
+  });
+
+  // A corrupt or partially-written cache file parses as valid but incomplete
+  // JSON (readCacheFile casts whatever it parses to the expected type without
+  // validating its shape), so these malformed fixtures are cast past the
+  // compiler to reproduce what resolveMetric actually receives at runtime.
+  it('falls back to the literal value when the github cache is missing contributions entirely', () => {
+    const entries: ProofEntry[] = [
+      { metric: 'github.merged_prs', value: '999', label: 'Merged pull requests' },
+    ];
+    const caches: ProofCaches = { github: { repos: {} } as unknown as GithubCache };
+    expect(() => resolveProof(entries, caches)).not.toThrow();
+    expect(resolveProof(entries, caches)[0].display).toBe('999');
+  });
+
+  it('falls back to the literal value when the github cache has contributions but no byOrg', () => {
+    const entries: ProofEntry[] = [
+      {
+        metric: 'github.merged_prs.usegalaxy-eu',
+        value: '999',
+        label: 'Merged pull requests, usegalaxy-eu',
+      },
+    ];
+    const caches: ProofCaches = {
+      github: { repos: {}, contributions: { total: 434 } } as unknown as GithubCache,
+    };
+    expect(() => resolveProof(entries, caches)).not.toThrow();
+    expect(resolveProof(entries, caches)[0].display).toBe('999');
+  });
+
+  it('treats a zenodo entry missing the summed field as zero instead of throwing', () => {
+    const entries: ProofEntry[] = [{ metric: 'zenodo.downloads', label: 'Zenodo downloads' }];
+    const caches: ProofCaches = {
+      zenodo: {
+        a: { views: 5 } as unknown as { views: number; downloads: number },
+        b: { views: 2, downloads: 648 },
+      },
+    };
+    expect(() => resolveProof(entries, caches)).not.toThrow();
+    expect(resolveProof(entries, caches)[0].display).toBe('648');
   });
 });
