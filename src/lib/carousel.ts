@@ -7,6 +7,9 @@ export function pageCount(scrollWidth: number, clientWidth: number): number {
 }
 
 export function pageAt(scrollLeft: number, scrollWidth: number, clientWidth: number): number {
+  // A rail that has not been laid out yet reports zero width. Dividing by it
+  // yields NaN, which reaches the page counter and the button disabled state.
+  if (clientWidth <= 0) return 0;
   const last = pageCount(scrollWidth, clientWidth) - 1;
   const max = maxScroll(scrollWidth, clientWidth);
   if (max > 0 && scrollLeft >= max - 2) return last;

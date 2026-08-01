@@ -44,6 +44,18 @@ describe('pageAt', () => {
   it('never reports a page beyond the last', () => {
     expect(pageAt(99999, WIDE, VIEW)).toBe(3);
   });
+
+  it('returns the first page for a rail that has not been laid out yet', () => {
+    expect(pageAt(0, 0, 0)).toBe(0);
+    expect(pageAt(0, WIDE, 0)).toBe(0);
+  });
+
+  it('never returns NaN for any zero-width input', () => {
+    for (const scrollLeft of [0, 500, 99999]) {
+      expect(Number.isNaN(pageAt(scrollLeft, 0, 0))).toBe(false);
+      expect(Number.isNaN(pageAt(scrollLeft, WIDE, 0))).toBe(false);
+    }
+  });
 });
 
 describe('scrollTargetFor', () => {
