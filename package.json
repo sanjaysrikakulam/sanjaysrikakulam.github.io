@@ -16,9 +16,11 @@
     "test:e2e": "playwright test",
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write .",
-    "check": "astro check"
+    "check": "astro check",
+    "og": "node scripts/generate-og-image.mjs"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
     "astro": "^7.1.6",
     "js-yaml": "^4.1.0",
     "zod": "^4.4.3"
