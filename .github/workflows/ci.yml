@@ -20,6 +20,8 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -38,16 +40,26 @@ jobs:
         run: |
           # git grep only walks the tracked tree, so it already skips node_modules,
           # dist, and anything else ignored, without a directory allowlist to maintain.
-          # Each flagged word below is split with a single-character bracket class so
-          # this line cannot match its own pattern and fail the job on itself.
-          PATTERN='co-authored-b[y]|generated wit[h]|cla[u]de|anthro[p]ic|as per the (plan|spec)|\bADR\b'
-          # .gitignore and its own hygiene test legitimately name these tool paths so
-          # they are kept out of the repository; that is not attribution and is excluded.
-          if git grep -EIni "$PATTERN" -- . ':!.gitignore' ':!tests/smoke.test.ts'; then
+          # Every phrase below is either split with a single-character bracket class,
+          # or (for the dash characters, which must not sit literally in this file
+          # either) built at runtime from an escape sequence, so this step cannot
+          # match its own definition and fail the job on itself.
+          EM_DASH=$'\u2014'
+          EN_DASH=$'\u2013'
+          PATTERN="co-authored-b[y]|generated wit[h]|per the pla[n]|per the spe[c]|\bADR\b"
+          PATTERN="$PATTERN|[Pp]has[e] ?[0-9]|[Tt]as[k] ?[0-9]|[Ss]te[p] ?[0-9]|${EM_DASH}|${EN_DASH}"
+
+          if git grep -Eni "$PATTERN" -- .; then
             echo "Forbidden marker found in a tracked file."
             exit 1
           fi
-          echo "No forbidden markers."
+          echo "No forbidden markers in tracked files."
+
+          if git log --all --format=%B | grep -Ei "$PATTERN"; then
+            echo "Forbidden marker found in a commit message."
+            exit 1
+          fi
+          echo "No forbidden markers in commit history."
 
   build:
     needs: verify
