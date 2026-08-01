@@ -107,7 +107,7 @@ jobs:
       - name: Copy the generated CV into the build output
         run: cp public/Sanjay_Srikakulam_CV.pdf dist/
 
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
         with:
           # The first run on a fresh repository fails here otherwise: Pages has
           # to be switched to the "GitHub Actions" source before this action
