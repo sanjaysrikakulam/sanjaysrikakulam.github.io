@@ -1,0 +1,33 @@
+---
+import Education from './Education.astro';
+import Timeline from './Timeline.astro';
+import RoleList from './RoleList.astro';
+import Skills from './Skills.astro';
+import { sectionConfig } from '../lib/section-config';
+import type { PageData } from '../lib/page-data';
+
+interface Props {
+  data: PageData;
+}
+const { data } = Astro.props;
+const config = sectionConfig(data.site, 'experience');
+---
+
+{
+  config.visible && (
+    <section id="experience" class="alt">
+      <div class="wrap">
+        <div class="shead">
+          <p class="slabel">Experience</p>
+          <h2>{config.title}</h2>
+          <p>{config.description}</p>
+        </div>
+        <Education education={data.education} />
+        <Timeline bars={data.timeline.bars} ticks={data.timeline.ticks} />
+        <RoleList roles={data.experience} />
+        <h3 class="sub">Technical skills</h3>
+        <Skills skills={data.skills} />
+      </div>
+    </section>
+  )
+}

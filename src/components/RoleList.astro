@@ -1,0 +1,50 @@
+---
+import type { Experience } from '../schemas/experience';
+import { experienceAnchor } from '../lib/entry-ids';
+
+interface Props {
+  roles: Experience[];
+}
+const { roles } = Astro.props;
+
+const monthName = (value: string | null) => {
+  if (!value) return 'Present';
+  const [year, month] = value.split('-');
+  return `${month}/${year}`;
+};
+---
+
+<div class="rolelist">
+  {
+    roles.map((role) => (
+      <article class="role-entry" id={experienceAnchor(role)}>
+        <p class="when">
+          {monthName(role.start)} to {monthName(role.end)}
+        </p>
+        <div>
+          <h4 class="t">{role.title}</h4>
+          <p class="o">
+            {role.org_url ? (
+              <a class="orglink" href={role.org_url} target="_blank" rel="noopener noreferrer">
+                {role.org}
+              </a>
+            ) : (
+              role.org
+            )}
+            {role.location ? `, ${role.location}` : ''}
+          </p>
+          <ul>{role.highlights.map((item) => <li>{item}</li>)}</ul>
+          {role.affiliations.length > 0 && (
+            <p class="affil">{role.affiliations.map((name) => <span>{name}</span>)}</p>
+          )}
+          {role.details.length > 0 && (
+            <details class="more">
+              <summary>{role.details.length} more responsibilities</summary>
+              <ul>{role.details.map((item) => <li>{item}</li>)}</ul>
+            </details>
+          )}
+        </div>
+      </article>
+    ))
+  }
+</div>

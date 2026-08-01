@@ -1,0 +1,31 @@
+---
+import type { Education } from '../schemas/education';
+
+interface Props {
+  education: Education[];
+}
+const { education } = Astro.props;
+---
+
+<div class="edu">
+  {
+    education.map((degree) => (
+      <div>
+        <p class="yr">{degree.year}</p>
+        <p class="dg">{degree.degree}</p>
+        <p class="in">{degree.institution}{degree.location ? `, ${degree.location}` : ''}</p>
+        {degree.thesis && (
+          <p class="thesis">
+            {degree.thesis.url ? (
+              <a href={degree.thesis.url} target="_blank" rel="noopener noreferrer">
+                {degree.thesis.title}
+              </a>
+            ) : (
+              degree.thesis.title
+            )}
+          </p>
+        )}
+      </div>
+    ))
+  }
+</div>

@@ -1,0 +1,44 @@
+---
+import type { Bar } from '../lib/timeline';
+
+interface Props {
+  bars: Bar[];
+  ticks: number[];
+}
+const { bars, ticks } = Astro.props;
+---
+
+{
+  bars.length > 0 && (
+    <div class="tl">
+      <div class="tl-axis">{ticks.map((year) => <span>{year}</span>)}</div>
+      {bars.map((bar) => (
+        <div class="lane">
+          <a
+            class="bar"
+            href={`#${bar.id}`}
+            style={`left:${bar.left}%;width:${bar.width}%;background:${bar.colour}`}
+            aria-label={`Jump to ${bar.sublabel} at ${bar.label}, ${bar.from} to ${bar.to}`}
+          >
+            {bar.label}
+            {bar.sublabel && <small>{bar.sublabel}</small>}
+          </a>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+<script>
+  for (const bar of document.querySelectorAll<HTMLAnchorElement>('.bar')) {
+    bar.addEventListener('click', () => {
+      const target = document.querySelector(bar.getAttribute('href') ?? '');
+      if (!target) return;
+      for (const flashed of document.querySelectorAll('.role-entry.flash')) {
+        flashed.classList.remove('flash');
+      }
+      target.classList.add('flash');
+      setTimeout(() => target.classList.remove('flash'), 1400);
+    });
+  }
+</script>

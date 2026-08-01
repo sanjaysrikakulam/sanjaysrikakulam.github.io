@@ -1,0 +1,19 @@
+---
+import type { SkillGroup } from '../schemas/skills';
+
+interface Props {
+  skills: SkillGroup[];
+}
+const { skills } = Astro.props;
+---
+
+<div class="skills">
+  {
+    skills.map((group) => (
+      <div class="sk">
+        <h4>{group.group}</h4>
+        <p>{group.items.join(', ')}</p>
+      </div>
+    ))
+  }
+</div>
