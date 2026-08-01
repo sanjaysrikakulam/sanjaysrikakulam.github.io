@@ -18,7 +18,12 @@ export default defineConfig({
     { name: 'mobile', use: { ...devices['Pixel 7'] } },
   ],
   webServer: {
-    command: 'npm run preview -- --port 4321',
+    // Pin the preview server to the IPv4 loopback so it binds the same
+    // interface the tests probe. Left as the default `localhost`, the server
+    // follows the runner's name resolution: CI runners resolve `localhost` to
+    // IPv6 `::1` first, so the server listens there while `url` below polls
+    // IPv4 `127.0.0.1`, and the health check times out with no error.
+    command: 'npm run preview -- --port 4321 --host 127.0.0.1',
     url: 'http://127.0.0.1:4321',
     reuseExistingServer: !process.env.CI,
     timeout: 60_000,
