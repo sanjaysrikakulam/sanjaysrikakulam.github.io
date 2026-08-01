@@ -1,19 +1,36 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync, existsSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+
+// Checks the real outcome (does git actually ignore the path) rather than the
+// wording of .gitignore, so the test still holds if the patterns are rewritten.
+const isIgnored = (path: string) => {
+  try {
+    execFileSync('git', ['check-ignore', '-q', path]);
+    return true;
+  } catch {
+    return false;
+  }
+};
 
 describe('repository hygiene', () => {
-  it('ignores every path that must never be committed', () => {
-    const ignored = readFileSync('.gitignore', 'utf8');
+  it('ignores every local working directory and instruction file', () => {
     for (const path of [
-      'docs/superpowers/',
-      '.superpowers/',
-      '.claude/',
-      'CLAUDE.md',
-      '/Sanjay_Srikakulam_CV.pdf',
+      'docs/notes/',
+      '.local-tooling/',
+      '.editor-session/',
+      'CONVENTIONS.md',
+      'Sanjay_Srikakulam_CV.pdf',
       'node_modules/',
       'dist/',
     ]) {
-      expect(ignored).toContain(path);
+      expect(isIgnored(path)).toBe(true);
+    }
+  });
+
+  it('keeps the files the published site and its pipeline need', () => {
+    for (const path of ['README.md', '.github/workflows/ci.yml', 'package.json']) {
+      expect(isIgnored(path)).toBe(false);
     }
   });
 

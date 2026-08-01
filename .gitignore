@@ -6,12 +6,14 @@ coverage/
 test-results/
 playwright-report/
 
-docs/superpowers/
-.superpowers/
-.claude/
-.claude-work/
-CLAUDE.md
-AGENTS.md
+# Local working directories: every dot-directory at the repository root
+# except the ones the published tree genuinely needs, the docs tree used for
+# planning notes, and any root-level instruction file other than the README.
+/.*/
+!/.github/
+docs/
+/*.md
+!/README.md
 
 /Sanjay_Srikakulam_CV.pdf
 *.pdf.bak
