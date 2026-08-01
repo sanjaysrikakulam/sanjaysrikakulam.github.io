@@ -1,5 +1,8 @@
 import { describe, expect, it } from 'vitest';
+import { readFileSync } from 'node:fs';
+import yaml from 'js-yaml';
 import { timelineBars } from '../../src/lib/timeline';
+import { experienceSchema } from '../../src/schemas/experience';
 
 const role = (over: Record<string, unknown>) => ({
   title: 'Role',
@@ -51,6 +54,33 @@ describe('timelineBars', () => {
       { now },
     );
     expect(bars[0].width).toBeGreaterThanOrEqual(2);
+  });
+
+  it('never lets a bar spill past the right edge of its container, even at zero duration', () => {
+    // A zero-duration role pinned to the temporal right edge leaves no room for the
+    // minimum width: left lands at 100, so any enforced minimum would push the bar
+    // past 100%. The ceiling must win here, even if the bar renders thinner than
+    // MIN_WIDTH.
+    const { bars } = timelineBars(
+      [role({ start: '2013-01', end: '2013-02' }), role({ start: '2026-01', end: '2026-01' })],
+      { now },
+    );
+    for (const bar of bars) {
+      expect(bar.left + bar.width).toBeLessThanOrEqual(100);
+    }
+  });
+
+  it('keeps every real role within the container across the full dataset', () => {
+    const roles = (
+      yaml.load(readFileSync('data/experience.yml', 'utf8'), {
+        schema: yaml.CORE_SCHEMA,
+      }) as unknown[]
+    ).map((entry) => experienceSchema.parse(entry));
+    const { bars } = timelineBars(roles, { now });
+    expect(bars.length).toBe(6);
+    for (const bar of bars) {
+      expect(bar.left + bar.width).toBeLessThanOrEqual(100);
+    }
   });
 
   it('derives an anchor id from the organisation, start date, and job title', () => {

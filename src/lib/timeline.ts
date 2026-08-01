@@ -46,7 +46,11 @@ export function timelineBars(
     const end = endMonths(role);
     const left = ((start - first) / span) * 100;
     const rawWidth = ((end - start) / span) * 100;
-    const width = Math.max(MIN_WIDTH, Math.min(rawWidth, 100 - left));
+    // The ceiling (100 - left) must be applied last: a role pinned near the right
+    // edge can have less room left than MIN_WIDTH, and the container boundary always
+    // wins over the minimum-width guarantee. Composing it the other way round lets
+    // Math.max push the width back past the edge, overflowing the container.
+    const width = Math.min(100 - left, Math.max(MIN_WIDTH, rawWidth));
     return {
       id: experienceAnchor(role),
       label: role.org,
