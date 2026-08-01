@@ -35,6 +35,7 @@
   year: 2026
   authors_display: Azab A, Geest PD, Srikakulam SK, Vondrák T, Kuntz M, Grüning B
   author_role: contributing
+  doi: 10.1007/978-981-95-1365-9_42
   zenodo_doi: 10.5281/zenodo.14936846
 
 - title: >-
@@ -93,7 +94,7 @@
   doi: 10.52825/cordi.v1i.417
 
 - title: 'Interactive Tools (IT) in Galaxy: Combining Synchronous and Asynchronous Workflows'
-  type: poster
+  type: conference
   venue: Proceedings of the Conference on Research Data Infrastructure
   year: 2023
   authors_display: Kayikcioglu T, Srikakulam SK, Maier W, Grüning B
