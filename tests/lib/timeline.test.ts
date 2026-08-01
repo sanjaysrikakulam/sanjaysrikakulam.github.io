@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
-import yaml from 'js-yaml';
+import * as yaml from 'js-yaml';
 import { timelineBars } from '../../src/lib/timeline';
 import { experienceSchema } from '../../src/schemas/experience';
 

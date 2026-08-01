@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import yaml from 'js-yaml';
+import * as yaml from 'js-yaml';
 import { siteSchema, type Site } from '../schemas/site';
 
 let cached: Site | null = null;

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync, existsSync } from 'node:fs';
-import yaml from 'js-yaml';
+import * as yaml from 'js-yaml';
 import { educationSchema } from '../../src/schemas/education';
 import { experienceSchema } from '../../src/schemas/experience';
 import { projectSchema } from '../../src/schemas/projects';

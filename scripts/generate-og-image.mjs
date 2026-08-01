@@ -1,6 +1,6 @@
 import { chromium } from '@playwright/test';
 import { readFileSync, mkdirSync } from 'node:fs';
-import yaml from 'js-yaml';
+import * as yaml from 'js-yaml';
 
 const OUT = 'public/og-image.png';
 const WIDTH = 1200;
