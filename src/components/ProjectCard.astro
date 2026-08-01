@@ -13,7 +13,7 @@ const stats = project.repo ? github.repos[project.repo] : undefined;
 
 <article class="card">
   <div>
-    <h3>{project.name} <span class="role">{project.role}</span></h3>
+    <h3>{project.name} {project.role && <span class="role">{project.role}</span>}</h3>
     <p>{project.summary}</p>
     <ul class="tags">{project.tags.map((tag) => <li class="tag">{tag}</li>)}</ul>
   </div>
