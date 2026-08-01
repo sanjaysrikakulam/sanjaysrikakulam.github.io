@@ -1,0 +1,36 @@
+---
+import type { Project } from '../schemas/projects';
+import type { GithubCache } from '../lib/section-config';
+
+interface Props {
+  project: Project;
+  github: GithubCache;
+  citations?: number;
+}
+const { project, github, citations } = Astro.props;
+const stats = project.repo ? github.repos[project.repo] : undefined;
+---
+
+<article class="card">
+  <div>
+    <h3>{project.name} <span class="role">{project.role}</span></h3>
+    <p>{project.summary}</p>
+    <ul class="tags">{project.tags.map((tag) => <li class="tag">{tag}</li>)}</ul>
+  </div>
+  {
+    (stats || citations !== undefined) && (
+      <div class="stats">
+        {stats && (
+          <>
+            <p class="stat"><span class="v">{stats.stars}</span><span class="k">Stars</span></p>
+            <p class="stat"><span class="v">{stats.forks}</span><span class="k">Forks</span></p>
+          </>
+        )}
+        {citations !== undefined && (
+          <p class="stat"><span class="v">{citations}</span><span class="k">Citations</span></p>
+        )}
+        <p class="synced"><span class="d" aria-hidden="true"></span>synced from source</p>
+      </div>
+    )
+  }
+</article>

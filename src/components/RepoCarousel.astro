@@ -1,0 +1,146 @@
+---
+import type { Project } from '../schemas/projects';
+import type { GithubCache } from '../lib/section-config';
+import type { Site } from '../schemas/site';
+
+interface Props {
+  projects: Project[];
+  github: GithubCache;
+  site: Site;
+}
+const { projects, github, site } = Astro.props;
+const options = site.display.open_source;
+const withRepos = projects.filter(
+  (project) => project.repo && (options.carousel || site.display.grid_includes_featured || !project.featured)
+);
+---
+
+<div
+  class="carousel"
+  data-per-view={options.per_view}
+  data-autoplay={String(options.autoplay)}
+  data-interval={options.autoplay_interval}
+>
+  <div class="repos" id="repo-rail" tabindex="0" role="region" aria-label="Repositories, scrollable">
+    {
+      withRepos.map((project) => {
+        const stats = github.repos[project.repo as string];
+        return (
+          <a class="repo" href={stats?.url ?? `https://github.com/${project.repo}`} target="_blank" rel="noopener noreferrer">
+            <span class="rn">{project.repo}</span>
+            <span class="rd">{project.summary}</span>
+            <span class="rm">
+              {stats?.language && <span class="lang">{stats.language}</span>}
+              <span>{stats?.stars ?? 0} stars</span>
+              <span>{stats?.forks ?? 0} forks</span>
+            </span>
+          </a>
+        );
+      })
+    }
+  </div>
+  <div class="cnav">
+    <div class="dashes" id="repo-dashes" role="tablist" aria-label="Repository pages"></div>
+    <div class="arrows">
+      <span class="cpos" id="repo-pos" aria-live="polite"></span>
+      <button class="arrow" id="repo-prev" aria-label="Previous repositories">&#8592;</button>
+      <button class="arrow" id="repo-next" aria-label="Next repositories">&#8594;</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { pageCount, pageAt, scrollTargetFor } from '../lib/carousel';
+
+  const root = document.querySelector<HTMLElement>('.carousel');
+  const rail = document.getElementById('repo-rail');
+  const dashes = document.getElementById('repo-dashes');
+  const position = document.getElementById('repo-pos');
+  const previous = document.getElementById('repo-prev') as HTMLButtonElement | null;
+  const next = document.getElementById('repo-next') as HTMLButtonElement | null;
+
+  if (root && rail && dashes && position && previous && next) {
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const interval = Number(root.dataset.interval ?? 5000);
+    let timer: number | null = null;
+    let stopped = reduced || root.dataset.autoplay !== 'true';
+
+    const count = () => pageCount(rail.scrollWidth, rail.clientWidth);
+    const current = () => pageAt(rail.scrollLeft, rail.scrollWidth, rail.clientWidth);
+    const go = (page: number) =>
+      rail.scrollTo({
+        left: scrollTargetFor(page, rail.scrollWidth, rail.clientWidth),
+        behavior: reduced ? 'auto' : 'smooth',
+      });
+
+    const paint = () => {
+      const total = count();
+      const active = current();
+      if (dashes.children.length !== total) {
+        dashes.replaceChildren(
+          ...Array.from({ length: total }, (_, index) => {
+            const dash = document.createElement('button');
+            dash.className = 'dash';
+            dash.setAttribute('role', 'tab');
+            dash.setAttribute('aria-label', `Repository page ${index + 1} of ${total}`);
+            dash.addEventListener('click', () => {
+              stop();
+              go(index);
+            });
+            return dash;
+          })
+        );
+      }
+      [...dashes.children].forEach((dash, index) => {
+        dash.classList.toggle('on', index === active);
+        dash.setAttribute('aria-selected', String(index === active));
+      });
+      position.textContent = `${active + 1} / ${total}`;
+      previous.disabled = active === 0;
+      next.disabled = active >= total - 1;
+    };
+
+    const halt = () => {
+      if (timer !== null) clearInterval(timer);
+      timer = null;
+    };
+    const start = () => {
+      if (stopped || timer !== null) return;
+      timer = window.setInterval(() => go(current() >= count() - 1 ? 0 : current() + 1), interval);
+    };
+    function stop() {
+      stopped = true;
+      halt();
+    }
+
+    previous.addEventListener('click', () => {
+      stop();
+      go(current() - 1);
+    });
+    next.addEventListener('click', () => {
+      stop();
+      go(current() + 1);
+    });
+    rail.addEventListener('pointerdown', stop);
+    rail.addEventListener('keydown', stop);
+
+    let settle: number | undefined;
+    rail.addEventListener('scroll', () => {
+      clearTimeout(settle);
+      settle = window.setTimeout(paint, 90);
+    }, { passive: true });
+
+    for (const element of [rail, root.querySelector('.cnav')!]) {
+      element.addEventListener('mouseenter', () => !stopped && halt());
+      element.addEventListener('mouseleave', () => !stopped && start());
+      element.addEventListener('focusin', () => !stopped && halt());
+    }
+    document.addEventListener('visibilitychange', () =>
+      document.hidden ? halt() : !stopped && start()
+    );
+    addEventListener('resize', paint);
+
+    paint();
+    start();
+  }
+</script>
