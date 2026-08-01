@@ -2,6 +2,21 @@ import { readFileSync } from 'node:fs';
 import yaml from 'js-yaml';
 import { readCache, writeCache, withFallback } from './lib/cache.mjs';
 
+/**
+ * @typedef {object} RepoStat
+ * @property {number} stars
+ * @property {number} forks
+ * @property {string | null} language
+ * @property {string} pushed_at
+ * @property {string} url
+ */
+
+/**
+ * @typedef {object} GithubResult
+ * @property {Record<string, RepoStat>} repos
+ * @property {{ total: number, byOrg: Record<string, number> }} contributions
+ */
+
 const API = 'https://api.github.com';
 
 function headers(token) {
@@ -21,6 +36,10 @@ async function searchCount(fetchImpl, query, token) {
   return body.total_count ?? 0;
 }
 
+/**
+ * @param {{ repos: string[], login: string, orgs: string[], token?: string, fetchImpl?: typeof fetch }} options
+ * @returns {Promise<GithubResult>}
+ */
 export async function fetchGithub({ repos, login, orgs, token, fetchImpl = fetch }) {
   const stats = {};
   for (const repo of repos) {

@@ -15,6 +15,11 @@ function sortKeys(value) {
   return value;
 }
 
+/**
+ * @param {string} name
+ * @param {string} [dir]
+ * @returns {Record<string, unknown>}
+ */
 export function readCache(name, dir = DEFAULT_DIR) {
   const path = join(dir, `${name}.json`);
   if (!existsSync(path)) return {};
@@ -26,6 +31,12 @@ export function readCache(name, dir = DEFAULT_DIR) {
   }
 }
 
+/**
+ * @param {string} name
+ * @param {unknown} data
+ * @param {string} [dir]
+ * @returns {void}
+ */
 export function writeCache(name, data, dir = DEFAULT_DIR) {
   mkdirSync(dir, { recursive: true });
   writeFileSync(join(dir, `${name}.json`), `${JSON.stringify(sortKeys(data), null, 2)}\n`);
@@ -35,6 +46,12 @@ export function writeCache(name, data, dir = DEFAULT_DIR) {
  * Resolves the fetcher, falling back to previously cached data when the call
  * fails. A failing API degrades to stale figures; only a total absence of data
  * is fatal.
+ *
+ * @template T
+ * @param {string} label
+ * @param {() => Promise<T>} fetcher
+ * @param {T | undefined} cached
+ * @returns {Promise<{ value: T, stale: boolean }>}
  */
 export async function withFallback(label, fetcher, cached) {
   try {

@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import { fetchGithub } from '../../scripts/fetch-github.mjs';
+import { createFetchMock, failedResponse, jsonResponse } from '../helpers/fetch-mock';
 
 const repoPayload = (over = {}) => ({
   stargazers_count: 378,
@@ -10,11 +11,9 @@ const repoPayload = (over = {}) => ({
   ...over,
 });
 
-const ok = (body: unknown) => ({ ok: true, status: 200, json: async () => body });
-
 describe('fetchGithub', () => {
   it('collects per-repository statistics keyed by owner/name', async () => {
-    const fetchImpl = vi.fn(async () => ok(repoPayload()));
+    const fetchImpl = createFetchMock(async () => jsonResponse(repoPayload()));
     const result = await fetchGithub({
       repos: ['kalininalab/alphafold_non_docker'],
       login: 'sanjaysrikakulam',
@@ -31,11 +30,12 @@ describe('fetchGithub', () => {
   });
 
   it('counts merged pull requests in total and per organisation', async () => {
-    const fetchImpl = vi.fn(async (url: string) => {
-      if (url.includes('search/issues')) {
-        return ok({ total_count: url.includes('org%3Ausegalaxy-eu') ? 387 : 434 });
+    const fetchImpl = createFetchMock(async (url) => {
+      const href = String(url);
+      if (href.includes('search/issues')) {
+        return jsonResponse({ total_count: href.includes('org%3Ausegalaxy-eu') ? 387 : 434 });
       }
-      return ok(repoPayload());
+      return jsonResponse(repoPayload());
     });
     const result = await fetchGithub({
       repos: [],
@@ -48,8 +48,8 @@ describe('fetchGithub', () => {
   });
 
   it('skips a repository that returns 404 without failing the whole fetch', async () => {
-    const fetchImpl = vi.fn(async (url: string) =>
-      url.includes('gone') ? { ok: false, status: 404, json: async () => ({}) } : ok(repoPayload()),
+    const fetchImpl = createFetchMock(async (url) =>
+      String(url).includes('gone') ? failedResponse(404) : jsonResponse(repoPayload()),
     );
     const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
     const result = await fetchGithub({
@@ -65,16 +65,16 @@ describe('fetchGithub', () => {
   });
 
   it('sends the authorization header when a token is supplied', async () => {
-    const fetchImpl = vi.fn(async () => ok(repoPayload()));
+    const fetchImpl = createFetchMock(async () => jsonResponse(repoPayload()));
     await fetchGithub({ repos: ['a/b'], login: 'x', orgs: [], token: 'secret', fetchImpl });
-    const [, init] = fetchImpl.mock.calls[0] as [string, RequestInit];
-    expect((init.headers as Record<string, string>).Authorization).toBe('Bearer secret');
+    const [, init] = fetchImpl.mock.calls[0];
+    expect((init?.headers as Record<string, string>).Authorization).toBe('Bearer secret');
   });
 
   it('omits the authorization header when no token is supplied', async () => {
-    const fetchImpl = vi.fn(async () => ok(repoPayload()));
+    const fetchImpl = createFetchMock(async () => jsonResponse(repoPayload()));
     await fetchGithub({ repos: ['a/b'], login: 'x', orgs: [], fetchImpl });
-    const [, init] = fetchImpl.mock.calls[0] as [string, RequestInit];
-    expect((init.headers as Record<string, string>).Authorization).toBeUndefined();
+    const [, init] = fetchImpl.mock.calls[0];
+    expect((init?.headers as Record<string, string>).Authorization).toBeUndefined();
   });
 });

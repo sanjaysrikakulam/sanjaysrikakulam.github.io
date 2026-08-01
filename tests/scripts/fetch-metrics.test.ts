@@ -1,13 +1,12 @@
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { fetchOpenAlex } from '../../scripts/fetch-openalex.mjs';
 import { fetchZenodo } from '../../scripts/fetch-zenodo.mjs';
-
-const ok = (body: unknown) => ({ ok: true, status: 200, json: async () => body });
+import { createFetchMock, failedResponse, jsonResponse } from '../helpers/fetch-mock';
 
 describe('fetchOpenAlex', () => {
   it('normalises DOI URLs down to bare lowercase keys', async () => {
-    const fetchImpl = vi.fn(async () =>
-      ok({
+    const fetchImpl = createFetchMock(async () =>
+      jsonResponse({
         results: [{ doi: 'https://doi.org/10.1093/BIOINFORMATICS/btad101', cited_by_count: 11 }],
       }),
     );
@@ -21,25 +20,25 @@ describe('fetchOpenAlex', () => {
 
   it('batches requests so a long list does not exceed the filter length', async () => {
     const dois = Array.from({ length: 55 }, (_, i) => `10.1000/x${i}`);
-    const fetchImpl = vi.fn(async () => ok({ results: [] }));
+    const fetchImpl = createFetchMock(async () => jsonResponse({ results: [] }));
     await fetchOpenAlex({ dois, mailto: 'x@example.org', fetchImpl });
     expect(fetchImpl.mock.calls.length).toBeGreaterThan(1);
   });
 
   it('includes the mailto parameter so requests use the polite pool', async () => {
-    const fetchImpl = vi.fn(async () => ok({ results: [] }));
+    const fetchImpl = createFetchMock(async () => jsonResponse({ results: [] }));
     await fetchOpenAlex({ dois: ['10.1/a'], mailto: 'x@example.org', fetchImpl });
-    expect(fetchImpl.mock.calls[0][0]).toContain('mailto=x%40example.org');
+    expect(String(fetchImpl.mock.calls[0][0])).toContain('mailto=x%40example.org');
   });
 
   it('omits a DOI that OpenAlex does not know instead of recording zero', async () => {
-    const fetchImpl = vi.fn(async () => ok({ results: [] }));
+    const fetchImpl = createFetchMock(async () => jsonResponse({ results: [] }));
     const result = await fetchOpenAlex({ dois: ['10.1/missing'], mailto: 'x@e.org', fetchImpl });
     expect(result['10.1/missing']).toBeUndefined();
   });
 
   it('throws on a non-ok response so the caller can fall back to cache', async () => {
-    const fetchImpl = vi.fn(async () => ({ ok: false, status: 503, json: async () => ({}) }));
+    const fetchImpl = createFetchMock(async () => failedResponse(503));
     await expect(fetchOpenAlex({ dois: ['10.1/a'], mailto: 'x@e.org', fetchImpl })).rejects.toThrow(
       /503/,
     );
@@ -48,8 +47,8 @@ describe('fetchOpenAlex', () => {
 
 describe('fetchZenodo', () => {
   it('extracts view and download counts and carries metadata forward', async () => {
-    const fetchImpl = vi.fn(async () =>
-      ok({
+    const fetchImpl = createFetchMock(async () =>
+      jsonResponse({
         hits: {
           hits: [
             {
@@ -74,8 +73,8 @@ describe('fetchZenodo', () => {
   });
 
   it('defaults missing statistics to zero instead of undefined', async () => {
-    const fetchImpl = vi.fn(async () =>
-      ok({ hits: { hits: [{ doi: '10.5281/zenodo.1', stats: {}, metadata: {} }] } }),
+    const fetchImpl = createFetchMock(async () =>
+      jsonResponse({ hits: { hits: [{ doi: '10.5281/zenodo.1', stats: {}, metadata: {} }] } }),
     );
     const result = await fetchZenodo({ dois: ['10.5281/zenodo.1'], fetchImpl });
     expect(result['10.5281/zenodo.1']).toEqual({
@@ -87,8 +86,8 @@ describe('fetchZenodo', () => {
   });
 
   it('handles a plain string resource type as well as a localised object', async () => {
-    const fetchImpl = vi.fn(async () =>
-      ok({
+    const fetchImpl = createFetchMock(async () =>
+      jsonResponse({
         hits: {
           hits: [
             {
@@ -105,8 +104,8 @@ describe('fetchZenodo', () => {
   });
 
   it('reads keywords from metadata.keywords, the shape Zenodo actually returns', async () => {
-    const fetchImpl = vi.fn(async () =>
-      ok({
+    const fetchImpl = createFetchMock(async () =>
+      jsonResponse({
         hits: {
           hits: [
             {
@@ -123,8 +122,8 @@ describe('fetchZenodo', () => {
   });
 
   it('falls back to metadata.subjects when keywords is absent (InvenioRDM shape)', async () => {
-    const fetchImpl = vi.fn(async () =>
-      ok({
+    const fetchImpl = createFetchMock(async () =>
+      jsonResponse({
         hits: {
           hits: [
             {
@@ -143,16 +142,16 @@ describe('fetchZenodo', () => {
   });
 
   it('returns an empty array when both keywords and subjects are absent', async () => {
-    const fetchImpl = vi.fn(async () =>
-      ok({ hits: { hits: [{ doi: '10.5281/zenodo.5', stats: {}, metadata: {} }] } }),
+    const fetchImpl = createFetchMock(async () =>
+      jsonResponse({ hits: { hits: [{ doi: '10.5281/zenodo.5', stats: {}, metadata: {} }] } }),
     );
     const result = await fetchZenodo({ dois: ['10.5281/zenodo.5'], fetchImpl });
     expect(result['10.5281/zenodo.5'].keywords).toEqual([]);
   });
 
   it('returns an empty array when keywords is present but empty', async () => {
-    const fetchImpl = vi.fn(async () =>
-      ok({
+    const fetchImpl = createFetchMock(async () =>
+      jsonResponse({
         hits: { hits: [{ doi: '10.5281/zenodo.6', stats: {}, metadata: { keywords: [] } }] },
       }),
     );
@@ -161,8 +160,8 @@ describe('fetchZenodo', () => {
   });
 
   it('returns an empty array when subjects is present but empty', async () => {
-    const fetchImpl = vi.fn(async () =>
-      ok({
+    const fetchImpl = createFetchMock(async () =>
+      jsonResponse({
         hits: { hits: [{ doi: '10.5281/zenodo.7', stats: {}, metadata: { subjects: [] } }] },
       }),
     );
@@ -171,8 +170,8 @@ describe('fetchZenodo', () => {
   });
 
   it('filters out null, undefined, and non-string entries from keywords', async () => {
-    const fetchImpl = vi.fn(async () =>
-      ok({
+    const fetchImpl = createFetchMock(async () =>
+      jsonResponse({
         hits: {
           hits: [
             {
@@ -189,8 +188,8 @@ describe('fetchZenodo', () => {
   });
 
   it('filters out entries with a missing or non-string subject from subjects', async () => {
-    const fetchImpl = vi.fn(async () =>
-      ok({
+    const fetchImpl = createFetchMock(async () =>
+      jsonResponse({
         hits: {
           hits: [
             {

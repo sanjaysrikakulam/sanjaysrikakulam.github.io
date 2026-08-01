@@ -2,6 +2,10 @@ import { readFileSync } from 'node:fs';
 import yaml from 'js-yaml';
 import { readCache, writeCache, withFallback } from './lib/cache.mjs';
 
+/**
+ * @typedef {Record<string, { citations: number }>} OpenAlexResult
+ */
+
 const API = 'https://api.openalex.org/works';
 const BATCH = 40;
 
@@ -10,6 +14,10 @@ const bare = (doi) =>
     .replace(/^https?:\/\/doi\.org\//i, '')
     .toLowerCase();
 
+/**
+ * @param {{ dois: string[], mailto: string, fetchImpl?: typeof fetch }} options
+ * @returns {Promise<OpenAlexResult>}
+ */
 export async function fetchOpenAlex({ dois, mailto, fetchImpl = fetch }) {
   const out = {};
   for (let index = 0; index < dois.length; index += BATCH) {

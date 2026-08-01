@@ -2,6 +2,18 @@ import { readFileSync } from 'node:fs';
 import yaml from 'js-yaml';
 import { readCache, writeCache, withFallback } from './lib/cache.mjs';
 
+/**
+ * @typedef {object} ZenodoRecord
+ * @property {number} views
+ * @property {number} downloads
+ * @property {string | null} resource_type
+ * @property {string[]} keywords
+ */
+
+/**
+ * @typedef {Record<string, ZenodoRecord>} ZenodoResult
+ */
+
 const API = 'https://zenodo.org/api/records';
 
 const bare = (doi) =>
@@ -31,6 +43,10 @@ function resourceKeywords(metadata) {
   return [];
 }
 
+/**
+ * @param {{ dois: string[], fetchImpl?: typeof fetch }} options
+ * @returns {Promise<ZenodoResult>}
+ */
 export async function fetchZenodo({ dois, fetchImpl = fetch }) {
   const out = {};
   for (const doi of dois) {
