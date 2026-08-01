@@ -76,6 +76,14 @@ npm run pdf       # regenerate the CV, needs a build first
 
 CI runs all of these on every push, along with `npm audit`.
 
+### First deploy on a new repository
+
+Before the workflow can publish anything, GitHub Pages has to be pointed at Actions as its
+source: repository Settings, Pages, and under "Build and deployment" choose "GitHub Actions"
+instead of the default "Deploy from a branch". This is a one-time step; the workflow can enable
+Pages itself on the very first run, but only once it has permission to, so doing it by hand up
+front avoids depending on that.
+
 ## Licence
 
 Code is MIT licensed. The content under `data/`, and the text and images of the site, are not
