@@ -1,0 +1,8 @@
+data/.cache/
+dist/
+node_modules/
+.astro/
+package-lock.json
+coverage/
+test-results/
+playwright-report/
