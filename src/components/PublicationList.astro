@@ -39,7 +39,7 @@ const TYPE_BADGE: Record<string, string> = {
         <article class="pub">
           <p class="yr">{entry.year}</p>
           <div>
-            <h4 class="ti">
+            <h3 class="ti">
               {entry.links.doi || entry.links.zenodo ? (
                 <a href={entry.links.doi ?? entry.links.zenodo} target="_blank" rel="noopener noreferrer">
                   {entry.title}
@@ -49,7 +49,7 @@ const TYPE_BADGE: Record<string, string> = {
               )}
               {role && <span class={`abadge ${role.className}`}>{role.label}</span>}
               {typeLabel && <span class="abadge b-del">{typeLabel}</span>}
-            </h4>
+            </h3>
             {entry.authors_display && <p class="au" set:html={emphasise(entry.authors_display)} />}
             {entry.role_note && <p class="au">{entry.role_note}</p>}
             {entry.venue && <p class="vn">{entry.venue}</p>}
