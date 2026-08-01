@@ -113,7 +113,7 @@ jobs:
           # to be switched to the "GitHub Actions" source before this action
           # can read its settings, and nothing prompts for that automatically.
           enablement: true
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
 
