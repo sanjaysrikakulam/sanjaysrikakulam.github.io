@@ -1,42 +1,21 @@
 import tsParser from '@typescript-eslint/parser';
+import tsPlugin from '@typescript-eslint/eslint-plugin';
 
 export default [
   { ignores: ['dist/**', '.astro/**', 'node_modules/**', 'coverage/**'] },
   {
-    files: ['**/*.{js,mjs}'],
-    languageOptions: { ecmaVersion: 2024, sourceType: 'module' },
-    rules: {
-      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
-      'no-console': 'off',
-      eqeqeq: ['error', 'always'],
-    },
-  },
-  {
-    files: ['**/*.ts'],
-    ignores: ['vitest.config.ts'],
+    files: ['**/*.{js,mjs,ts}'],
     languageOptions: {
       ecmaVersion: 2024,
       sourceType: 'module',
       parser: tsParser,
-      parserOptions: {
-        project: './tsconfig.json',
-      },
+    },
+    plugins: {
+      '@typescript-eslint': tsPlugin,
     },
     rules: {
       'no-unused-vars': 'off',
-      'no-console': 'off',
-      eqeqeq: ['error', 'always'],
-    },
-  },
-  {
-    files: ['vitest.config.ts'],
-    languageOptions: {
-      ecmaVersion: 2024,
-      sourceType: 'module',
-      parser: tsParser,
-    },
-    rules: {
-      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
       'no-console': 'off',
       eqeqeq: ['error', 'always'],
     },
