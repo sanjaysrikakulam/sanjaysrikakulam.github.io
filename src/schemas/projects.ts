@@ -9,7 +9,6 @@ export const projectSchema = z
       .regex(/^[\w.-]+\/[\w.-]+$/, 'Use owner/name, not a full URL')
       .nullable()
       .default(null),
-    role: z.string().min(1).optional(),
     summary: z.string().min(1),
     tags: z.array(z.string()).default([]),
     paper: z.string().optional(),

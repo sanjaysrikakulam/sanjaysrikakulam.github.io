@@ -74,7 +74,6 @@ describe('projectSchema', () => {
     const parsed = projectSchema.parse({
       name: 'SeqSidecar',
       repo: null,
-      role: 'Designer and developer',
       summary: 'A columnar query engine.',
     });
     expect(parsed.repo).toBeNull();
@@ -82,7 +81,7 @@ describe('projectSchema', () => {
 
   it('rejects a repo that is not in owner/name form', () => {
     expect(() =>
-      projectSchema.parse({ name: 'X', repo: 'https://github.com/a/b', role: 'r', summary: 's' }),
+      projectSchema.parse({ name: 'X', repo: 'https://github.com/a/b', summary: 's' }),
     ).toThrow(/owner\/name/i);
   });
 });
