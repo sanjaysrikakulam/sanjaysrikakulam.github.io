@@ -1,0 +1,18 @@
+---
+import type { MergedPublication } from '../lib/merge-publications';
+import { toBibtex } from '../lib/bibtex';
+
+interface Props {
+  entry: MergedPublication;
+}
+const { entry } = Astro.props;
+const bib = entry.bibtex ? toBibtex(entry) : null;
+---
+
+<p class="plinks">
+  {entry.links.doi && <a class="pl" href={entry.links.doi} target="_blank" rel="noopener noreferrer">DOI</a>}
+  {entry.links.zenodo && <a class="pl zen" href={entry.links.zenodo} target="_blank" rel="noopener noreferrer">Zenodo</a>}
+  {entry.links.poster && <a class="pl" href={entry.links.poster} target="_blank" rel="noopener noreferrer">Poster</a>}
+  {entry.links.slides && <a class="pl" href={entry.links.slides} target="_blank" rel="noopener noreferrer">Slides</a>}
+  {bib && <button class="pl bib" type="button" data-bibtex={bib}>BibTeX</button>}
+</p>

@@ -1,0 +1,97 @@
+---
+import PublicationLinks from './PublicationLinks.astro';
+import type { MergedPublication } from '../lib/merge-publications';
+
+interface Props {
+  entries: MergedPublication[];
+  authorName: string;
+}
+const { entries, authorName } = Astro.props;
+
+const surname = authorName.split(' ').at(-1) ?? '';
+// Escape regex metacharacters and anchor on a word boundary so a surname that
+// happens to sit inside a longer word cannot produce a mangled match.
+const escaped = surname.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const surnamePattern = new RegExp(`(\\b${escaped}[^,]*)`, 'g');
+const emphasise = (authors?: string) => (authors ? authors.replace(surnamePattern, '<b>$1</b>') : '');
+
+const ROLE_BADGE: Record<string, { label: string; className: string } | null> = {
+  first: { label: 'First author', className: 'b-first' },
+  'joint-first': { label: 'Joint first author', className: 'b-first' },
+  corresponding: { label: 'Corresponding', className: 'b-first' },
+  consortium: { label: 'Consortium', className: 'b-cons' },
+  senior: { label: 'Senior author', className: 'b-cons' },
+  contributing: null,
+};
+
+const TYPE_BADGE: Record<string, string> = {
+  deliverable: 'Deliverable',
+  'white-paper': 'White paper',
+};
+---
+
+<div class="publications">
+  {
+    entries.map((entry) => {
+      const role = ROLE_BADGE[entry.author_role];
+      const typeLabel = TYPE_BADGE[entry.type];
+      return (
+        <article class="pub">
+          <p class="yr">{entry.year}</p>
+          <div>
+            <h4 class="ti">
+              {entry.links.doi || entry.links.zenodo ? (
+                <a href={entry.links.doi ?? entry.links.zenodo} target="_blank" rel="noopener noreferrer">
+                  {entry.title}
+                </a>
+              ) : (
+                entry.title
+              )}
+              {role && <span class={`abadge ${role.className}`}>{role.label}</span>}
+              {typeLabel && <span class="abadge b-del">{typeLabel}</span>}
+            </h4>
+            {entry.authors_display && <p class="au" set:html={emphasise(entry.authors_display)} />}
+            {entry.role_note && <p class="au">{entry.role_note}</p>}
+            {entry.venue && <p class="vn">{entry.venue}</p>}
+            <PublicationLinks entry={entry} />
+          </div>
+          <div class="cite">
+            {entry.metrics.citations !== undefined && (
+              <p><span class="c">{entry.metrics.citations}</span><span class="cl">OpenAlex citations</span></p>
+            )}
+            {entry.metrics.downloads !== undefined && (
+              <p class={entry.metrics.citations !== undefined ? 'u' : ''}>
+                <span class="c">{entry.metrics.downloads}</span><span class="cl">Zenodo downloads</span>
+              </p>
+            )}
+          </div>
+        </article>
+      );
+    })
+  }
+</div>
+
+<script>
+  for (const button of document.querySelectorAll<HTMLButtonElement>('.bib')) {
+    button.addEventListener('click', async () => {
+      const entry = button.dataset.bibtex ?? '';
+      try {
+        await navigator.clipboard.writeText(entry);
+      } catch {
+        const area = document.createElement('textarea');
+        area.value = entry;
+        document.body.append(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+      }
+      const original = button.textContent;
+      button.textContent = 'Copied';
+      button.classList.add('copied');
+      setTimeout(() => {
+        button.textContent = original;
+        button.classList.remove('copied');
+      }, 1600);
+    });
+  }
+</script>

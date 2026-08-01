@@ -1,0 +1,40 @@
+---
+import type { Conference } from '../schemas/conferences';
+
+interface Props {
+  entries: Conference[];
+}
+const { entries } = Astro.props;
+
+const KIND: Record<string, string> = {
+  talk: 'k-talk',
+  poster: 'k-poster',
+  workshop: 'k-ws',
+  panel: 'k-ws',
+  attended: 'k-att',
+};
+---
+
+{
+  entries.length > 0 && (
+    <div class="conferences">
+      {entries.map((entry) => (
+        <article class="conf">
+          <p class="yr">{entry.year}</p>
+          <div>
+            <p class="nm">
+              <span class={`kind ${KIND[entry.role]}`}>{entry.role}</span>
+              {entry.url ? (
+                <a href={entry.url} target="_blank" rel="noopener noreferrer">{entry.name}</a>
+              ) : (
+                entry.name
+              )}
+            </p>
+            {entry.title && <p class="tt">{entry.title}</p>}
+          </div>
+          {entry.location && <p class="lo">{entry.location}</p>}
+        </article>
+      ))}
+    </div>
+  )
+}

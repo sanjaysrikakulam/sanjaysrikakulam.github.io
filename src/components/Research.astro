@@ -1,0 +1,38 @@
+---
+import PublicationList from './PublicationList.astro';
+import ConferenceList from './ConferenceList.astro';
+import { sectionConfig } from '../lib/section-config';
+import type { PageData } from '../lib/page-data';
+
+interface Props {
+  data: PageData;
+}
+const { data } = Astro.props;
+const config = sectionConfig(data.site, 'research');
+const conferences = data.site.sections
+  .find((section) => section.id === 'research')
+  ?.subsections.find((sub) => sub.id === 'conferences');
+---
+
+{
+  config.visible && (
+    <section id="research">
+      <div class="wrap">
+        <div class="shead">
+          <p class="slabel">Research</p>
+          <h2>{config.title}</h2>
+          <p>{config.description}</p>
+        </div>
+        <PublicationList entries={data.publications} authorName={data.site.profile.name} />
+
+        {conferences?.visible && data.conferences.length > 0 && (
+          <>
+            <h3 class="sub">{conferences.title ?? 'Conferences and talks'}</h3>
+            {conferences.description && <p class="snote">{conferences.description}</p>}
+            <ConferenceList entries={data.conferences} />
+          </>
+        )}
+      </div>
+    </section>
+  )
+}
