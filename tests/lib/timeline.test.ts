@@ -53,11 +53,22 @@ describe('timelineBars', () => {
     expect(bars[0].width).toBeGreaterThanOrEqual(2);
   });
 
-  it('derives an anchor id from the organisation and start date', () => {
+  it('derives an anchor id from the organisation, start date, and job title', () => {
     const { bars } = timelineBars([role({ org: 'Forschungszentrum Jülich', start: '2025-09' })], {
       now,
     });
-    expect(bars[0].id).toBe('role-forschungszentrum-julich-2025-09');
+    expect(bars[0].id).toBe('role-forschungszentrum-julich-2025-09-role');
+  });
+
+  it('gives two concurrent roles at the same org and start month different anchors when job titles differ', () => {
+    const { bars } = timelineBars(
+      [
+        role({ org: 'Acme', start: '2025-09', title: 'Postdoctoral Researcher' }),
+        role({ org: 'Acme', start: '2025-09', title: 'Guest Scientist' }),
+      ],
+      { now },
+    );
+    expect(bars[0].id).not.toBe(bars[1].id);
   });
 
   it('uses the declared track colour and falls back when absent', () => {

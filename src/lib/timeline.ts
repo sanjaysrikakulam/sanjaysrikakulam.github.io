@@ -1,5 +1,5 @@
 import type { Experience } from '../schemas/experience';
-import { slugify } from './slug';
+import { experienceAnchor } from './entry-ids';
 
 export type Bar = {
   id: string;
@@ -48,7 +48,7 @@ export function timelineBars(
     const rawWidth = ((end - start) / span) * 100;
     const width = Math.max(MIN_WIDTH, Math.min(rawWidth, 100 - left));
     return {
-      id: `role-${slugify(`${role.org}-${role.start}`)}`,
+      id: experienceAnchor(role),
       label: role.org,
       sublabel: role.title,
       left,
