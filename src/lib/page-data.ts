@@ -3,7 +3,7 @@ import { loadSite } from './site';
 import { mergePublications } from './merge-publications';
 import { timelineBars } from './timeline';
 import { visibleItems, sortByOrder } from './visibility';
-import { readCacheFile, type GithubCache } from './section-config';
+import { readCacheFile, normaliseGithubCache, type GithubCache } from './section-config';
 
 export { sectionConfig } from './section-config';
 
@@ -12,10 +12,7 @@ const dataOf = <T>(entries: Array<{ data: T }>): T[] => entries.map((entry) => e
 export async function loadPageData() {
   const site = loadSite();
 
-  const github = readCacheFile<GithubCache>('github', {
-    repos: {},
-    contributions: { total: 0, byOrg: {} },
-  });
+  const github = normaliseGithubCache(readCacheFile<Partial<GithubCache>>('github', {}));
   const openalex = readCacheFile<Record<string, { citations: number }>>('openalex', {});
   const zenodo = readCacheFile<Record<string, { views: number; downloads: number }>>('zenodo', {});
 

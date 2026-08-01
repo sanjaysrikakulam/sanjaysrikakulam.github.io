@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { sectionConfig } from '../../src/lib/section-config';
+import { normaliseGithubCache, sectionConfig } from '../../src/lib/section-config';
 import { siteSchema } from '../../src/schemas/site';
 
 const site = siteSchema.parse({
@@ -38,5 +38,34 @@ describe('sectionConfig', () => {
     const config = sectionConfig(site, 'hidden');
     expect(config.title).toBe('');
     expect(config.description).toBe('');
+  });
+});
+
+describe('normaliseGithubCache', () => {
+  it('fills the whole shape from an empty object, so consumers can index safely', () => {
+    expect(normaliseGithubCache({})).toEqual({ repos: {}, contributions: { total: 0, byOrg: {} } });
+  });
+
+  it('fills the shape from null and from undefined', () => {
+    for (const input of [null, undefined]) {
+      expect(normaliseGithubCache(input)).toEqual({
+        repos: {},
+        contributions: { total: 0, byOrg: {} },
+      });
+    }
+  });
+
+  it('supplies byOrg when contributions exists but is partial', () => {
+    const result = normaliseGithubCache({ contributions: { total: 7 } });
+    expect(result.contributions.total).toBe(7);
+    expect(result.contributions.byOrg).toEqual({});
+  });
+
+  it('preserves a complete cache unchanged', () => {
+    const full = {
+      repos: { 'a/b': { stars: 1, forks: 2, language: 'Go', pushed_at: 'x', url: 'y' } },
+      contributions: { total: 9, byOrg: { org: 4 } },
+    };
+    expect(normaliseGithubCache(full)).toEqual(full);
   });
 });
