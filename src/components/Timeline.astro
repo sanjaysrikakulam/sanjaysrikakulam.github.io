@@ -8,7 +8,7 @@ interface Props {
 const { bars, ticks } = Astro.props;
 
 const yearOf = (value: string) => (value === 'Present' ? 'Present' : value.split('-')[0]);
-const periodOf = (bar: Bar) => `${yearOf(bar.from)} – ${yearOf(bar.to)}`;
+const periodOf = (bar: Bar) => `${yearOf(bar.from)} to ${yearOf(bar.to)}`;
 ---
 
 {

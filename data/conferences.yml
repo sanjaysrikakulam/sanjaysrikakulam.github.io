@@ -3,7 +3,7 @@
 # One entry per event. Required: name, year, role.
 # role is one of: talk, poster, workshop, attended, panel.
 #
-# Template — copy a block below the `[]`, remove the leading `#`, and delete the `[]`:
+# Template: copy a block below the `[]`, remove the leading `#`, and delete the `[]`:
 #
 # - name: de.NBI Cloud User Meeting     # required
 #   year: 2025                          # required

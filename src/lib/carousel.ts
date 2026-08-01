@@ -10,7 +10,7 @@ export function pageCount(scrollWidth: number, clientWidth: number): number {
 // scroll 0 and the last page sits at exactly maxScroll, with the rest spread
 // evenly between. Targeting page*clientWidth instead leaves the final step
 // shorter than the others, so the snapped resting position lands short of
-// maxScroll and pageAt rounds it back to the previous page — which is what made
+// maxScroll and pageAt rounds it back to the previous page, which is what made
 // the last dot impossible to reach and left it permanently inactive.
 function pageStep(scrollWidth: number, clientWidth: number): number {
   const last = pageCount(scrollWidth, clientWidth) - 1;

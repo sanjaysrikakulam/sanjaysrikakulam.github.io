@@ -2,7 +2,7 @@
 #
 # One entry per event. Required: name, year.
 #
-# Template — copy a block below the `[]`, remove the leading `#`, and delete the `[]`:
+# Template: copy a block below the `[]`, remove the leading `#`, and delete the `[]`:
 #
 # - name: BioHackathon Europe           # required
 #   year: 2024                          # required
