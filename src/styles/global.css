@@ -44,3 +44,17 @@
   outline-offset: 3px;
   border-radius: 4px;
 }
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--color-accent);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 0 0 8px 0;
+  z-index: 100;
+}
+.skip:focus {
+  left: 0;
+}

@@ -1,0 +1,44 @@
+---
+import type { Site } from '../schemas/site';
+
+interface Props {
+  site: Site;
+  sections: Array<{ id: string; label: string }>;
+}
+const { site, sections } = Astro.props;
+---
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">{site.profile.name}</a>
+    <div class="navlinks">
+      {sections.map((section) => <a href={`#${section.id}`} data-nav={section.id}>{section.label}</a>)}
+      {
+        site.display.theme_toggle && (
+          <button class="tbtn" id="theme-toggle" aria-label="Switch colour theme">◑</button>
+        )
+      }
+    </div>
+  </div>
+</nav>
+
+<script>
+  const root = document.documentElement;
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    localStorage.setItem('theme', next);
+  });
+
+  const targets = [...document.querySelectorAll('section[id], header[id]')];
+  const links = [...document.querySelectorAll('[data-nav]')];
+  const mark = () => {
+    let active = '';
+    for (const target of targets) {
+      if (scrollY >= (target as HTMLElement).offsetTop - 90) active = target.id;
+    }
+    for (const link of links) link.classList.toggle('on', link.getAttribute('data-nav') === active);
+  };
+  addEventListener('scroll', mark, { passive: true });
+  mark();
+</script>

@@ -1,0 +1,9 @@
+---
+---
+<script is:inline>
+  (() => {
+    const stored = localStorage.getItem('theme');
+    const preferred = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.dataset.theme = stored ?? preferred;
+  })();
+</script>
