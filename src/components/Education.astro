@@ -13,7 +13,10 @@ const { education } = Astro.props;
       <div>
         <p class="yr">{degree.year}</p>
         <p class="dg">{degree.degree}</p>
-        <p class="in">{degree.institution}{degree.location ? `, ${degree.location}` : ''}</p>
+        <p class="in">
+          {degree.institution}
+          {degree.location ? `, ${degree.location}` : ''}
+        </p>
         {degree.thesis && (
           <p class="thesis">
             {degree.thesis.url ? (

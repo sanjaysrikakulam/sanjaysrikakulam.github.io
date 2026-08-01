@@ -25,7 +25,9 @@ const KIND: Record<string, string> = {
             <p class="nm">
               <span class={`kind ${KIND[entry.role]}`}>{entry.role}</span>
               {entry.url ? (
-                <a href={entry.url} target="_blank" rel="noopener noreferrer">{entry.name}</a>
+                <a href={entry.url} target="_blank" rel="noopener noreferrer">
+                  {entry.name}
+                </a>
               ) : (
                 entry.name
               )}

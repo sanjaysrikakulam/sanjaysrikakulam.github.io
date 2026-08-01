@@ -42,7 +42,12 @@ const period = (start: string, end: string | null) => {
           <h1>{site.profile.name}</h1>
           <p class="meta">
             {site.profile.location} · {site.profile.email} ·
-            {Object.values(site.links).map((url) => <> <a href={url}>{url.replace(/^https?:\/\/(www\.)?/, '')}</a></>)}
+            {Object.values(site.links).map((url) => (
+              <>
+                {' '}
+                <a href={url}>{url.replace(/^https?:\/\/(www\.)?/, '')}</a>
+              </>
+            ))}
           </p>
           {site.profile.bio && <p>{site.profile.bio}</p>}
         </header>
@@ -56,7 +61,10 @@ const period = (start: string, end: string | null) => {
           {education.map((degree) => (
             <div class="entry">
               <h3>{degree.degree}</h3>
-              <p class="meta">{degree.year} · {degree.institution}{degree.location ? `, ${degree.location}` : ''}</p>
+              <p class="meta">
+                {degree.year} · {degree.institution}
+                {degree.location ? `, ${degree.location}` : ''}
+              </p>
             </div>
           ))}
         </section>
@@ -70,10 +78,17 @@ const period = (start: string, end: string | null) => {
           {roles.map((role) => (
             <div class="entry">
               <h3>{role.title}</h3>
-              <p class="meta">{period(role.start, role.end)} · {role.org}{role.location ? `, ${role.location}` : ''}</p>
+              <p class="meta">
+                {period(role.start, role.end)} · {role.org}
+                {role.location ? `, ${role.location}` : ''}
+              </p>
               <ul>
-                {role.highlights.map((item) => <li>{item}</li>)}
-                {role.details.map((item) => <li>{item}</li>)}
+                {role.highlights.map((item) => (
+                  <li>{item}</li>
+                ))}
+                {role.details.map((item) => (
+                  <li>{item}</li>
+                ))}
               </ul>
             </div>
           ))}
@@ -91,9 +106,17 @@ const period = (start: string, end: string | null) => {
                 {entry.authors_display ? `${entry.authors_display}. ` : ''}
                 <strong>{entry.title}</strong>
                 {entry.venue ? `. ${entry.venue}` : ''}, {entry.year}.
-                {entry.doi && <> <a href={`https://doi.org/${entry.doi}`}>doi:{entry.doi}</a></>}
+                {entry.doi && (
+                  <>
+                    {' '}
+                    <a href={`https://doi.org/${entry.doi}`}>doi:{entry.doi}</a>
+                  </>
+                )}
                 {!entry.doi && entry.zenodo_doi && (
-                  <> <a href={`https://doi.org/${entry.zenodo_doi}`}>doi:{entry.zenodo_doi}</a></>
+                  <>
+                    {' '}
+                    <a href={`https://doi.org/${entry.zenodo_doi}`}>doi:{entry.zenodo_doi}</a>
+                  </>
                 )}
               </p>
             </div>
@@ -107,7 +130,9 @@ const period = (start: string, end: string | null) => {
         <section>
           <h2>Technical skills</h2>
           {skills.map((group) => (
-            <p class="entry"><strong>{group.group}:</strong> {group.items.join(', ')}</p>
+            <p class="entry">
+              <strong>{group.group}:</strong> {group.items.join(', ')}
+            </p>
           ))}
         </section>
       )

@@ -23,13 +23,18 @@ const config = sectionConfig(data.site, 'community');
             <article class="hkc">
               <h4 class="h">
                 {entry.url ? (
-                  <a href={entry.url} target="_blank" rel="noopener noreferrer">{entry.name}</a>
+                  <a href={entry.url} target="_blank" rel="noopener noreferrer">
+                    {entry.name}
+                  </a>
                 ) : (
                   entry.name
                 )}
                 {entry.led && <span class="led">Led</span>}
               </h4>
-              <p class="m">{entry.year}{entry.location ? ` · ${entry.location}` : ''}</p>
+              <p class="m">
+                {entry.year}
+                {entry.location ? ` · ${entry.location}` : ''}
+              </p>
               {entry.summary && <p>{entry.summary}</p>}
             </article>
           ))}

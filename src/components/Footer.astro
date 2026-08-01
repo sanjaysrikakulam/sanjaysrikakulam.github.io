@@ -45,7 +45,9 @@ const display = (url: string) => url.replace(/^https?:\/\/(www\.)?/, '').replace
         {
           Object.entries(links).map(([key, url]) => (
             <a href={url} target="_blank" rel="noopener noreferrer">
-              <Icon name={ICONS[key] ?? 'github'} /><span>{LABELS[key] ?? key}</span>{display(url)}
+              <Icon name={ICONS[key] ?? 'github'} />
+              <span>{LABELS[key] ?? key}</span>
+              {display(url)}
             </a>
           ))
         }

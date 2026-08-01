@@ -33,8 +33,11 @@
     "@types/node": "^26.1.2",
     "@typescript-eslint/eslint-plugin": "^8.65.0",
     "@typescript-eslint/parser": "^8.65.0",
+    "astro-eslint-parser": "^1.4.0",
     "eslint": "^10.8.0",
+    "eslint-plugin-astro": "^1.7.0",
     "prettier": "^3.9.6",
+    "prettier-plugin-astro": "^0.14.1",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.7.0",
     "vitest": "^4.1.10"

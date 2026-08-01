@@ -13,7 +13,8 @@ const surname = authorName.split(' ').at(-1) ?? '';
 // happens to sit inside a longer word cannot produce a mangled match.
 const escaped = surname.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const surnamePattern = new RegExp(`(\\b${escaped}[^,]*)`, 'g');
-const emphasise = (authors?: string) => (authors ? authors.replace(surnamePattern, '<b>$1</b>') : '');
+const emphasise = (authors?: string) =>
+  authors ? authors.replace(surnamePattern, '<b>$1</b>') : '';
 
 const ROLE_BADGE: Record<string, { label: string; className: string } | null> = {
   first: { label: 'First author', className: 'b-first' },
@@ -41,7 +42,11 @@ const TYPE_BADGE: Record<string, string> = {
           <div>
             <h3 class="ti">
               {entry.links.doi || entry.links.zenodo ? (
-                <a href={entry.links.doi ?? entry.links.zenodo} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={entry.links.doi ?? entry.links.zenodo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {entry.title}
                 </a>
               ) : (
@@ -57,11 +62,15 @@ const TYPE_BADGE: Record<string, string> = {
           </div>
           <div class="cite">
             {entry.metrics.citations !== undefined && (
-              <p><span class="c">{entry.metrics.citations}</span><span class="cl">OpenAlex citations</span></p>
+              <p>
+                <span class="c">{entry.metrics.citations}</span>
+                <span class="cl">OpenAlex citations</span>
+              </p>
             )}
             {entry.metrics.downloads !== undefined && (
               <p class={entry.metrics.citations !== undefined ? 'u' : ''}>
-                <span class="c">{entry.metrics.downloads}</span><span class="cl">Zenodo downloads</span>
+                <span class="c">{entry.metrics.downloads}</span>
+                <span class="cl">Zenodo downloads</span>
               </p>
             )}
           </div>

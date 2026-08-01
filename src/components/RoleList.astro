@@ -33,14 +33,26 @@ const monthName = (value: string | null) => {
             )}
             {role.location ? `, ${role.location}` : ''}
           </p>
-          <ul>{role.highlights.map((item) => <li>{item}</li>)}</ul>
+          <ul>
+            {role.highlights.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
           {role.affiliations.length > 0 && (
-            <p class="affil">{role.affiliations.map((name) => <span>{name}</span>)}</p>
+            <p class="affil">
+              {role.affiliations.map((name) => (
+                <span>{name}</span>
+              ))}
+            </p>
           )}
           {role.details.length > 0 && (
             <details class="more">
               <summary>{role.details.length} more responsibilities</summary>
-              <ul>{role.details.map((item) => <li>{item}</li>)}</ul>
+              <ul>
+                {role.details.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
             </details>
           )}
         </div>

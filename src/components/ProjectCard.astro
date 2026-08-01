@@ -22,14 +22,26 @@ const stats = project.repo ? github.repos[project.repo] : undefined;
       <div class="stats">
         {stats && (
           <>
-            <p class="stat"><span class="v">{stats.stars}</span><span class="k">Stars</span></p>
-            <p class="stat"><span class="v">{stats.forks}</span><span class="k">Forks</span></p>
+            <p class="stat">
+              <span class="v">{stats.stars}</span>
+              <span class="k">Stars</span>
+            </p>
+            <p class="stat">
+              <span class="v">{stats.forks}</span>
+              <span class="k">Forks</span>
+            </p>
           </>
         )}
         {citations !== undefined && (
-          <p class="stat"><span class="v">{citations}</span><span class="k">Citations</span></p>
+          <p class="stat">
+            <span class="v">{citations}</span>
+            <span class="k">Citations</span>
+          </p>
         )}
-        <p class="synced"><span class="d" aria-hidden="true"></span>synced from source</p>
+        <p class="synced">
+          <span class="d" aria-hidden="true" />
+          synced from source
+        </p>
       </div>
     )
   }

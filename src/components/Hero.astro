@@ -18,7 +18,7 @@ const { before, accent, after } = splitHeadline(
       {
         site.profile.available && (
           <p class="eyebrow">
-            <span class="dot" aria-hidden="true"></span>
+            <span class="dot" aria-hidden="true" />
             {site.profile.available_text}
           </p>
         )
@@ -27,7 +27,12 @@ const { before, accent, after } = splitHeadline(
       <p class="lede" set:html={site.profile.bio} />
       <div class="cta-row">
         <a class="btn btn-p" href="#work">See the work</a>
-        <a class="btn btn-s" href="/Sanjay_Srikakulam_CV.pdf" target="_blank" rel="noopener noreferrer">
+        <a
+          class="btn btn-s"
+          href="/Sanjay_Srikakulam_CV.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Download CV
         </a>
       </div>

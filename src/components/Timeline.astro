@@ -11,7 +11,11 @@ const { bars, ticks } = Astro.props;
 {
   bars.length > 0 && (
     <div class="tl">
-      <div class="tl-axis">{ticks.map((year) => <span>{year}</span>)}</div>
+      <div class="tl-axis">
+        {ticks.map((year) => (
+          <span>{year}</span>
+        ))}
+      </div>
       {bars.map((bar) => (
         <div class="lane">
           <a

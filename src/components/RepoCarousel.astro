@@ -11,7 +11,8 @@ interface Props {
 const { projects, github, site } = Astro.props;
 const options = site.display.open_source;
 const withRepos = projects.filter(
-  (project) => project.repo && (options.carousel || site.display.grid_includes_featured || !project.featured)
+  (project) =>
+    project.repo && (options.carousel || site.display.grid_includes_featured || !project.featured),
 );
 ---
 
@@ -21,12 +22,23 @@ const withRepos = projects.filter(
   data-autoplay={String(options.autoplay)}
   data-interval={options.autoplay_interval}
 >
-  <div class="repos" id="repo-rail" tabindex="0" role="region" aria-label="Repositories, scrollable">
+  <div
+    class="repos"
+    id="repo-rail"
+    tabindex="0"
+    role="region"
+    aria-label="Repositories, scrollable"
+  >
     {
       withRepos.map((project) => {
         const stats = github.repos[project.repo as string];
         return (
-          <a class="repo" href={stats?.url ?? `https://github.com/${project.repo}`} target="_blank" rel="noopener noreferrer">
+          <a
+            class="repo"
+            href={stats?.url ?? `https://github.com/${project.repo}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <span class="rn">{project.repo}</span>
             <span class="rd">{project.summary}</span>
             <span class="rm">
@@ -88,7 +100,7 @@ const withRepos = projects.filter(
               go(index);
             });
             return dash;
-          })
+          }),
         );
       }
       [...dashes.children].forEach((dash, index) => {
@@ -125,10 +137,14 @@ const withRepos = projects.filter(
     rail.addEventListener('keydown', stop);
 
     let settle: number | undefined;
-    rail.addEventListener('scroll', () => {
-      clearTimeout(settle);
-      settle = window.setTimeout(paint, 90);
-    }, { passive: true });
+    rail.addEventListener(
+      'scroll',
+      () => {
+        clearTimeout(settle);
+        settle = window.setTimeout(paint, 90);
+      },
+      { passive: true },
+    );
 
     for (const element of [rail, root.querySelector('.cnav')!]) {
       element.addEventListener('mouseenter', () => !stopped && halt());
@@ -136,7 +152,7 @@ const withRepos = projects.filter(
       element.addEventListener('focusin', () => !stopped && halt());
     }
     document.addEventListener('visibilitychange', () =>
-      document.hidden ? halt() : !stopped && start()
+      document.hidden ? halt() : !stopped && start(),
     );
     addEventListener('resize', paint);
 

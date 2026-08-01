@@ -27,7 +27,11 @@ const org = data.github.contributions.byOrg;
         </div>
         <div class="work">
           {featured.map((project) => (
-            <ProjectCard project={project} github={data.github} citations={citationFor(project.paper)} />
+            <ProjectCard
+              project={project}
+              github={data.github}
+              citations={citationFor(project.paper)}
+            />
           ))}
         </div>
 
@@ -38,9 +42,17 @@ const org = data.github.contributions.byOrg;
           private and internal repositories is not counted.
         </p>
         <div class="ghbar">
-          <div><p class="n">{data.github.contributions.total}</p><p class="l">Merged pull requests, public repositories</p></div>
+          <div>
+            <>
+              <p class="n">{data.github.contributions.total}</p>
+              <p class="l">Merged pull requests, public repositories</p>
+            </>
+          </div>
           {Object.entries(org).map(([name, count]) => (
-            <div><p class="n">{count}</p><p class="l">Into {name}</p></div>
+            <div>
+              <p class="n">{count}</p>
+              <p class="l">Into {name}</p>
+            </div>
           ))}
         </div>
         <RepoCarousel projects={data.projects} github={data.github} site={data.site} />

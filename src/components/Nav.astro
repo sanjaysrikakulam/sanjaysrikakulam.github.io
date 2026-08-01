@@ -12,10 +12,18 @@ const { site, sections } = Astro.props;
   <div class="wrap">
     <a class="brand" href="#top">{site.profile.name}</a>
     <div class="navlinks">
-      {sections.map((section) => <a href={`#${section.id}`} data-nav={section.id}>{section.label}</a>)}
+      {
+        sections.map((section) => (
+          <a href={`#${section.id}`} data-nav={section.id}>
+            {section.label}
+          </a>
+        ))
+      }
       {
         site.display.theme_toggle && (
-          <button class="tbtn" id="theme-toggle" aria-label="Switch colour theme">◑</button>
+          <button class="tbtn" id="theme-toggle" aria-label="Switch colour theme">
+            ◑
+          </button>
         )
       }
     </div>
