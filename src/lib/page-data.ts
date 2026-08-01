@@ -1,37 +1,11 @@
 import { getCollection } from 'astro:content';
-import { readFileSync, existsSync } from 'node:fs';
 import { loadSite } from './site';
 import { mergePublications } from './merge-publications';
 import { timelineBars } from './timeline';
 import { visibleItems, sortByOrder } from './visibility';
-import type { Site } from '../schemas/site';
+import { readCacheFile, type GithubCache } from './section-config';
 
-export type GithubCache = {
-  repos: Record<
-    string,
-    { stars: number; forks: number; language: string | null; pushed_at: string; url: string }
-  >;
-  contributions: { total: number; byOrg: Record<string, number> };
-};
-
-function readCacheFile<T>(name: string, fallback: T): T {
-  const path = `data/.cache/${name}.json`;
-  if (!existsSync(path)) return fallback;
-  try {
-    return JSON.parse(readFileSync(path, 'utf8')) as T;
-  } catch {
-    return fallback;
-  }
-}
-
-export function sectionConfig(site: Site, id: string) {
-  const section = site.sections.find((entry) => entry.id === id);
-  return {
-    title: section?.title ?? '',
-    description: section?.description ?? '',
-    visible: section?.visible ?? false,
-  };
-}
+export { sectionConfig } from './section-config';
 
 const dataOf = <T>(entries: Array<{ data: T }>): T[] => entries.map((entry) => entry.data);
 

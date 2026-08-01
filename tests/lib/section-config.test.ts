@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { sectionConfig } from '../../src/lib/page-data';
+import { sectionConfig } from '../../src/lib/section-config';
 import { siteSchema } from '../../src/schemas/site';
 
 const site = siteSchema.parse({
