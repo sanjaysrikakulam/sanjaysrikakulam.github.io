@@ -135,3 +135,22 @@ test.describe('cv route', () => {
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
   });
 });
+
+test.describe('analytics', () => {
+  // The tracker is off unless an endpoint is set in site.yml, so this asserts
+  // the whole feature is consistent in whichever state the site was built in:
+  // when enabled, the GoatCounter script, its endpoint, and the footer note all
+  // appear; when disabled (the default), none of them do and nothing breaks.
+  test('the GoatCounter tag and privacy note appear together, or not at all', async ({ page }) => {
+    await page.goto('/');
+    const script = page.locator('script[src="https://gc.zgo.at/count.js"]');
+    const note = page.locator('footer .privacy');
+    if ((await script.count()) > 0) {
+      await expect(script).toHaveAttribute('data-goatcounter', /goatcounter\.com\/count/);
+      await expect(note).toHaveCount(1);
+      await expect(note.locator('a')).toHaveAttribute('href', 'https://www.goatcounter.com');
+    } else {
+      await expect(note).toHaveCount(0);
+    }
+  });
+});

@@ -1,5 +1,6 @@
 ---
 import '../styles/print.css';
+import Analytics from '../components/Analytics.astro';
 import { loadPageData, type PageData } from '../lib/page-data';
 import { pdfSectionOrder, capItems } from '../lib/pdf-sections';
 import { pdfItems } from '../lib/visibility';
@@ -146,5 +147,6 @@ const period = (start: string, end: string | null) => {
         </section>
       )
     }
+    <Analytics site={site} />
   </body>
 </html>

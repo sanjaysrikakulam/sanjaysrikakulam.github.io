@@ -11,6 +11,11 @@
 #             (resolved in src/lib/proof.ts) or a literal `value`.
 #   pdf       page_size (A4 | Letter), the ordered `sections` in the CV, and
 #             optional per-type `max_items` caps.
+#   analytics optional. Set `goatcounter` to your GoatCounter count endpoint
+#             (https://YOURCODE.goatcounter.com/count) to enable privacy-friendly
+#             page-view analytics. Omit or leave it out and no tracker, pixel, or
+#             footer note is rendered. GoatCounter sets no cookies and stores no
+#             personal data, so no consent banner is needed.
 #
 profile:
   name: Sanjay Kumar Srikakulam
@@ -84,3 +89,6 @@ proof:
 pdf:
   page_size: A4
   sections: [profile, education, experience, publications, skills]
+
+analytics:
+  goatcounter: https://sansrikaku.goatcounter.com/count

@@ -1,6 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import { sectionConfig } from '../lib/section-config';
+import { getAnalytics } from '../lib/analytics';
 import type { PageData } from '../lib/page-data';
 
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
 const { data } = Astro.props;
 const config = sectionConfig(data.site, 'contact');
 const { links } = data.site;
+const analytics = getAnalytics(data.site);
 
 const LABELS: Record<string, string> = {
   github: 'GitHub',
@@ -61,5 +63,31 @@ const ICONS: Record<string, string> = {
         </a>
       </div>
     </div>
+    {
+      analytics && (
+        <p class="privacy">
+          Analytics by{' '}
+          <a href="https://www.goatcounter.com" target="_blank" rel="noopener noreferrer">
+            GoatCounter
+          </a>{' '}
+          &mdash; no cookies, no personal data.
+        </p>
+      )
+    }
   </div>
 </footer>
+
+<style>
+  .privacy {
+    margin-top: 32px;
+    font-size: 0.8125rem;
+    color: var(--color-ink-3);
+  }
+  .privacy a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .privacy a:hover {
+    text-decoration: underline;
+  }
+</style>

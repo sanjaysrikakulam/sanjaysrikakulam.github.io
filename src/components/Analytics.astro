@@ -1,0 +1,33 @@
+---
+// Renders the GoatCounter tag only when an endpoint is configured in site.yml;
+// otherwise nothing is emitted, so the site behaves identically without it.
+// `is:inline` keeps Astro from bundling the third-party script and preserves its
+// data-goatcounter/async attributes. The <noscript> pixel counts JS-disabled
+// visitors. We do not set allow_local, so localhost/127.0.0.1 renders (astro dev
+// and the CI PDF build hitting /cv) are ignored by GoatCounter.
+import type { Site } from '../schemas/site';
+import { getAnalytics } from '../lib/analytics';
+
+interface Props {
+  site: Site;
+  path?: string;
+}
+const { site, path = Astro.url.pathname } = Astro.props;
+const analytics = getAnalytics(site);
+---
+
+{
+  analytics && (
+    <>
+      <script
+        is:inline
+        data-goatcounter={analytics.endpoint}
+        async
+        src="https://gc.zgo.at/count.js"
+      />
+      <noscript>
+        <img src={`${analytics.endpoint}?p=${path}`} alt="" />
+      </noscript>
+    </>
+  )
+}

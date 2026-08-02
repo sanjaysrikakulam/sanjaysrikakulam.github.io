@@ -41,7 +41,7 @@ const navSections = data.site.sections
   .map((section) => ({ id: section.id, label: NAV_LABELS[section.id] }));
 ---
 
-<Base title={data.site.profile.name} description={data.site.profile.headline}>
+<Base title={data.site.profile.name} description={data.site.profile.headline} site={data.site}>
   <Nav site={data.site} sections={navSections} />
   <Hero site={data.site} />
   <ProofStrip site={data.site} caches={proofCaches} />

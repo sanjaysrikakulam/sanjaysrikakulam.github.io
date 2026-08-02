@@ -166,4 +166,26 @@ describe('siteSchema', () => {
       siteSchema.parse({ ...valid, proof: [{ label: 'Merged pull requests' }] }),
     ).toThrow(/metric/i);
   });
+
+  it('defaults analytics to an empty block when omitted', () => {
+    expect(siteSchema.parse(valid).analytics).toEqual({});
+  });
+
+  it('accepts an analytics block carrying a goatcounter endpoint', () => {
+    const parsed = siteSchema.parse({
+      ...valid,
+      analytics: { goatcounter: 'https://code.goatcounter.com/count' },
+    });
+    expect(parsed.analytics.goatcounter).toBe('https://code.goatcounter.com/count');
+  });
+
+  it('rejects a malformed goatcounter endpoint', () => {
+    expect(() => siteSchema.parse({ ...valid, analytics: { goatcounter: 'not-a-url' } })).toThrow();
+  });
+
+  it('rejects an unknown field under analytics', () => {
+    expect(() =>
+      siteSchema.parse({ ...valid, analytics: { goatcounde: 'https://x.goatcounter.com/count' } }),
+    ).toThrow();
+  });
 });

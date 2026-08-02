@@ -82,6 +82,12 @@ export const siteSchema = z
       })
       .strict()
       .prefault({}),
+    analytics: z
+      .object({ goatcounter: z.url().optional() })
+      .strict()
+      // prefault (not default) so an absent analytics block is still parsed
+      // through the schema; with no goatcounter set the feature stays off.
+      .prefault({}),
   })
   .strict()
   .refine((site) => site.profile.headline.includes(site.profile.headline_accent), {
