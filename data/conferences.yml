@@ -19,11 +19,13 @@
 - name: 'Joint de.KCD & 8th de.NBI Cloud User Meeting'
   year: 2025
   role: workshop
+  location: Berlin, Germany
   title: Terraform for Infrastructure-as-Code Automation
 
 - name: 'NeIC: Nordic e-Infrastructure Tomorrow'
   year: 2024
   role: talk
+  location: Tallinn, Estonia
   title: >
     Total Perspective Vortex (TPV): Seamlessly managing job destinations in Galaxy when users
     can't be trusted with resources
@@ -49,15 +51,19 @@
 - name: 6th de.NBI Cloud User Meeting
   year: 2023
   role: workshop
+  location: Bielefeld, Germany
   title: Infrastructure automation with Terraform
 
 - name: Galaxy Admin Training
   year: 2023
   role: workshop
+  location: Ghent, Belgium
+  url: https://galaxyproject.org/events/2023-admin-training/
 
 - name: 9th bwHPC Symposium
   year: 2023
   role: talk
+  location: Mannheim, Germany
   title: >
     Introducing Galaxy: A new cloud and HPC gateway for data-driven computational research
 
@@ -76,6 +82,7 @@
 - name: ECCB
   year: 2022
   role: poster
+  location: Sitges, Spain
   title: >
     MetaProFi: An ultrafast chunked Bloom filter for storing and querying protein and nucleotide
     sequence data for accurate identification of functionally relevant genetic variants
@@ -83,6 +90,7 @@
 - name: ISMB/ECCB
   year: 2019
   role: poster
+  location: Basel, Switzerland
   title: >
     A mutation Y823D in KIT shifts dynamic equilibrium between the kinase active and inactive
     states thus conferring resistance to anti-cancer drugs
@@ -90,11 +98,14 @@
 - name: Jet-Bio Luminance (National-Level Students Symposium)
   year: 2014
   role: talk
+  location: Chennai, Tamil Nadu, India
   award: Third prize, paper presentation
+  url: https://www.knowafest.com/explore/events/2014/02/0720-jet-bio-luminance-14-biotechnology-fest-st-josephs-college-engineering-chennai
 
 - name: Biolympics 2K12 (National-Level Students Symposium)
   year: 2012
   role: talk
+  location: Tamil Nadu, India
   award: Second prize, paper presentation
 
 - name: Recent Advances in Computational Drug Design (RACDD)
@@ -105,6 +116,7 @@
 - name: International Conference on Next Generation Bioinformatics (ICNGB)
   year: 2013
   role: poster
+  location: Tamil Nadu, India
 
 - name: International Conference on Structural and Functional Genomics (ICSAFG)
   year: 2013
@@ -114,3 +126,4 @@
 - name: National Conference on Computer Aided Drug Designing (NCCADD)
   year: 2011
   role: poster
+  location: Tamil Nadu, India
