@@ -179,6 +179,21 @@ nav .wrap {
   border-color: var(--color-accent);
   color: var(--color-accent);
 }
+.navctl {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+/* Menu button only appears once the links collapse (see mobile block). */
+.navtoggle {
+  display: none;
+}
+/* Opaque fallback where backdrop-filter is unavailable (e.g. Firefox Android). */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  nav {
+    background: var(--color-bg);
+  }
+}
 
 section {
   padding: 96px 0;
@@ -791,7 +806,7 @@ h1 em {
   margin: 0 0 4px;
 }
 .role-entry li::marker {
-  color: var(--color-line-2);
+  color: var(--color-ink-3);
 }
 .affil {
   display: flex;
@@ -1251,8 +1266,33 @@ h1 em {
 }
 
 @media (max-width: 860px) {
-  .navlinks a {
+  .navtoggle {
+    display: grid;
+  }
+  .navlinks {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
     display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 6px 20px 14px;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-line);
+    box-shadow: 0 14px 26px -20px rgba(0, 0, 0, 0.45);
+  }
+  .navlinks.open {
+    display: flex;
+  }
+  .navlinks a {
+    padding: 12px 4px;
+    font-size: 16px;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .navlinks a:last-child {
+    border-bottom: 0;
   }
   .llorg {
     display: none;

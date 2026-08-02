@@ -11,7 +11,7 @@ const { site, sections } = Astro.props;
 <nav>
   <div class="wrap">
     <a class="brand" href="#top">{site.profile.name}</a>
-    <div class="navlinks">
+    <div class="navlinks" id="nav-links">
       {
         sections.map((section) => (
           <a href={`#${section.id}`} data-nav={section.id}>
@@ -19,6 +19,8 @@ const { site, sections } = Astro.props;
           </a>
         ))
       }
+    </div>
+    <div class="navctl">
       {
         site.display.theme_toggle && (
           <button class="tbtn" id="theme-toggle" aria-label="Switch colour theme">
@@ -26,6 +28,26 @@ const { site, sections } = Astro.props;
           </button>
         )
       }
+      <button
+        class="tbtn navtoggle"
+        id="nav-toggle"
+        aria-label="Open menu"
+        aria-controls="nav-links"
+        aria-expanded="false"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          aria-hidden="true"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+        >
+          <path d="M2 4h12M2 8h12M2 12h12" />
+        </svg>
+      </button>
     </div>
   </div>
 </nav>
@@ -36,6 +58,22 @@ const { site, sections } = Astro.props;
     const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
     root.dataset.theme = next;
     localStorage.setItem('theme', next);
+  });
+
+  const navToggle = document.getElementById('nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+  const setMenu = (open: boolean) => {
+    navLinks?.classList.toggle('open', open);
+    navToggle?.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
+  navToggle?.addEventListener('click', () =>
+    setMenu(!navLinks?.classList.contains('open')),
+  );
+  navLinks
+    ?.querySelectorAll('a')
+    .forEach((link) => link.addEventListener('click', () => setMenu(false)));
+  addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setMenu(false);
   });
 
   const targets = [...document.querySelectorAll('section[id], header[id]')];
