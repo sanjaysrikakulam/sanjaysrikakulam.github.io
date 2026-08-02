@@ -24,8 +24,9 @@ profile:
     From the atoms of a single protein to petabytes of sequencing data, Sanjay works
     across both the research and the infrastructure of computational biology. A
     postdoctoral researcher at Forschungszentrum Jülich, he applies AI and agentic
-    frameworks to the biocuration of metabolomics and lipidomics literature, and builds
-    algorithms for large-scale sequence indexing. His earlier work spanned structural
+    frameworks to the biocuration of mass spectrometry literature, explores small language
+    models (SLMs) for annotating mass spectra, and builds algorithms for large-scale
+    sequence indexing. His earlier work spanned structural
     bioinformatics and molecular dynamics, and he has run the Galaxy Europe platform. He
     also works with de.NBI and ELIXIR Germany on research cloud infrastructure.
 
