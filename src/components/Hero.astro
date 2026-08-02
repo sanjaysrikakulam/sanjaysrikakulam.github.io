@@ -1,5 +1,6 @@
 ---
 import { splitHeadline } from '../lib/headline';
+import { getAnalytics } from '../lib/analytics';
 import type { Site } from '../schemas/site';
 
 interface Props {
@@ -10,6 +11,10 @@ const { before, accent, after } = splitHeadline(
   site.profile.headline,
   site.profile.headline_accent,
 );
+// GoatCounter binds a click event to elements carrying data-goatcounter-click,
+// so the CV download (a static PDF that cannot run the tracker itself) is still
+// counted. The attributes stay off entirely when analytics is not configured.
+const download = getAnalytics(site) ? 'download-cv' : undefined;
 ---
 
 <header class="hero" id="top">
@@ -32,6 +37,7 @@ const { before, accent, after } = splitHeadline(
           href="/Sanjay_Srikakulam_CV.pdf"
           target="_blank"
           rel="noopener noreferrer"
+          data-goatcounter-click={download}
         >
           Download CV
         </a>

@@ -145,12 +145,19 @@ test.describe('analytics', () => {
     await page.goto('/');
     const script = page.locator('script[src="https://gc.zgo.at/count.js"]');
     const note = page.locator('footer .privacy');
+    // The PDF download links carry a GoatCounter click event so downloads (a
+    // static PDF that cannot run the tracker) are counted; the attribute is
+    // present only when analytics is enabled.
+    const downloads = page.locator('a[href="/Sanjay_Srikakulam_CV.pdf"]');
+    const tracked = page.locator('a[href="/Sanjay_Srikakulam_CV.pdf"][data-goatcounter-click]');
     if ((await script.count()) > 0) {
       await expect(script).toHaveAttribute('data-goatcounter', /goatcounter\.com\/count/);
       await expect(note).toHaveCount(1);
       await expect(note.locator('a')).toHaveAttribute('href', 'https://www.goatcounter.com');
+      await expect(tracked).toHaveCount(await downloads.count());
     } else {
       await expect(note).toHaveCount(0);
+      await expect(tracked).toHaveCount(0);
     }
   });
 });
