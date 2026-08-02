@@ -62,7 +62,16 @@ jobs:
           if [ -n "$(git status --porcelain data/.cache)" ]; then
             git add data/.cache
             git commit -m "Update cached repository, citation, and download figures"
-            git push
+            pushed=false
+            for attempt in 1 2 3; do
+              if git push; then pushed=true; break; fi
+              echo "Push rejected (attempt $attempt); rebasing on the latest main."
+              git pull --rebase origin main
+            done
+            if [ "$pushed" = false ]; then
+              echo "Could not push refreshed metrics after 3 attempts." >&2
+              exit 1
+            fi
           else
             echo "Figures unchanged."
           fi
@@ -92,7 +101,16 @@ jobs:
           if [ -n "$(git status --porcelain public/Sanjay_Srikakulam_CV.pdf)" ]; then
             git add public/Sanjay_Srikakulam_CV.pdf
             git commit -m "Update downloadable CV"
-            git push
+            pushed=false
+            for attempt in 1 2 3; do
+              if git push; then pushed=true; break; fi
+              echo "Push rejected (attempt $attempt); rebasing on the latest main."
+              git pull --rebase origin main
+            done
+            if [ "$pushed" = false ]; then
+              echo "Could not push the regenerated CV after 3 attempts." >&2
+              exit 1
+            fi
           else
             echo "CV unchanged."
           fi
