@@ -31,7 +31,7 @@
     "keywords": [],
     "resource_type": "Preprint",
     "title": "Optimized meta-scheduling in Galaxy using TPV Broker",
-    "views": 741,
+    "views": 742,
     "year": 2025
   },
   "10.5281/zenodo.15362960": {
@@ -158,7 +158,7 @@
       }
     ],
     "authors_display": "Azab A, Srikakulam SK, De Geest P, Vondrák T, Grüning B, Kuntz M, Fernandez-del-Castillo E, Luna-Valero S",
-    "downloads": 73,
+    "downloads": 74,
     "keywords": [
       "Smart Job Scheduling",
       "Meta-Scheduler",
@@ -327,7 +327,7 @@
       }
     ],
     "authors_display": "Zierep P, Kuntz M, Srikakulam SK, Grüning B",
-    "downloads": 115,
+    "downloads": 116,
     "keywords": [
       "Interactive Tools",
       "Galaxy",
