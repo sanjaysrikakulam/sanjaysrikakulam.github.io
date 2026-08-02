@@ -9,9 +9,13 @@ interface Props {
 }
 const { project, github, citations } = Astro.props;
 const stats = project.repo ? github.repos[project.repo] : undefined;
+const href =
+  project.url ?? stats?.url ?? (project.repo ? `https://github.com/${project.repo}` : undefined);
+const Tag = href ? 'a' : 'article';
+const linkAttrs = href ? { href, target: '_blank', rel: 'noopener noreferrer' } : {};
 ---
 
-<article class="card">
+<Tag class="card" {...linkAttrs}>
   <div>
     <h3>{project.name}</h3>
     <p>{project.summary}</p>
@@ -38,11 +42,7 @@ const stats = project.repo ? github.repos[project.repo] : undefined;
             <span class="k">Citations</span>
           </p>
         )}
-        <p class="synced">
-          <span class="d" aria-hidden="true" />
-          synced from source
-        </p>
       </div>
     )
   }
-</article>
+</Tag>

@@ -1,31 +1,73 @@
 # yaml-language-server: $schema=../.astro/collections/skills.schema.json
+#
+# One entry per skill group. Required: group, items, category.
+# category is research or infrastructure, and drives the two-tab filter in the
+# skills section, so every group must pick one.
+#
+# Template:
+#
+# - group: Programming                    # required, the group heading
+#   category: research                    # required: research | infrastructure
+#   items: [Python, Bash, R]              # required, one or more skills
+#   featured: true                        # optional, pull to the top
+#   visible: false                        # optional, hide without deleting
 - group: Programming
-  items: [Python, Shell scripting (Bash), R]
-- group: AI and LLM stack
-  items: [vLLM, PydanticAI, coding agents, pgvector, OpenAI API]
+  category: research
+  items: [Python, Bash, R]
+- group: AI and LLM
+  category: research
+  items:
+    [
+      vLLM,
+      PydanticAI,
+      Coding agents,
+      OpenAI API,
+      RAG,
+      Embeddings,
+      NER,
+      Hugging Face Transformers,
+      pgvector,
+    ]
+- group: Data science and ML
+  category: research
+  items: [pandas, NumPy, scikit-learn]
+- group: Bioinformatics methods
+  category: research
+  items:
+    [
+      Sequence analysis and indexing,
+      Structural bioinformatics,
+      Structural annotation,
+      Molecular modelling,
+      Molecular dynamics,
+      Molecular docking,
+      Virtual screening,
+      Ontology and controlled vocabularies,
+    ]
+- group: Cloud, containers and virtualisation
+  category: infrastructure
+  items: [OpenStack, AWS, Docker, LXC, KVM]
+- group: Infrastructure as code and configuration
+  category: infrastructure
+  items: [Terraform, Ansible, RPM packaging, Pulp]
+- group: CI/CD and version control
+  category: infrastructure
+  items: [Git, Jenkins]
+- group: Workload scheduling
+  category: infrastructure
+  items: [HTCondor]
 - group: Web servers
+  category: infrastructure
   items: [Apache, Nginx]
 - group: Databases
+  category: infrastructure
   items: [SQL, MySQL/MariaDB, PostgreSQL]
-- group: Version control
-  items: [Git]
-- group: CI/CD
-  items: [Jenkins]
-- group: Containers and virtualisation
-  items: [Docker, LXC, KVM]
-- group: Cloud platforms and services
-  items: [OpenStack, AWS]
-- group: Infrastructure as code and configuration management
-  items: [Terraform, Ansible, RPM packaging, Pulp]
-- group: High-throughput workload scheduling
-  items: [HTCondor]
 - group: Monitoring and observability
+  category: infrastructure
   items: [Icinga, Telegraf, InfluxDB, Grafana]
 - group: Security
-  items: [Firewall management, SSL/TLS certificates, Fail2ban]
-- group: Certificate management
-  items: [Let's Encrypt]
-- group: Cloud DNS
-  items: [AWS Route 53, DigitalOcean]
-- group: Storage
-  items: [NAS, DAS, JBOD, NFS, S3, CVMFS]
+  category: infrastructure
+  items: [Firewall management, SSL/TLS certificates, Let's Encrypt, Fail2ban]
+- group: Networking, DNS and storage
+  category: infrastructure
+  items: [AWS Route 53, DigitalOcean, NAS, DAS, JBOD, NFS, S3, CVMFS]

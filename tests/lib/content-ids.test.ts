@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { yamlArrayParser } from '../../src/lib/slug';
-import { conferenceId, experienceId } from '../../src/lib/entry-ids';
+import { conferenceId, experienceId, publicationId } from '../../src/lib/entry-ids';
 
 describe('conferenceId', () => {
   it('gives two posters at the same conference and year different ids when titles differ', () => {
@@ -61,6 +61,38 @@ describe('experienceId', () => {
     const a = experienceId({ org: 'Acme', start: '2025-09', title: 'Engineer' });
     const b = experienceId({ org: 'Acme', start: '2025-09', title: 'Engineer' });
     expect(a).toBe(b);
+  });
+});
+
+describe('publicationId', () => {
+  it('uses the DOI as the identity so a fetched title is not needed', () => {
+    expect(publicationId({ doi: '10.1093/x', zenodo_doi: '10.5281/zenodo.1' })).toBe('10.1093/x');
+  });
+
+  it('falls back to the Zenodo DOI when there is no CrossRef DOI', () => {
+    expect(publicationId({ zenodo_doi: '10.5281/zenodo.1' })).toBe('10.5281/zenodo.1');
+  });
+});
+
+describe('yamlArrayParser wired with publicationId', () => {
+  const parse = yamlArrayParser((entry) => publicationId(entry));
+
+  it('derives slugged ids from the identifier, not the title', () => {
+    const result = parse(
+      [
+        '- doi: 10.1093/bioinformatics/btad101',
+        '  type: journal',
+        '  author_role: first',
+        '- zenodo_doi: 10.5281/zenodo.500',
+        '  type: presentation',
+        '  author_role: contributing',
+        '',
+      ].join('\n'),
+    );
+    expect(result.map((entry) => entry.id)).toEqual([
+      '10-1093-bioinformatics-btad101',
+      '10-5281-zenodo-500',
+    ]);
   });
 });
 

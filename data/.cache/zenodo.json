@@ -1,11 +1,47 @@
 {
   "10.5281/zenodo.14936846": {
+    "authors": [
+      {
+        "family": "Azab",
+        "given": "Abdulrahman"
+      },
+      {
+        "family": "De Geest",
+        "given": "Paul"
+      },
+      {
+        "family": "Srikakulam",
+        "given": "Sanjay Kumar"
+      },
+      {
+        "family": "Vondra",
+        "given": "Tomáš"
+      },
+      {
+        "family": "Kuntz",
+        "given": "Mira"
+      },
+      {
+        "family": "Grüning",
+        "given": "Björn"
+      }
+    ],
+    "authors_display": "Azab A, De Geest P, Srikakulam SK, Vondra T, Kuntz M, Grüning B",
     "downloads": 326,
     "keywords": [],
     "resource_type": "Preprint",
-    "views": 738
+    "title": "Optimized meta-scheduling in Galaxy using TPV Broker",
+    "views": 741,
+    "year": 2025
   },
   "10.5281/zenodo.15362960": {
+    "authors": [
+      {
+        "family": "Srikakulam",
+        "given": "Sanjay Kumar"
+      }
+    ],
+    "authors_display": "Srikakulam SK",
     "downloads": 130,
     "keywords": [
       "Research Data Management",
@@ -14,10 +50,47 @@
       "Open science tools"
     ],
     "resource_type": "Presentation",
-    "views": 148
+    "title": "Data Snack - Galaxy a research data powerhouse from analysis to FAIR management",
+    "views": 149,
+    "year": 2025
   },
   "10.5281/zenodo.15729502": {
-    "downloads": 106,
+    "authors": [
+      {
+        "family": "Pedersen",
+        "given": "Maiken"
+      },
+      {
+        "family": "Srikakulam",
+        "given": "Sanjay Kumar"
+      },
+      {
+        "family": "De Geest",
+        "given": "Paul"
+      },
+      {
+        "family": "Fernandez-del-Castillo",
+        "given": "Enol"
+      },
+      {
+        "family": "Cristofori",
+        "given": "Andrea"
+      },
+      {
+        "family": "Luna-Valero",
+        "given": "Sebastian"
+      },
+      {
+        "family": "Tangaro",
+        "given": "Marco Antonio"
+      },
+      {
+        "family": "Nicotri",
+        "given": "Stefano"
+      }
+    ],
+    "authors_display": "Pedersen M, Srikakulam SK, De Geest P, Fernandez-del-Castillo E, Cristofori A, Luna-Valero S, Tangaro MA, Nicotri S",
+    "downloads": 107,
     "keywords": [
       "Galaxy platform",
       "Federated access",
@@ -45,9 +118,46 @@
       "Research Software and Tools"
     ],
     "resource_type": "Project deliverable",
-    "views": 243
+    "title": "Bring Your Own Infrastructure",
+    "views": 244,
+    "year": 2024
   },
   "10.5281/zenodo.15827107": {
+    "authors": [
+      {
+        "family": "Azab",
+        "given": "Abdulrahman"
+      },
+      {
+        "family": "Srikakulam",
+        "given": "Sanjay Kumar"
+      },
+      {
+        "family": "De Geest",
+        "given": "Paul"
+      },
+      {
+        "family": "Vondrák",
+        "given": "Tomáš"
+      },
+      {
+        "family": "Grüning",
+        "given": "Björn"
+      },
+      {
+        "family": "Kuntz",
+        "given": "Mira"
+      },
+      {
+        "family": "Fernandez-del-Castillo",
+        "given": "Enol"
+      },
+      {
+        "family": "Luna-Valero",
+        "given": "Sebastian"
+      }
+    ],
+    "authors_display": "Azab A, Srikakulam SK, De Geest P, Vondrák T, Grüning B, Kuntz M, Fernandez-del-Castillo E, Luna-Valero S",
     "downloads": 73,
     "keywords": [
       "Smart Job Scheduling",
@@ -62,9 +172,58 @@
       "European Research Infrastructure"
     ],
     "resource_type": "Project deliverable",
-    "views": 217
+    "title": "Publication on the smart job scheduler implementation",
+    "views": 217,
+    "year": 2025
   },
   "10.5281/zenodo.15920451": {
+    "authors": [
+      {
+        "family": "Nicotri",
+        "given": "Stefano"
+      },
+      {
+        "family": "Tangaro",
+        "given": "Marco Antonio"
+      },
+      {
+        "family": "Zambelli",
+        "given": "Federico"
+      },
+      {
+        "family": "Ruda",
+        "given": "Miroslav"
+      },
+      {
+        "family": "Krenek",
+        "given": "Ales"
+      },
+      {
+        "family": "Grüning",
+        "given": "Björn"
+      },
+      {
+        "family": "Srikakulam",
+        "given": "Sanjay Kumar"
+      },
+      {
+        "family": "Bretaudeau",
+        "given": "Anthony"
+      },
+      {
+        "family": "Batalden",
+        "given": "Sondre"
+      },
+      {
+        "family": "Chavero Díez",
+        "given": "María"
+      },
+      {
+        "family": "De Geest",
+        "given": "Paul"
+      }
+    ],
+    "authors_display": "Nicotri S, Tangaro MA, Zambelli F, Ruda M, Krenek A, Grüning B, Srikakulam SK, Bretaudeau A, Batalden S, Chavero Díez M, De Geest P",
     "downloads": 65,
     "keywords": [
       "Galaxy Project",
@@ -87,9 +246,42 @@
       "Infrastructure as Code"
     ],
     "resource_type": "Project deliverable",
-    "views": 175
+    "title": "D3.1 Operations documentation on the Open Infrastructure deployment",
+    "views": 175,
+    "year": 2024
   },
   "10.5281/zenodo.16312227": {
+    "authors": [
+      {
+        "family": "Srikakulam",
+        "given": "Sanjay Kumar"
+      },
+      {
+        "family": "Azab",
+        "given": "Abdulrahman"
+      },
+      {
+        "family": "De Geest",
+        "given": "Paul"
+      },
+      {
+        "family": "Vondrák",
+        "given": "Tomáš"
+      },
+      {
+        "family": "Kuntz",
+        "given": "Mira"
+      },
+      {
+        "family": "Luna-Valero",
+        "given": "Sebastian"
+      },
+      {
+        "family": "Grüning",
+        "given": "Björn"
+      }
+    ],
+    "authors_display": "Srikakulam SK, Azab A, De Geest P, Vondrák T, Kuntz M, Luna-Valero S, Grüning B",
     "downloads": 98,
     "keywords": [
       "Galaxy",
@@ -111,9 +303,30 @@
       "Research infrastructure"
     ],
     "resource_type": "Poster",
-    "views": 180
+    "title": "Dynamic meta-scheduling in Galaxy with TPV Broker for smarter workload distribution",
+    "views": 181,
+    "year": 2025
   },
   "10.5281/zenodo.16735306": {
+    "authors": [
+      {
+        "family": "Zierep",
+        "given": "Paul"
+      },
+      {
+        "family": "Kuntz",
+        "given": "Mira"
+      },
+      {
+        "family": "Srikakulam",
+        "given": "Sanjay Kumar"
+      },
+      {
+        "family": "Grüning",
+        "given": "Björn"
+      }
+    ],
+    "authors_display": "Zierep P, Kuntz M, Srikakulam SK, Grüning B",
     "downloads": 115,
     "keywords": [
       "Interactive Tools",
@@ -124,10 +337,103 @@
       "Machine Learning"
     ],
     "resource_type": "Conference paper",
-    "views": 116
+    "title": "Interactive Galaxy Tools: Combining real-time user interaction with scientific workflows",
+    "views": 118,
+    "year": 2025
   },
   "10.5281/zenodo.16761933": {
-    "downloads": 205,
+    "authors": [
+      {
+        "family": "Tangaro",
+        "given": "Marco Antonio"
+      },
+      {
+        "family": "Nicotri",
+        "given": "Stefano"
+      },
+      {
+        "family": "Grüning",
+        "given": "Björn"
+      },
+      {
+        "family": "Srikakulam",
+        "given": "Sanjay Kumar"
+      },
+      {
+        "family": "Dadras",
+        "given": "Armin"
+      },
+      {
+        "family": "Kaiser",
+        "given": "Oana"
+      },
+      {
+        "family": "Kuntz",
+        "given": "Mira"
+      },
+      {
+        "family": "Bretaudeau",
+        "given": "Anthony"
+      },
+      {
+        "family": "De Geest",
+        "given": "Paul"
+      },
+      {
+        "family": "Luna-Valero",
+        "given": "Sebastian"
+      },
+      {
+        "family": "Chavero Díez",
+        "given": "María"
+      },
+      {
+        "family": "Fernández González",
+        "given": "José María"
+      },
+      {
+        "family": "Capella-Gutierrez",
+        "given": "Salvador"
+      },
+      {
+        "family": "Gelpí",
+        "given": "Josep Lluís"
+      },
+      {
+        "family": "Astalos",
+        "given": "Jan"
+      },
+      {
+        "family": "Jurič",
+        "given": "Boris"
+      },
+      {
+        "family": "Ruda",
+        "given": "Miroslav"
+      },
+      {
+        "family": "Opioła",
+        "given": "Łukasz"
+      },
+      {
+        "family": "Bayındır",
+        "given": "Hakan"
+      },
+      {
+        "family": "GIOIOSA",
+        "given": "SILVIA"
+      },
+      {
+        "family": "De Sanctis",
+        "given": "Gaetanomaria"
+      },
+      {
+        "family": "Zambelli",
+        "given": "Federico"
+      }
+    ],
+    "authors_display": "Tangaro MA, Nicotri S, Grüning B, Srikakulam SK, Dadras A, Kaiser O, Kuntz M, Bretaudeau A, De Geest P, Luna-Valero S, Chavero Díez M, Fernández González JM, Capella-Gutierrez S, Gelpí JL, Astalos J, Jurič B, Ruda M, Opioła Ł, Bayındır H, GIOIOSA S, De Sanctis G, Zambelli F",
+    "downloads": 206,
     "keywords": [
       "Galaxy Project",
       "Pulsar",
@@ -146,10 +452,74 @@
       "HPC"
     ],
     "resource_type": "Preprint",
-    "views": 345
+    "title": "Scaling Scientific Workflows in Europe: Architecture and Deployment of the Galaxy-Pulsar Computational Network",
+    "views": 347,
+    "year": 2025
   },
   "10.5281/zenodo.19882942": {
-    "downloads": 464,
+    "authors": [
+      {
+        "family": "Twardziok",
+        "given": "Sven"
+      },
+      {
+        "family": "Barysch",
+        "given": "Sina-Victoria"
+      },
+      {
+        "family": "Braun",
+        "given": "Martin"
+      },
+      {
+        "family": "Buchhalter",
+        "given": "Ivo"
+      },
+      {
+        "family": "Grüning",
+        "given": "Björn"
+      },
+      {
+        "family": "Kraft",
+        "given": "Pascal"
+      },
+      {
+        "family": "Krüger",
+        "given": "Jens"
+      },
+      {
+        "family": "Kuchenbecker",
+        "given": "Leon"
+      },
+      {
+        "family": "Srikakulam",
+        "given": "Sanjay Kumar"
+      },
+      {
+        "family": "Lawerenz",
+        "given": "Christian"
+      },
+      {
+        "family": "Sczyrba",
+        "given": "Alexander"
+      },
+      {
+        "family": "Wagener",
+        "given": "Harald"
+      },
+      {
+        "family": "Hoffmann",
+        "given": "Nils"
+      },
+      {
+        "family": "Kohlbacher",
+        "given": "Oliver"
+      },
+      {
+        "name": "German Network for Bioinformatics Infrastructure - de.NBI"
+      }
+    ],
+    "authors_display": "Twardziok S, Barysch SV, Braun M, Buchhalter I, Grüning B, Kraft P, Krüger J, Kuchenbecker L, Srikakulam SK, Lawerenz C, Sczyrba A, Wagener H, Hoffmann N, Kohlbacher O, German Network for Bioinformatics Infrastructure - de.NBI",
+    "downloads": 466,
     "keywords": [
       "NFDI",
       "de.NBI",
@@ -169,14 +539,37 @@
       "GA4GH"
     ],
     "resource_type": "Publication",
-    "views": 510
+    "title": "Towards Federated, Certified Infrastructures for Sensitive Data Research in Germany and Europe with the de.NBI Cloud",
+    "views": 511,
+    "year": 2026
   },
   "10.5281/zenodo.8335099": {
+    "authors": [
+      {
+        "family": "Kayikcioglu",
+        "given": "Tunc"
+      },
+      {
+        "family": "Srikakulam",
+        "given": "Sanjay Kumar"
+      },
+      {
+        "family": "Maier",
+        "given": "Wolfgang"
+      },
+      {
+        "family": "Grüning",
+        "given": "Björn"
+      }
+    ],
+    "authors_display": "Kayikcioglu T, Srikakulam SK, Maier W, Grüning B",
     "downloads": 66,
     "keywords": [
       "Interactive Tools, Galaxy, workflows, notebooks, Jupyter, R Studio"
     ],
     "resource_type": "Poster",
-    "views": 105
+    "title": "Interactive Tools (IT) in Galaxy",
+    "views": 106,
+    "year": 2023
   }
 }

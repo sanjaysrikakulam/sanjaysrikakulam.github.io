@@ -15,6 +15,7 @@ export async function loadPageData() {
   const github = normaliseGithubCache(readCacheFile<Partial<GithubCache>>('github', {}));
   const openalex = readCacheFile<Record<string, { citations: number }>>('openalex', {});
   const zenodo = readCacheFile<Record<string, { views: number; downloads: number }>>('zenodo', {});
+  const crossref = readCacheFile('crossref', {});
 
   const experience = visibleItems(dataOf(await getCollection('experience')));
 
@@ -33,6 +34,7 @@ export async function loadPageData() {
     publications: mergePublications(dataOf(await getCollection('publications')), {
       openalex,
       zenodo,
+      crossref,
     }),
     conferences: visibleItems(dataOf(await getCollection('conferences'))).sort(
       (a, b) => b.year - a.year || a.name.localeCompare(b.name),

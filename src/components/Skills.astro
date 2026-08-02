@@ -1,19 +1,60 @@
 ---
 import type { SkillGroup } from '../schemas/skills';
+import { skillTabs } from '../lib/skills';
 
 interface Props {
   skills: SkillGroup[];
 }
 const { skills } = Astro.props;
+const { tabs, showTabs } = skillTabs(skills);
 ---
+
+{
+  showTabs && (
+    <div class="pubfilter skilltabs" role="group" aria-label="Filter skills by area">
+      {tabs.map((tab, index) => (
+        <button
+          type="button"
+          class:list={['pf', { on: index === 0 }]}
+          data-skilltab={tab.id}
+          aria-pressed={index === 0 ? 'true' : 'false'}
+        >
+          {tab.label}
+        </button>
+      ))}
+    </div>
+  )
+}
 
 <div class="skills">
   {
     skills.map((group) => (
-      <div class="sk">
+      <div class="sk" data-cat={group.category}>
         <h4>{group.group}</h4>
         <p>{group.items.join(', ')}</p>
       </div>
     ))
   }
 </div>
+
+<script>
+  // Progressive enhancement: without this script every group stays visible. When
+  // tabs are present the first category shows on load and the rest hide; clicking
+  // a tab swaps which category is shown. With no tabs the buttons list is empty
+  // and this does nothing, leaving every group visible.
+  const skillTabButtons = document.querySelectorAll<HTMLButtonElement>('.skilltabs .pf');
+  const skillGroups = document.querySelectorAll<HTMLElement>('.skills .sk');
+  function showSkillCategory(wanted: string) {
+    for (const group of skillGroups) group.hidden = group.dataset.cat !== wanted;
+    for (const button of skillTabButtons) {
+      const active = button.dataset.skilltab === wanted;
+      button.classList.toggle('on', active);
+      button.setAttribute('aria-pressed', String(active));
+    }
+  }
+  for (const button of skillTabButtons) {
+    button.addEventListener('click', () => showSkillCategory(button.dataset.skilltab ?? ''));
+  }
+  const firstCategory = skillTabButtons[0]?.dataset.skilltab;
+  if (firstCategory) showSkillCategory(firstCategory);
+</script>

@@ -46,8 +46,15 @@ describe('data completeness against the source CV', () => {
     expect(load('publications').length).toBeGreaterThanOrEqual(16);
   });
 
-  it('has all fifteen skill groups', () => {
-    expect(load('skills')).toHaveLength(15);
+  it('has all thirteen skill groups', () => {
+    expect(load('skills')).toHaveLength(13);
+  });
+
+  it('assigns every skill group to a known category', () => {
+    const groups = load('skills') as Array<{ category: string }>;
+    expect(groups.every((g) => g.category === 'research' || g.category === 'infrastructure')).toBe(
+      true,
+    );
   });
 
   it('records exactly two first-author publications', () => {
@@ -57,9 +64,9 @@ describe('data completeness against the source CV', () => {
     expect(first).toHaveLength(2);
   });
 
-  it('starts conferences and hackathons empty for the owner to fill', () => {
-    expect(load('conferences')).toEqual([]);
-    expect(load('hackathons')).toEqual([]);
+  it('lists conferences and hackathons', () => {
+    expect(load('conferences').length).toBeGreaterThan(0);
+    expect(load('hackathons').length).toBeGreaterThan(0);
   });
 });
 

@@ -1,4 +1,18 @@
 # yaml-language-server: $schema=../.astro/collections/education.schema.json
+#
+# One entry per qualification, newest first. Required: degree, year, institution.
+#
+# Template:
+#
+# - degree: PhD, Bioinformatics          # required
+#   year: 2024                           # required, four-digit year awarded
+#   institution: Saarland University      # required
+#   location: Saarbrücken, Germany        # optional
+#   thesis:                               # optional block
+#     title: Thesis title                 #   required inside `thesis`
+#     url: https://example.org/thesis     #   optional
+#   featured: true                        # optional, pull to the top
+#   visible: false                        # optional, hide without deleting
 - degree: PhD, Bioinformatics
   year: 2024
   institution: Helmholtz Institute for Pharmaceutical Research Saarland and Saarland University

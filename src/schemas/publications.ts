@@ -19,13 +19,17 @@ const pubType = z.enum([
 
 export const publicationSchema = z
   .object({
-    title: z.string().min(1),
+    // title, venue, year, and authors_display are fetched from the DOI at build
+    // time and hydrated in mergePublications. They are optional here so a data
+    // entry can be just an identifier plus the fields a DOI cannot supply; when
+    // present in the YAML they act as an override.
+    title: z.string().min(1).optional(),
     type: pubType,
     // Extra labels beyond the primary type, e.g. a conference proceeding that
     // was also presented as a poster carries type: conference and tags: [poster].
     tags: z.array(pubType).optional(),
     venue: z.string().optional(),
-    year: z.number().int().min(1990).max(2100),
+    year: z.number().int().min(1990).max(2100).optional(),
     authors_display: z.string().optional(),
     author_role: z.enum([
       'first',

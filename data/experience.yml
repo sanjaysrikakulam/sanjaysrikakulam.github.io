@@ -1,4 +1,30 @@
 # yaml-language-server: $schema=../.astro/collections/experience.schema.json
+#
+# One role per entry, newest first. Required: title, org, start, end, summary,
+# and at least one highlight. `end: null` marks the current role.
+# `highlights` are always shown; `details` collapse behind a "N more" toggle.
+# Both render inline HTML, so a bullet may contain an <a href="...">link</a>.
+# Inside a folded `>` block keep the opening <a ...> tag and its URL on one line
+# (folding turns newlines into spaces), and write &amp; for a literal ampersand.
+#
+# Template:
+#
+# - title: Postdoctoral Researcher        # required
+#   org: Forschungszentrum Jülich GmbH     # required
+#   org_url: https://www.fz-juelich.de     # optional, links the org name
+#   location: Jülich, Germany              # optional
+#   start: 2025-09                         # required, YYYY-MM
+#   end: null                              # required, YYYY-MM or null if current
+#   track_colour: '#7C3AED'                # optional, timeline colour as #RRGGBB
+#   summary: One line describing the role. # required
+#   highlights:                            # required, at least one; always shown
+#     - A short achievement.               #   may contain an <a> link
+#   details:                               # optional, collapsed behind a toggle
+#     - A supporting responsibility.
+#   affiliations: [de.NBI, ELIXIR Germany] # optional, shown as tags
+#   tags: [Python, containers]             # optional
+#   featured: true                         # optional
+#   visible: false                         # optional, hide without deleting
 - title: Postdoctoral Researcher
   org: Forschungszentrum Jülich GmbH
   org_url: https://www.fz-juelich.de
@@ -16,8 +42,21 @@
       supporting filtering, search, deduplication, and remote index-based querying of
       FASTA and FASTQ at scale.
     - >
-      An OCI container registry with CVE scanning, SBOM generation, and image signing,
-      run as a European service through de.NBI and ELIXIR.
+      An <a href="https://oci.bi.denbi.de/" target="_blank" rel="noopener noreferrer">OCI container
+      registry</a> that mirrors the full
+      <a href="https://biocontainers.pro" target="_blank" rel="noopener noreferrer">BioContainers</a>
+      catalogue of over 100,000 images, with CVE scanning, SBOM generation, and image signing, run as
+      a European service through de.NBI and ELIXIR.
+    - >
+      The <a href="https://service-registry.bi.denbi.de/" target="_blank" rel="noopener noreferrer">de.NBI
+      service registration platform</a>, where de.NBI and ELIXIR Germany services are registered
+      through a structured form with a REST API, EDAM ontology annotations, bio.tools integration, and
+      an admin review portal.
+    - >
+      A <a href="https://koina.wilhelmlab.org" target="_blank" rel="noopener noreferrer">Koina</a>
+      inference service operated and supported on the de.NBI Cloud as part of the federated Koina
+      network for machine learning models in proteomics, reachable independently over HTTP, for
+      example from Python or curl.
   details:
     - Novel algorithms and data structures for indexing and querying petabyte-scale sequencing datasets.
     - >
@@ -42,10 +81,16 @@
   track_colour: '#DC2626'
   summary: Application development, feature work, and research on Galaxy Europe.
   highlights:
-    - Administration and management of Galaxy Europe, supporting over 170,000 users.
     - >
-      Algorithms and optimisations for meta-scheduling, including reducing carbon footprint
-      through efficient scheduling and distributed remote computing.
+      Administration and management of
+      <a href="https://usegalaxy.eu" target="_blank" rel="noopener noreferrer">Galaxy Europe</a>,
+      supporting over
+      <a href="https://stats.galaxyproject.eu/d/000000012/galaxy-user-statistics?orgId=1&amp;from=now-7y&amp;to=now&amp;timezone=browser&amp;var-time_interval=365d&amp;refresh=15m" target="_blank" rel="noopener noreferrer">170,000 users</a>.
+    - >
+      Algorithms and optimisations for
+      <a href="https://github.com/usegalaxy-eu/tpv-broker" target="_blank" rel="noopener noreferrer">meta-scheduling</a>,
+      including reducing carbon footprint through efficient scheduling and distributed remote
+      computing.
     - >
       Configuration, deployment, administration, and maintenance of the Galaxy HPC OpenStack
       cloud using Terraform, Ansible, Jenkins, Rsyslog, and the TIG stack.

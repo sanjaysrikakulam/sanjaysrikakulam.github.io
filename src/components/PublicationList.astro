@@ -122,6 +122,8 @@ const filters = CATEGORIES.filter((category) => presentCategories.has(category.i
   }
 </div>
 
+<nav class="pager" id="pub-pager" aria-label="Publication pages" hidden></nav>
+
 <script>
   for (const button of document.querySelectorAll<HTMLButtonElement>('.bib')) {
     button.addEventListener('click', async () => {
@@ -146,30 +148,88 @@ const filters = CATEGORIES.filter((category) => presentCategories.has(category.i
     });
   }
 
-  const tabs = document.querySelectorAll<HTMLButtonElement>('.pubfilter .pf');
-  const items = document.querySelectorAll<HTMLElement>('.publications .pub');
-  for (const tab of tabs) {
+  // Filtering and pagination. Every entry renders server-side, so with no JS
+  // the whole list shows and the pager stays hidden. With JS we show one page
+  // of the current filter at a time and build the numbered pager to move
+  // between pages. Changing a filter resets to the first page.
+  const PAGE_SIZE = 5;
+  const filterButtons = document.querySelectorAll<HTMLButtonElement>('.pubfilter .pf');
+  const items = Array.from(document.querySelectorAll<HTMLElement>('.publications .pub'));
+  const pager = document.getElementById('pub-pager');
+  const list = document.querySelector<HTMLElement>('.publications');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let wanted = 'all';
+  let page = 0;
+
+  const inFilter = (item: HTMLElement) =>
+    wanted === 'all' || (item.dataset.cats ?? '').split(' ').includes(wanted);
+
+  function buildPager(totalPages: number) {
+    if (!pager) return;
+    pager.replaceChildren();
+    pager.hidden = totalPages <= 1;
+    if (totalPages <= 1) return;
+    const add = (
+      label: string,
+      target: number,
+      opts: { aria: string; disabled?: boolean; current?: boolean },
+    ) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'pg';
+      button.textContent = label;
+      button.setAttribute('aria-label', opts.aria);
+      if (opts.disabled) button.disabled = true;
+      if (opts.current) button.setAttribute('aria-current', 'page');
+      button.addEventListener('click', () => goto(target));
+      pager.append(button);
+    };
+    add('←', page - 1, { aria: 'Previous page', disabled: page === 0 });
+    for (let index = 0; index < totalPages; index += 1) {
+      add(String(index + 1), index, {
+        aria: `Page ${index + 1} of ${totalPages}`,
+        current: index === page,
+      });
+    }
+    add('→', page + 1, { aria: 'Next page', disabled: page >= totalPages - 1 });
+  }
+
+  function render() {
+    const visible = items.filter(inFilter);
+    const totalPages = Math.max(1, Math.ceil(visible.length / PAGE_SIZE));
+    page = Math.min(Math.max(page, 0), totalPages - 1);
+    const start = page * PAGE_SIZE;
+    // Hide every entry, then reveal only the current page of the filtered set.
+    // The rule between rows sits on every entry except the first visible one,
+    // so recompute `lead` or a page opens with a stray line.
+    for (const item of items) item.hidden = true;
+    visible.forEach((item, index) => {
+      const onPage = index >= start && index < start + PAGE_SIZE;
+      item.hidden = !onPage;
+      item.classList.toggle('lead', index === start);
+    });
+    buildPager(totalPages);
+  }
+
+  function goto(target: number) {
+    page = target;
+    render();
+    list?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+  }
+
+  for (const tab of filterButtons) {
     tab.addEventListener('click', () => {
-      const wanted = tab.dataset.filter ?? 'all';
-      for (const other of tabs) {
+      wanted = tab.dataset.filter ?? 'all';
+      page = 0;
+      for (const other of filterButtons) {
         const active = other === tab;
         other.classList.toggle('on', active);
         other.setAttribute('aria-pressed', String(active));
       }
-      let shownIndex = 0;
-      for (const item of items) {
-        const cats = (item.dataset.cats ?? '').split(' ');
-        const show = wanted === 'all' || cats.includes(wanted);
-        item.hidden = !show;
-        // The rule between rows sits on every entry except the first visible
-        // one, so recompute it or a filtered list opens with a stray line.
-        if (show) {
-          item.classList.toggle('lead', shownIndex === 0);
-          shownIndex += 1;
-        } else {
-          item.classList.remove('lead');
-        }
-      }
+      render();
     });
   }
+
+  if (items.length) render();
 </script>

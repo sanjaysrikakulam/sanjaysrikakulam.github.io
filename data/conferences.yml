@@ -1,18 +1,116 @@
 # yaml-language-server: $schema=../.astro/collections/conferences.schema.json
 #
 # One entry per event. Required: name, year, role.
-# role is one of: talk, poster, workshop, attended, panel.
+# role is one of: talk, poster, workshop, exhibition, attended, panel.
 #
 # Template: copy a block below the `[]`, remove the leading `#`, and delete the `[]`:
 #
 # - name: de.NBI Cloud User Meeting     # required
 #   year: 2025                          # required
-#   role: workshop                      # required: talk | poster | workshop | attended | panel
+#   role: workshop                      # required: talk | poster | workshop | exhibition | attended | panel
 #   location: Berlin, Germany           # optional
 #   title: Terraform for research cloud infrastructure  # optional, the talk/poster title
+#   award: Third prize, paper presentation  # optional, prize or recognition, shown as a badge
 #   url: https://example.org/event      # optional, link to the event or programme
 #   zenodo_doi: 10.5281/zenodo.0000000  # optional, DOI of deposited slides or poster
 #   materials: https://example.org/slides.pdf  # optional, direct link to materials
 #   featured: true                      # optional, pull to the top
 #   visible: false                      # optional, hide without deleting
-[]
+- name: 'Joint de.KCD & 8th de.NBI Cloud User Meeting'
+  year: 2025
+  role: workshop
+  title: Terraform for Infrastructure-as-Code Automation
+
+- name: 'NeIC: Nordic e-Infrastructure Tomorrow'
+  year: 2024
+  role: talk
+  title: >
+    Total Perspective Vortex (TPV): Seamlessly managing job destinations in Galaxy when users
+    can't be trusted with resources
+
+- name: Colloquium, Saarland University and HIPS
+  year: 2024
+  role: talk
+  location: Saarbrücken, Germany
+  title: Introducing Galaxy, a New Science Gateway for Your Data-Driven Research
+
+- name: HIPS Symposium
+  year: 2024
+  role: talk
+  location: Saarbrücken, Germany
+  title: Introducing Galaxy, a New Science Gateway for Your Data-Driven Research
+
+- name: EGI Conference
+  year: 2024
+  role: exhibition
+  location: Lecce, Italy
+  title: Galaxy Europe and EOSC EuroScienceGateway project booths
+
+- name: 6th de.NBI Cloud User Meeting
+  year: 2023
+  role: workshop
+  title: Infrastructure automation with Terraform
+
+- name: Galaxy Admin Training
+  year: 2023
+  role: workshop
+
+- name: 9th bwHPC Symposium
+  year: 2023
+  role: talk
+  title: >
+    Introducing Galaxy: A new cloud and HPC gateway for data-driven computational research
+
+- name: EOSC Symposium
+  year: 2023
+  role: exhibition
+  location: Madrid, Spain
+  title: Galaxy Europe and EOSC EuroScienceGateway project booths
+
+- name: EGI Conference
+  year: 2023
+  role: exhibition
+  location: Poznań, Poland
+  title: Galaxy Europe and EOSC EuroScienceGateway project booths
+
+- name: ECCB
+  year: 2022
+  role: poster
+  title: >
+    MetaProFi: An ultrafast chunked Bloom filter for storing and querying protein and nucleotide
+    sequence data for accurate identification of functionally relevant genetic variants
+
+- name: ISMB/ECCB
+  year: 2019
+  role: poster
+  title: >
+    A mutation Y823D in KIT shifts dynamic equilibrium between the kinase active and inactive
+    states thus conferring resistance to anti-cancer drugs
+
+- name: Jet-Bio Luminance (National-Level Students Symposium)
+  year: 2014
+  role: talk
+  award: Third prize, paper presentation
+
+- name: Biolympics 2K12 (National-Level Students Symposium)
+  year: 2012
+  role: talk
+  award: Second prize, paper presentation
+
+- name: Recent Advances in Computational Drug Design (RACDD)
+  year: 2013
+  role: poster
+  location: Bangalore, India
+
+- name: International Conference on Next Generation Bioinformatics (ICNGB)
+  year: 2013
+  role: poster
+
+- name: International Conference on Structural and Functional Genomics (ICSAFG)
+  year: 2013
+  role: poster
+  location: Thanjavur, India
+
+- name: National Conference on Computer Aided Drug Designing (NCCADD)
+  year: 2011
+  role: poster

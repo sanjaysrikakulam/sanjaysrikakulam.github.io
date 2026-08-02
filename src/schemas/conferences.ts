@@ -6,8 +6,9 @@ export const conferenceSchema = z
     name: z.string().min(1),
     year: z.number().int().min(1990).max(2100),
     location: z.string().optional(),
-    role: z.enum(['talk', 'poster', 'workshop', 'attended', 'panel']),
+    role: z.enum(['talk', 'poster', 'workshop', 'exhibition', 'attended', 'panel']),
     title: z.string().optional(),
+    award: z.string().optional(),
     url: z.url().optional(),
     zenodo_doi: z
       .string()

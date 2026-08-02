@@ -81,6 +81,22 @@ jobs:
       - name: Copy the generated CV into the build output
         run: cp public/Sanjay_Srikakulam_CV.pdf dist/
 
+      # Chromium stamps each PDF with a fresh creation date, so the bytes differ
+      # on every run. Committing only on a human push, never on the bot's own
+      # push, keeps the repository copy in step with the source without looping.
+      - name: Commit the regenerated CV
+        if: github.event_name == 'push' && github.actor != 'github-actions[bot]'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain public/Sanjay_Srikakulam_CV.pdf)" ]; then
+            git add public/Sanjay_Srikakulam_CV.pdf
+            git commit -m "Update downloadable CV"
+            git push
+          else
+            echo "CV unchanged."
+          fi
+
       - uses: actions/configure-pages@v6
         with:
           # The first run on a fresh repository fails here otherwise: Pages has

@@ -35,7 +35,7 @@ const monthName = (value: string | null) => {
           </p>
           <ul>
             {role.highlights.map((item) => (
-              <li>{item}</li>
+              <li set:html={item} />
             ))}
           </ul>
           {role.affiliations.length > 0 && (
@@ -50,7 +50,7 @@ const monthName = (value: string | null) => {
               <summary>{role.details.length} more responsibilities</summary>
               <ul>
                 {role.details.map((item) => (
-                  <li>{item}</li>
+                  <li set:html={item} />
                 ))}
               </ul>
             </details>

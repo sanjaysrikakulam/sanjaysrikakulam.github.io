@@ -1,7 +1,7 @@
 import { defineCollection } from 'astro:content';
 import { file } from 'astro/loaders';
 import { yamlArrayParser } from './lib/slug';
-import { conferenceId, experienceId } from './lib/entry-ids';
+import { conferenceId, experienceId, publicationId } from './lib/entry-ids';
 import { educationSchema } from './schemas/education';
 import { experienceSchema } from './schemas/experience';
 import { projectSchema } from './schemas/projects';
@@ -33,7 +33,7 @@ const projects = defineCollection({
 
 const publications = defineCollection({
   loader: file('data/publications.yml', {
-    parser: yamlArrayParser((entry) => `${entry.title}-${entry.year}`),
+    parser: yamlArrayParser(publicationId),
   }),
   schema: publicationSchema,
 });

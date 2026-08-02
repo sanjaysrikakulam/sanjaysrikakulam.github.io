@@ -10,6 +10,7 @@ const KIND: Record<string, string> = {
   talk: 'k-talk',
   poster: 'k-poster',
   workshop: 'k-ws',
+  exhibition: 'k-ws',
   panel: 'k-ws',
   attended: 'k-att',
 };
@@ -17,26 +18,91 @@ const KIND: Record<string, string> = {
 
 {
   entries.length > 0 && (
-    <div class="conferences">
-      {entries.map((entry) => (
-        <article class="conf">
-          <p class="yr">{entry.year}</p>
-          <div>
-            <p class="nm">
-              <span class={`kind ${KIND[entry.role]}`}>{entry.role}</span>
-              {entry.url ? (
-                <a href={entry.url} target="_blank" rel="noopener noreferrer">
-                  {entry.name}
-                </a>
-              ) : (
-                entry.name
-              )}
-            </p>
-            {entry.title && <p class="tt">{entry.title}</p>}
-          </div>
-          {entry.location && <p class="lo">{entry.location}</p>}
-        </article>
-      ))}
-    </div>
+    <>
+      <div class="conferences">
+        {entries.map((entry) => (
+          <article class="conf">
+            <p class="yr">{entry.year}</p>
+            <div>
+              <p class="nm">
+                {entry.url ? (
+                  <a href={entry.url} target="_blank" rel="noopener noreferrer">
+                    {entry.name}
+                  </a>
+                ) : (
+                  entry.name
+                )}
+                <span class={`kind ${KIND[entry.role]}`}>{entry.role}</span>
+                {entry.award && <span class="award">{entry.award}</span>}
+              </p>
+              {entry.title && <p class="tt">{entry.title}</p>}
+            </div>
+            {entry.location && <p class="lo">{entry.location}</p>}
+          </article>
+        ))}
+      </div>
+      <nav class="pager" id="conf-pager" aria-label="Conference pages" hidden />
+    </>
   )
 }
+
+<script>
+  // Paginate the conferences list five per page. Every entry renders
+  // server-side, so with no JS the whole list shows and the pager stays hidden.
+  const PAGE_SIZE = 5;
+  const items = Array.from(document.querySelectorAll<HTMLElement>('.conferences .conf'));
+  const pager = document.getElementById('conf-pager');
+  const list = document.querySelector<HTMLElement>('.conferences');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let page = 0;
+
+  function buildPager(totalPages: number) {
+    if (!pager) return;
+    pager.replaceChildren();
+    pager.hidden = totalPages <= 1;
+    if (totalPages <= 1) return;
+    const add = (
+      label: string,
+      target: number,
+      opts: { aria: string; disabled?: boolean; current?: boolean },
+    ) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'pg';
+      button.textContent = label;
+      button.setAttribute('aria-label', opts.aria);
+      if (opts.disabled) button.disabled = true;
+      if (opts.current) button.setAttribute('aria-current', 'page');
+      button.addEventListener('click', () => goto(target));
+      pager.append(button);
+    };
+    add('←', page - 1, { aria: 'Previous page', disabled: page === 0 });
+    for (let index = 0; index < totalPages; index += 1) {
+      add(String(index + 1), index, {
+        aria: `Page ${index + 1} of ${totalPages}`,
+        current: index === page,
+      });
+    }
+    add('→', page + 1, { aria: 'Next page', disabled: page >= totalPages - 1 });
+  }
+
+  function render() {
+    const totalPages = Math.max(1, Math.ceil(items.length / PAGE_SIZE));
+    page = Math.min(Math.max(page, 0), totalPages - 1);
+    const start = page * PAGE_SIZE;
+    items.forEach((item, index) => {
+      const onPage = index >= start && index < start + PAGE_SIZE;
+      item.hidden = !onPage;
+      item.classList.toggle('lead', index === start);
+    });
+    buildPager(totalPages);
+  }
+
+  function goto(target: number) {
+    page = target;
+    render();
+    list?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+  }
+
+  if (items.length) render();
+</script>

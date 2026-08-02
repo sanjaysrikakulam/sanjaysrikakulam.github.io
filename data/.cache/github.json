@@ -4,9 +4,16 @@
       "galaxyproject": 39,
       "usegalaxy-eu": 358
     },
-    "total": 435
+    "total": 436
   },
   "repos": {
+    "deNBI/service-registry": {
+      "forks": 1,
+      "language": "Python",
+      "pushed_at": "2026-07-24T06:50:06Z",
+      "stars": 0,
+      "url": "https://github.com/deNBI/service-registry"
+    },
     "kalininalab/alphafold_non_docker": {
       "forks": 125,
       "language": "Shell",
@@ -28,26 +35,12 @@
       "stars": 13,
       "url": "https://github.com/kalininalab/metaprofi"
     },
-    "kalininalab/panpa": {
-      "forks": 0,
-      "language": null,
-      "pushed_at": "2022-11-21T16:08:13Z",
-      "stars": 0,
-      "url": "https://github.com/kalininalab/panpa"
-    },
-    "sanjaysrikakulam/esg_wp4_galaxy": {
-      "forks": 3,
-      "language": "Jinja",
-      "pushed_at": "2025-07-28T22:20:52Z",
-      "stars": 0,
-      "url": "https://github.com/sanjaysrikakulam/esg_wp4_galaxy"
-    },
-    "sanjaysrikakulam/pykvstores": {
-      "forks": 0,
+    "sanjaysrikakulam/gromacs_utility_scripts": {
+      "forks": 1,
       "language": "Python",
-      "pushed_at": "2022-04-06T14:51:55Z",
-      "stars": 0,
-      "url": "https://github.com/sanjaysrikakulam/pykvstores"
+      "pushed_at": "2019-04-10T11:32:37Z",
+      "stars": 6,
+      "url": "https://github.com/sanjaysrikakulam/gromacs_utility_scripts"
     },
     "sanjaysrikakulam/terraform_clum2025": {
       "forks": 0,
@@ -59,7 +52,7 @@
     "usegalaxy-eu/infrastructure-playbook": {
       "forks": 115,
       "language": "Jinja",
-      "pushed_at": "2026-07-31T08:57:48Z",
+      "pushed_at": "2026-08-01T19:23:59Z",
       "stars": 25,
       "url": "https://github.com/usegalaxy-eu/infrastructure-playbook"
     },

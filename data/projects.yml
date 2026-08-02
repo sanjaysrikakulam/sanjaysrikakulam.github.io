@@ -1,4 +1,22 @@
 # yaml-language-server: $schema=../.astro/collections/projects.schema.json
+#
+# One entry per project. Required: name, summary. Adding `repo` (owner/name, not
+# a URL) pulls live stars/forks into data/.cache/github.json and makes the card
+# link to the repository, so run `npm run fetch` after adding or changing a repo.
+# `featured: true` promotes a project into the Selected projects grid; every
+# project that has a `repo` also appears in the open-source carousel below it.
+#
+# Template:
+#
+# - name: MetaProFi                       # required
+#   repo: kalininalab/metaprofi           # optional, owner/name (not a full URL)
+#   summary: >                            # required, a plain sentence or two
+#     What it is and why it exists.
+#   tags: [Python, sequence search]       # optional
+#   paper: 10.1093/bioinformatics/btad101 # optional, DOI; shows a citation count
+#   url: https://example.org              # optional, project homepage
+#   featured: true                        # optional, Selected projects grid
+#   order: 1                              # optional, sort order among featured
 - name: AlphaFold2 non-Docker
   repo: kalininalab/alphafold_non_docker
   summary: >
@@ -27,12 +45,14 @@
   featured: true
   order: 3
 
-- name: SeqSidecar
-  repo: null
+- name: de.NBI Service Registry
+  repo: deNBI/service-registry
   summary: >
-    A columnar query engine for nucleotide and protein sequencing reads, supporting filtering,
-    search, deduplication, and remote index-based querying of FASTA and FASTQ at scale.
-  tags: [Python, columnar storage, sequence search]
+    Registration platform for de.NBI and ELIXIR Germany services: a structured submission form
+    with a REST API, EDAM ontology annotations, bio.tools integration, and an admin review portal.
+  tags: [Python, Django, web, de.NBI]
+  featured: true
+  order: 4
 
 - name: TPV Broker
   repo: usegalaxy-eu/tpv-broker
@@ -45,23 +65,12 @@
   tags: [Python, structural annotation]
   paper: 10.1093/gigascience/giac086
 
-- name: PanPA
-  repo: kalininalab/panpa
-  summary: Generation and alignment of panproteome graphs.
-  tags: [Python, graph alignment]
-  paper: 10.1093/bioadv/vbad167
-
 - name: Terraform training material
   repo: sanjaysrikakulam/terraform_clum2025
   summary: Terraform training material for the joint de.KCD and de.NBI Cloud User Meeting.
   tags: [Terraform, teaching]
 
-- name: Galaxy Europe replica
-  repo: sanjaysrikakulam/esg_wp4_galaxy
-  summary: Launches a replica of the Galaxy Europe instance and its supporting services.
-  tags: [Jinja, Ansible, Galaxy]
-
-- name: pykvstores
-  repo: sanjaysrikakulam/pykvstores
-  summary: Python key-value stores backing the chunked filter layout.
-  tags: [Python, storage]
+- name: GROMACS utility scripts
+  repo: sanjaysrikakulam/gromacs_utility_scripts
+  summary: Utility scripts for setting up and analysing GROMACS molecular dynamics simulations.
+  tags: [Python, molecular dynamics, GROMACS]

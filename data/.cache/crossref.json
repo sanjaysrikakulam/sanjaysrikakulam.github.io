@@ -1,0 +1,1796 @@
+{
+  "10.1002/prot.25534": {
+    "authors": [
+      {
+        "family": "Hassan",
+        "given": "Sameer"
+      },
+      {
+        "family": "Srikakulam",
+        "given": "Sanjay Kumar"
+      },
+      {
+        "family": "Chandramohan",
+        "given": "Yuvaraj"
+      },
+      {
+        "family": "Thangam",
+        "given": "Manonanthini"
+      },
+      {
+        "family": "Muthukumar",
+        "given": "Soundharrya"
+      },
+      {
+        "family": "Gayathri Devi",
+        "given": "P. K."
+      },
+      {
+        "family": "Hanna",
+        "given": "Luke Elizabeth"
+      }
+    ],
+    "authors_display": "Hassan S, Srikakulam SK, Chandramohan Y, Thangam M, Muthukumar S, Gayathri Devi PK, Hanna LE",
+    "title": "Exploring the conformational landscapes of HIV protease structural ensembles using principal component analysis",
+    "venue": "Proteins: Structure, Function, and Bioinformatics",
+    "year": 2018
+  },
+  "10.1002/prot.25963": {
+    "authors": [
+      {
+        "family": "Srikakulam",
+        "given": "Sanjay K."
+      },
+      {
+        "family": "Bastys",
+        "given": "Tomas"
+      },
+      {
+        "family": "Kalinina",
+        "given": "Olga V."
+      }
+    ],
+    "authors_display": "Srikakulam SK, Bastys T, Kalinina OV",
+    "title": "A shift of dynamic equilibrium between the KIT active and inactive states causes drug resistance",
+    "venue": "Proteins: Structure, Function, and Bioinformatics",
+    "year": 2020
+  },
+  "10.1007/978-981-95-1365-9_42": {
+    "authors": [
+      {
+        "family": "Azab",
+        "given": "Abdulrahman"
+      },
+      {
+        "family": "Geest",
+        "given": "Paul De"
+      },
+      {
+        "family": "Srikakulam",
+        "given": "Sanjay K."
+      },
+      {
+        "family": "Vondrák",
+        "given": "Tomáš"
+      },
+      {
+        "family": "Kuntz",
+        "given": "Mira"
+      },
+      {
+        "family": "Grüning",
+        "given": "Björn"
+      }
+    ],
+    "authors_display": "Azab A, Geest PD, Srikakulam SK, Vondrák T, Kuntz M, Grüning B",
+    "title": "Optimized Meta-Scheduling in Galaxy Using TPV Broker",
+    "venue": "Smart Innovation, Systems and Technologies",
+    "year": 2025
+  },
+  "10.1016/j.jbc.2021.101031": {
+    "authors": [
+      {
+        "family": "Dultz",
+        "given": "Georg"
+      },
+      {
+        "family": "Srikakulam",
+        "given": "Sanjay K."
+      },
+      {
+        "family": "Konetschnik",
+        "given": "Michael"
+      },
+      {
+        "family": "Shimakami",
+        "given": "Tetsuro"
+      },
+      {
+        "family": "Doncheva",
+        "given": "Nadezhda T."
+      },
+      {
+        "family": "Dietz",
+        "given": "Julia"
+      },
+      {
+        "family": "Sarrazin",
+        "given": "Christoph"
+      },
+      {
+        "family": "Biondi",
+        "given": "Ricardo M."
+      },
+      {
+        "family": "Zeuzem",
+        "given": "Stefan"
+      },
+      {
+        "family": "Tampé",
+        "given": "Robert"
+      },
+      {
+        "family": "Kalinina",
+        "given": "Olga V."
+      },
+      {
+        "family": "Welsch",
+        "given": "Christoph"
+      }
+    ],
+    "authors_display": "Dultz G, Srikakulam SK, Konetschnik M, Shimakami T, Doncheva NT, Dietz J, Sarrazin C, Biondi RM, Zeuzem S, Tampé R, Kalinina OV, Welsch C",
+    "title": "Epistatic interactions promote persistence of NS3-Q80K in HCV infection by compensating for protein folding instability",
+    "venue": "Journal of Biological Chemistry",
+    "year": 2021
+  },
+  "10.1016/j.mtbio.2020.100084": {
+    "authors": [
+      {
+        "family": "Richter",
+        "given": "Robert"
+      },
+      {
+        "family": "Kamal",
+        "given": "Mohamed.A.M."
+      },
+      {
+        "family": "García-Rivera",
+        "given": "Mariel A."
+      },
+      {
+        "family": "Kaspar",
+        "given": "Jerome"
+      },
+      {
+        "family": "Junk",
+        "given": "Maximilian"
+      },
+      {
+        "family": "Elgaher",
+        "given": "Walid A.M."
+      },
+      {
+        "family": "Srikakulam",
+        "given": "Sanjay Kumar"
+      },
+      {
+        "family": "Gress",
+        "given": "Alexander"
+      },
+      {
+        "family": "Beckmann",
+        "given": "Anja"
+      },
+      {
+        "family": "Grißmer",
+        "given": "Alexander"
+      },
+      {
+        "family": "Meier",
+        "given": "Carola"
+      },
+      {
+        "family": "Vielhaber",
+        "given": "Michael"
+      },
+      {
+        "family": "Kalinina",
+        "given": "Olga"
+      },
+      {
+        "family": "Hirsch",
+        "given": "Anna K.H."
+      },
+      {
+        "family": "Hartmann",
+        "given": "Rolf W."
+      },
+      {
+        "family": "Brönstrup",
+        "given": "Mark"
+      },
+      {
+        "family": "Schneider-Daum",
+        "given": "Nicole"
+      },
+      {
+        "family": "Lehr",
+        "given": "Claus-Michael"
+      }
+    ],
+    "authors_display": "Richter R, Kamal MAM, García-Rivera MA, Kaspar J, Junk M, Elgaher WAM, Srikakulam SK, Gress A, Beckmann A, Grißmer A, Meier C, Vielhaber M, Kalinina O, Hirsch AKH, Hartmann RW, Brönstrup M, Schneider-Daum N, Lehr CM",
+    "title": "A hydrogel-based in vitro assay for the fast prediction of antibiotic accumulation in Gram-negative bacteria",
+    "venue": "Materials Today Bio",
+    "year": 2020
+  },
+  "10.1093/bioadv/vbad167": {
+    "authors": [
+      {
+        "family": "Dabbaghie",
+        "given": "Fawaz"
+      },
+      {
+        "family": "Srikakulam",
+        "given": "Sanjay K"
+      },
+      {
+        "family": "Marschall",
+        "given": "Tobias"
+      },
+      {
+        "family": "Kalinina",
+        "given": "Olga V"
+      }
+    ],
+    "authors_display": "Dabbaghie F, Srikakulam SK, Marschall T, Kalinina OV",
+    "title": "PanPA: generation and alignment of panproteome graphs",
+    "venue": "Bioinformatics Advances",
+    "year": 2023
+  },
+  "10.1093/bioinformatics/btad101": {
+    "authors": [
+      {
+        "family": "Srikakulam",
+        "given": "Sanjay K"
+      },
+      {
+        "family": "Keller",
+        "given": "Sebastian"
+      },
+      {
+        "family": "Dabbaghie",
+        "given": "Fawaz"
+      },
+      {
+        "family": "Bals",
+        "given": "Robert"
+      },
+      {
+        "family": "Kalinina",
+        "given": "Olga V"
+      }
+    ],
+    "authors_display": "Srikakulam SK, Keller S, Dabbaghie F, Bals R, Kalinina OV",
+    "title": "MetaProFi: an ultrafast chunked Bloom filter for storing and querying protein and nucleotide sequence data for accurate identification of functionally relevant genetic variants",
+    "venue": "Bioinformatics",
+    "year": 2023
+  },
+  "10.1093/gigascience/giac086": {
+    "authors": [
+      {
+        "family": "Gress",
+        "given": "Alexander"
+      },
+      {
+        "family": "Srikakulam",
+        "given": "Sanjay K"
+      },
+      {
+        "family": "Keller",
+        "given": "Sebastian"
+      },
+      {
+        "family": "Ramensky",
+        "given": "Vasily"
+      },
+      {
+        "family": "Kalinina",
+        "given": "Olga V"
+      }
+    ],
+    "authors_display": "Gress A, Srikakulam SK, Keller S, Ramensky V, Kalinina OV",
+    "title": "d-StructMAn: Containerized structural annotation on the scale from genetic variants to whole proteomes",
+    "venue": "GigaScience",
+    "year": 2022
+  },
+  "10.1093/nar/gkae410": {
+    "authors": [
+      {
+        "name": "The Galaxy Community"
+      },
+      {
+        "family": "Abueg",
+        "given": "Linelle Ann L"
+      },
+      {
+        "family": "Afgan",
+        "given": "Enis"
+      },
+      {
+        "family": "Allart",
+        "given": "Olivier"
+      },
+      {
+        "family": "Awan",
+        "given": "Ahmed H"
+      },
+      {
+        "family": "Bacon",
+        "given": "Wendi A"
+      },
+      {
+        "family": "Baker",
+        "given": "Dannon"
+      },
+      {
+        "family": "Bassetti",
+        "given": "Madeline"
+      },
+      {
+        "family": "Batut",
+        "given": "Bérénice"
+      },
+      {
+        "family": "Bernt",
+        "given": "Matthias"
+      },
+      {
+        "family": "Blankenberg",
+        "given": "Daniel"
+      },
+      {
+        "family": "Bombarely",
+        "given": "Aureliano"
+      },
+      {
+        "family": "Bretaudeau",
+        "given": "Anthony"
+      },
+      {
+        "family": "Bromhead",
+        "given": "Catherine J"
+      },
+      {
+        "family": "Burke",
+        "given": "Melissa L"
+      },
+      {
+        "family": "Capon",
+        "given": "Patrick K"
+      },
+      {
+        "family": "Čech",
+        "given": "Martin"
+      },
+      {
+        "family": "Chavero-Díez",
+        "given": "María"
+      },
+      {
+        "family": "Chilton",
+        "given": "John M"
+      },
+      {
+        "family": "Collins",
+        "given": "Tyler J"
+      },
+      {
+        "family": "Coppens",
+        "given": "Frederik"
+      },
+      {
+        "family": "Coraor",
+        "given": "Nate"
+      },
+      {
+        "family": "Cuccuru",
+        "given": "Gianmauro"
+      },
+      {
+        "family": "Cumbo",
+        "given": "Fabio"
+      },
+      {
+        "family": "Davis",
+        "given": "John"
+      },
+      {
+        "family": "De Geest",
+        "given": "Paul F"
+      },
+      {
+        "family": "de Koning",
+        "given": "Willem"
+      },
+      {
+        "family": "Demko",
+        "given": "Martin"
+      },
+      {
+        "family": "DeSanto",
+        "given": "Assunta"
+      },
+      {
+        "family": "Begines",
+        "given": "José Manuel Domínguez"
+      },
+      {
+        "family": "Doyle",
+        "given": "Maria A"
+      },
+      {
+        "family": "Droesbeke",
+        "given": "Bert"
+      },
+      {
+        "family": "Erxleben-Eggenhofer",
+        "given": "Anika"
+      },
+      {
+        "family": "Föll",
+        "given": "Melanie C"
+      },
+      {
+        "family": "Formenti",
+        "given": "Giulio"
+      },
+      {
+        "family": "Fouilloux",
+        "given": "Anne"
+      },
+      {
+        "family": "Gangazhe",
+        "given": "Rendani"
+      },
+      {
+        "family": "Genthon",
+        "given": "Tanguy"
+      },
+      {
+        "family": "Goecks",
+        "given": "Jeremy"
+      },
+      {
+        "family": "Beltran",
+        "given": "Alejandra N Gonzalez"
+      },
+      {
+        "family": "Goonasekera",
+        "given": "Nuwan A"
+      },
+      {
+        "family": "Goué",
+        "given": "Nadia"
+      },
+      {
+        "family": "Griffin",
+        "given": "Timothy J"
+      },
+      {
+        "family": "Grüning",
+        "given": "Björn A"
+      },
+      {
+        "family": "Guerler",
+        "given": "Aysam"
+      },
+      {
+        "family": "Gundersen",
+        "given": "Sveinung"
+      },
+      {
+        "family": "Gustafsson",
+        "given": "Ove Johan Ragnar"
+      },
+      {
+        "family": "Hall",
+        "given": "Christina"
+      },
+      {
+        "family": "Harrop",
+        "given": "Thomas W"
+      },
+      {
+        "family": "Hecht",
+        "given": "Helge"
+      },
+      {
+        "family": "Heidari",
+        "given": "Alireza"
+      },
+      {
+        "family": "Heisner",
+        "given": "Tillman"
+      },
+      {
+        "family": "Heyl",
+        "given": "Florian"
+      },
+      {
+        "family": "Hiltemann",
+        "given": "Saskia"
+      },
+      {
+        "family": "Hotz",
+        "given": "Hans-Rudolf"
+      },
+      {
+        "family": "Hyde",
+        "given": "Cameron J"
+      },
+      {
+        "family": "Jagtap",
+        "given": "Pratik D"
+      },
+      {
+        "family": "Jakiela",
+        "given": "Julia"
+      },
+      {
+        "family": "Johnson",
+        "given": "James E"
+      },
+      {
+        "family": "Joshi",
+        "given": "Jayadev"
+      },
+      {
+        "family": "Jossé",
+        "given": "Marie"
+      },
+      {
+        "family": "Jum’ah",
+        "given": "Khaled"
+      },
+      {
+        "family": "Kalaš",
+        "given": "Matúš"
+      },
+      {
+        "family": "Kamieniecka",
+        "given": "Katarzyna"
+      },
+      {
+        "family": "Kayikcioglu",
+        "given": "Tunc"
+      },
+      {
+        "family": "Konkol",
+        "given": "Markus"
+      },
+      {
+        "family": "Kostrykin",
+        "given": "Leonid"
+      },
+      {
+        "family": "Kucher",
+        "given": "Natalie"
+      },
+      {
+        "family": "Kumar",
+        "given": "Anup"
+      },
+      {
+        "family": "Kuntz",
+        "given": "Mira"
+      },
+      {
+        "family": "Lariviere",
+        "given": "Delphine"
+      },
+      {
+        "family": "Lazarus",
+        "given": "Ross"
+      },
+      {
+        "family": "Bras",
+        "given": "Yvan Le"
+      },
+      {
+        "family": "Corguillé",
+        "given": "Gildas Le"
+      },
+      {
+        "family": "Lee",
+        "given": "Justin"
+      },
+      {
+        "family": "Leo",
+        "given": "Simone"
+      },
+      {
+        "family": "Liborio",
+        "given": "Leandro"
+      },
+      {
+        "family": "Libouban",
+        "given": "Romane"
+      },
+      {
+        "family": "Tabernero",
+        "given": "David López"
+      },
+      {
+        "family": "Lopez-Delisle",
+        "given": "Lucille"
+      },
+      {
+        "family": "Los",
+        "given": "Laila S"
+      },
+      {
+        "family": "Mahmoud",
+        "given": "Alexandru"
+      },
+      {
+        "family": "Makunin",
+        "given": "Igor"
+      },
+      {
+        "family": "Marin",
+        "given": "Pierre"
+      },
+      {
+        "family": "Mehta",
+        "given": "Subina"
+      },
+      {
+        "family": "Mok",
+        "given": "Winnie"
+      },
+      {
+        "family": "Moreno",
+        "given": "Pablo A"
+      },
+      {
+        "family": "Morier-Genoud",
+        "given": "François"
+      },
+      {
+        "family": "Mosher",
+        "given": "Stephen"
+      },
+      {
+        "family": "Müller",
+        "given": "Teresa"
+      },
+      {
+        "family": "Nasr",
+        "given": "Engy"
+      },
+      {
+        "family": "Nekrutenko",
+        "given": "Anton"
+      },
+      {
+        "family": "Nelson",
+        "given": "Tiffanie M"
+      },
+      {
+        "family": "Oba",
+        "given": "Asime J"
+      },
+      {
+        "family": "Ostrovsky",
+        "given": "Alexander"
+      },
+      {
+        "family": "Polunina",
+        "given": "Polina V"
+      },
+      {
+        "family": "Poterlowicz",
+        "given": "Krzysztof"
+      },
+      {
+        "family": "Price",
+        "given": "Elliott J"
+      },
+      {
+        "family": "Price",
+        "given": "Gareth R"
+      },
+      {
+        "family": "Rasche",
+        "given": "Helena"
+      },
+      {
+        "family": "Raubenolt",
+        "given": "Bryan"
+      },
+      {
+        "family": "Royaux",
+        "given": "Coline"
+      },
+      {
+        "family": "Sargent",
+        "given": "Luke"
+      },
+      {
+        "family": "Savage",
+        "given": "Michelle T"
+      },
+      {
+        "family": "Savchenko",
+        "given": "Volodymyr"
+      },
+      {
+        "family": "Savchenko",
+        "given": "Denys"
+      },
+      {
+        "family": "Schatz",
+        "given": "Michael C"
+      },
+      {
+        "family": "Seguineau",
+        "given": "Pauline"
+      },
+      {
+        "family": "Serrano-Solano",
+        "given": "Beatriz"
+      },
+      {
+        "family": "Soranzo",
+        "given": "Nicola"
+      },
+      {
+        "family": "Srikakulam",
+        "given": "Sanjay Kumar"
+      },
+      {
+        "family": "Suderman",
+        "given": "Keith"
+      },
+      {
+        "family": "Syme",
+        "given": "Anna E"
+      },
+      {
+        "family": "Tangaro",
+        "given": "Marco Antonio"
+      },
+      {
+        "family": "Tedds",
+        "given": "Jonathan A"
+      },
+      {
+        "family": "Tekman",
+        "given": "Mehmet"
+      },
+      {
+        "family": "Cheng (Mike) Thang",
+        "given": "Wai"
+      },
+      {
+        "family": "Thanki",
+        "given": "Anil S"
+      },
+      {
+        "family": "Uhl",
+        "given": "Michael"
+      },
+      {
+        "family": "van den Beek",
+        "given": "Marius"
+      },
+      {
+        "family": "Varshney",
+        "given": "Deepti"
+      },
+      {
+        "family": "Vessio",
+        "given": "Jenn"
+      },
+      {
+        "family": "Videm",
+        "given": "Pavankumar"
+      },
+      {
+        "family": "Von Kuster",
+        "given": "Greg"
+      },
+      {
+        "family": "Watson",
+        "given": "Gregory R"
+      },
+      {
+        "family": "Whitaker-Allen",
+        "given": "Natalie"
+      },
+      {
+        "family": "Winter",
+        "given": "Uwe"
+      },
+      {
+        "family": "Wolstencroft",
+        "given": "Martin"
+      },
+      {
+        "family": "Zambelli",
+        "given": "Federico"
+      },
+      {
+        "family": "Zierep",
+        "given": "Paul"
+      },
+      {
+        "family": "Zoabi",
+        "given": "Rand"
+      }
+    ],
+    "authors_display": "The Galaxy Community, Abueg LAL, Afgan E, Allart O, Awan AH, Bacon WA, Baker D, Bassetti M, Batut B, Bernt M, Blankenberg D, Bombarely A, Bretaudeau A, Bromhead CJ, Burke ML, Capon PK, Čech M, Chavero-Díez M, Chilton JM, Collins TJ, Coppens F, Coraor N, Cuccuru G, Cumbo F, Davis J, De Geest PF, de Koning W, Demko M, DeSanto A, Begines JMD, Doyle MA, Droesbeke B, Erxleben-Eggenhofer A, Föll MC, Formenti G, Fouilloux A, Gangazhe R, Genthon T, Goecks J, Beltran ANG, Goonasekera NA, Goué N, Griffin TJ, Grüning BA, Guerler A, Gundersen S, Gustafsson OJR, Hall C, Harrop TW, Hecht H, Heidari A, Heisner T, Heyl F, Hiltemann S, Hotz HR, Hyde CJ, Jagtap PD, Jakiela J, Johnson JE, Joshi J, Jossé M, Jum’ah K, Kalaš M, Kamieniecka K, Kayikcioglu T, Konkol M, Kostrykin L, Kucher N, Kumar A, Kuntz M, Lariviere D, Lazarus R, Bras YL, Corguillé GL, Lee J, Leo S, Liborio L, Libouban R, Tabernero DL, Lopez-Delisle L, Los LS, Mahmoud A, Makunin I, Marin P, Mehta S, Mok W, Moreno PA, Morier-Genoud F, Mosher S, Müller T, Nasr E, Nekrutenko A, Nelson TM, Oba AJ, Ostrovsky A, Polunina PV, Poterlowicz K, Price EJ, Price GR, Rasche H, Raubenolt B, Royaux C, Sargent L, Savage MT, Savchenko V, Savchenko D, Schatz MC, Seguineau P, Serrano-Solano B, Soranzo N, Srikakulam SK, Suderman K, Syme AE, Tangaro MA, Tedds JA, Tekman M, Cheng (Mike) Thang W, Thanki AS, Uhl M, van den Beek M, Varshney D, Vessio J, Videm P, Von Kuster G, Watson GR, Whitaker-Allen N, Winter U, Wolstencroft M, Zambelli F, Zierep P, Zoabi R",
+    "title": "The Galaxy platform for accessible, reproducible, and collaborative data analyses: 2024 update",
+    "venue": "Nucleic Acids Research",
+    "year": 2024
+  },
+  "10.1093/nar/gkag469": {
+    "authors": [
+      {
+        "name": "The Galaxy Community"
+      },
+      {
+        "family": "Afgan",
+        "given": "Enis"
+      },
+      {
+        "family": "Amoukou",
+        "given": "Najat"
+      },
+      {
+        "family": "Buono",
+        "given": "Rafael Andrade"
+      },
+      {
+        "family": "Anton",
+        "given": "Mihail"
+      },
+      {
+        "family": "Antoniewski",
+        "given": "Christophe"
+      },
+      {
+        "family": "Austin",
+        "given": "Patrick"
+      },
+      {
+        "family": "Awan",
+        "given": "Ahmed Hamid"
+      },
+      {
+        "family": "Backofen",
+        "given": "Rolf"
+      },
+      {
+        "family": "Bacon",
+        "given": "Wendi Anne"
+      },
+      {
+        "family": "Baker",
+        "given": "Dannon"
+      },
+      {
+        "family": "Barreau",
+        "given": "Arthur"
+      },
+      {
+        "family": "Batut",
+        "given": "Bérénice"
+      },
+      {
+        "family": "Bernt",
+        "given": "Matthias"
+      },
+      {
+        "family": "Blankenberg",
+        "given": "Daniel"
+      },
+      {
+        "family": "Bretaudeau",
+        "given": "Anthony"
+      },
+      {
+        "family": "Bromhead",
+        "given": "Catherine Joan"
+      },
+      {
+        "family": "Burhans",
+        "given": "Richard"
+      },
+      {
+        "family": "Burke",
+        "given": "Melissa"
+      },
+      {
+        "family": "Cain",
+        "given": "Scott"
+      },
+      {
+        "family": "Callan",
+        "given": "Danielle"
+      },
+      {
+        "family": "Cech",
+        "given": "Martin"
+      },
+      {
+        "family": "Chavero-Díez",
+        "given": "María"
+      },
+      {
+        "family": "Chei",
+        "given": "Haswane"
+      },
+      {
+        "family": "Chen",
+        "given": "Ying"
+      },
+      {
+        "family": "Chiang",
+        "given": "Diana"
+      },
+      {
+        "family": "Chilton",
+        "given": "John M"
+      },
+      {
+        "family": "Collins",
+        "given": "Tyler James"
+      },
+      {
+        "family": "Coppens",
+        "given": "Frederik"
+      },
+      {
+        "family": "Coraor",
+        "given": "Nate"
+      },
+      {
+        "family": "Coulombe",
+        "given": "Charles"
+      },
+      {
+        "family": "Crusoe",
+        "given": "Michael R"
+      },
+      {
+        "family": "Cumbo",
+        "given": "Fabio"
+      },
+      {
+        "family": "Cumunel",
+        "given": "Triskell"
+      },
+      {
+        "family": "D'Silva",
+        "given": "Michael"
+      },
+      {
+        "family": "Dadras",
+        "given": "Armin"
+      },
+      {
+        "family": "Dalle",
+        "given": "Céline"
+      },
+      {
+        "family": "Dang",
+        "given": "Khai"
+      },
+      {
+        "family": "Davis",
+        "given": "John Y"
+      },
+      {
+        "family": "De Geest",
+        "given": "Paul"
+      },
+      {
+        "family": "de Koning",
+        "given": "Willem"
+      },
+      {
+        "family": "Defazio",
+        "given": "Giuseppe"
+      },
+      {
+        "family": "Depoortere",
+        "given": "Boris"
+      },
+      {
+        "family": "Do",
+        "given": "Katherine"
+      },
+      {
+        "family": "Domínguez Begines",
+        "given": "José Manuel"
+      },
+      {
+        "family": "Droesbeke",
+        "given": "Bert"
+      },
+      {
+        "family": "Duarte",
+        "given": "Erick Nicolas"
+      },
+      {
+        "family": "Fernández-del-Castillo",
+        "given": "Enol"
+      },
+      {
+        "family": "Fix",
+        "given": "Jeremy"
+      },
+      {
+        "family": "Formenti",
+        "given": "Giulio"
+      },
+      {
+        "family": "Frey",
+        "given": "Julian"
+      },
+      {
+        "family": "Föll",
+        "given": "Melanie Christine"
+      },
+      {
+        "family": "Gauthier",
+        "given": "Carol"
+      },
+      {
+        "family": "Gerberding",
+        "given": "Kilian"
+      },
+      {
+        "family": "Giacomoni",
+        "given": "Franck"
+      },
+      {
+        "family": "Goecks",
+        "given": "Jeremy"
+      },
+      {
+        "family": "Goonasekera",
+        "given": "Nuwan A"
+      },
+      {
+        "family": "Goué",
+        "given": "Nadia"
+      },
+      {
+        "family": "Griffin",
+        "given": "Timothy J"
+      },
+      {
+        "family": "Grüning",
+        "given": "Björn Andreas"
+      },
+      {
+        "family": "Guerler",
+        "given": "Aysam"
+      },
+      {
+        "family": "Guitton",
+        "given": "Yann"
+      },
+      {
+        "family": "Gustafsson",
+        "given": "Ove Johan Ragnar"
+      },
+      {
+        "family": "Gömöryová",
+        "given": "Kristína"
+      },
+      {
+        "family": "Harakalova",
+        "given": "Magdalena"
+      },
+      {
+        "family": "Hecht",
+        "given": "Helge"
+      },
+      {
+        "family": "Heidari",
+        "given": "Alireza"
+      },
+      {
+        "family": "Heyl",
+        "given": "Florian"
+      },
+      {
+        "family": "Hillman-Jackson",
+        "given": "Jennifer"
+      },
+      {
+        "family": "Hiltemann",
+        "given": "Saskia"
+      },
+      {
+        "family": "Ansari",
+        "given": "Mina Hojat"
+      },
+      {
+        "family": "Hotz",
+        "given": "Hans-Rudolf"
+      },
+      {
+        "family": "Hyde",
+        "given": "Cameron John"
+      },
+      {
+        "family": "Jacques",
+        "given": "Pierre-Étienne"
+      },
+      {
+        "family": "Jagtap",
+        "given": "Pratik Dilip"
+      },
+      {
+        "family": "Joshi",
+        "given": "Jayadev"
+      },
+      {
+        "family": "Jossé",
+        "given": "Marie"
+      },
+      {
+        "family": "Jumah",
+        "given": "Khaled Moahmmad Ahmad"
+      },
+      {
+        "family": "Elyaderani",
+        "given": "Arash Kadkhodaei"
+      },
+      {
+        "family": "Kamieniecka",
+        "given": "Katarzyna"
+      },
+      {
+        "family": "Kattenborn",
+        "given": "Teja"
+      },
+      {
+        "family": "Konkol",
+        "given": "Markus"
+      },
+      {
+        "family": "Kostrykin",
+        "given": "Leonid"
+      },
+      {
+        "family": "Kucher",
+        "given": "Natalie"
+      },
+      {
+        "family": "Kumar",
+        "given": "Anup"
+      },
+      {
+        "family": "Kuntz",
+        "given": "Mira"
+      },
+      {
+        "family": "Langhorst",
+        "given": "Bradley William"
+      },
+      {
+        "family": "Lariviere",
+        "given": "Delphine"
+      },
+      {
+        "family": "Le Bras",
+        "given": "Yvan"
+      },
+      {
+        "family": "Le Corguillé",
+        "given": "Gildas"
+      },
+      {
+        "family": "Le Cras",
+        "given": "Jean"
+      },
+      {
+        "family": "Lee",
+        "given": "Justin"
+      },
+      {
+        "family": "Leendertse",
+        "given": "Jan"
+      },
+      {
+        "family": "Lefeuvre",
+        "given": "Hugo"
+      },
+      {
+        "family": "Leskošek",
+        "given": "Brane"
+      },
+      {
+        "family": "Liborio",
+        "given": "Leandro Miguel"
+      },
+      {
+        "family": "Libouban",
+        "given": "Romane"
+      },
+      {
+        "family": "Loach",
+        "given": "Marisa"
+      },
+      {
+        "family": "Tabernero",
+        "given": "Jose David Lopez"
+      },
+      {
+        "family": "Lopez-Delisle",
+        "given": "Lucille"
+      },
+      {
+        "family": "Lusk",
+        "given": "Daniel"
+      },
+      {
+        "family": "Mahmoud",
+        "given": "Alexandru"
+      },
+      {
+        "family": "Mahé",
+        "given": "Molène"
+      },
+      {
+        "family": "Maier",
+        "given": "Wolfgang"
+      },
+      {
+        "family": "Makunin",
+        "given": "Igor"
+      },
+      {
+        "family": "McCaffrey",
+        "given": "Kirsty"
+      },
+      {
+        "family": "Medico",
+        "given": "Jack A"
+      },
+      {
+        "family": "Mehta",
+        "given": "Subina"
+      },
+      {
+        "family": "Mei",
+        "given": "Hailiang"
+      },
+      {
+        "family": "Minkova",
+        "given": "Mirela"
+      },
+      {
+        "family": "Momin",
+        "given": "Saim"
+      },
+      {
+        "family": "Junior",
+        "given": "Paulo Cilas Morais Lyra"
+      },
+      {
+        "family": "Müller",
+        "given": "Teresa"
+      },
+      {
+        "family": "Nilchi",
+        "given": "Amirhossein Naghsh"
+      },
+      {
+        "family": "Nandi",
+        "given": "Tannistha"
+      },
+      {
+        "family": "Nasr",
+        "given": "Engy Mohamed Taha"
+      },
+      {
+        "family": "Nekrutenko",
+        "given": "Anton"
+      },
+      {
+        "family": "Nelson",
+        "given": "Tiffanie"
+      },
+      {
+        "family": "Nussbaum",
+        "given": "Johannes"
+      },
+      {
+        "family": "Oba",
+        "given": "Asime James"
+      },
+      {
+        "family": "Opioła",
+        "given": "Łukasz"
+      },
+      {
+        "family": "Payet",
+        "given": "Kevin"
+      },
+      {
+        "family": "Petera",
+        "given": "Melanie"
+      },
+      {
+        "family": "Polunina",
+        "given": "Polina V"
+      },
+      {
+        "family": "Pond",
+        "given": "Sergei"
+      },
+      {
+        "family": "Poterlowicz",
+        "given": "Krzysztof"
+      },
+      {
+        "family": "Price",
+        "given": "Gareth Robert"
+      },
+      {
+        "family": "Qiu",
+        "given": "Junhao"
+      },
+      {
+        "family": "Rasche",
+        "given": "Helena"
+      },
+      {
+        "family": "Raubenolt",
+        "given": "Bryan"
+      },
+      {
+        "family": "Reynolds",
+        "given": "Tristan N"
+      },
+      {
+        "family": "Rogers",
+        "given": "Dave"
+      },
+      {
+        "family": "Rohr",
+        "given": "Karl"
+      },
+      {
+        "family": "Saudade",
+        "given": "Gabriel Ferreira"
+      },
+      {
+        "family": "Savage",
+        "given": "Michelle Terese"
+      },
+      {
+        "family": "Savchenko",
+        "given": "Volodymyr"
+      },
+      {
+        "family": "Schatz",
+        "given": "Michael C"
+      },
+      {
+        "family": "Schmitz",
+        "given": "Isabelle"
+      },
+      {
+        "family": "Schneider",
+        "given": "Daniela"
+      },
+      {
+        "family": "Seguineau",
+        "given": "Pauline"
+      },
+      {
+        "family": "Serrano-Solano",
+        "given": "Beatriz"
+      },
+      {
+        "family": "Siguret",
+        "given": "Clea"
+      },
+      {
+        "family": "Smeds",
+        "given": "Patrik"
+      },
+      {
+        "family": "Sollitto",
+        "given": "Marco"
+      },
+      {
+        "family": "Soranzo",
+        "given": "Nicola"
+      },
+      {
+        "family": "Srikakulam",
+        "given": "Sanjay Kumar"
+      },
+      {
+        "family": "Sterck",
+        "given": "Lieven"
+      },
+      {
+        "family": "Strepis",
+        "given": "Nikolaos"
+      },
+      {
+        "family": "Stubbs",
+        "given": "Andrew"
+      },
+      {
+        "family": "Suderman",
+        "given": "Keith"
+      },
+      {
+        "family": "Syme",
+        "given": "Anna"
+      },
+      {
+        "family": "Tangaro",
+        "given": "Marco Antonio"
+      },
+      {
+        "family": "Koopaei",
+        "given": "Reyhaneh Tavakoli"
+      },
+      {
+        "family": "Tedds",
+        "given": "Jonathan Andrew"
+      },
+      {
+        "family": "Tekman",
+        "given": "Mehmet"
+      },
+      {
+        "family": "Thang",
+        "given": "Wai Cheng (Mike)"
+      },
+      {
+        "family": "Thanki",
+        "given": "Anil S"
+      },
+      {
+        "family": "Uhl",
+        "given": "Michael"
+      },
+      {
+        "family": "Vajna-Jehle",
+        "given": "Janusch"
+      },
+      {
+        "family": "van den Beek",
+        "given": "Marius"
+      },
+      {
+        "family": "Varshney",
+        "given": "Deepti"
+      },
+      {
+        "family": "Vazov",
+        "given": "Nikolay Alexandrov"
+      },
+      {
+        "family": "Vessio",
+        "given": "Jennifer"
+      },
+      {
+        "family": "Videm",
+        "given": "Pavankumar"
+      },
+      {
+        "family": "Vondrak",
+        "given": "Tomas"
+      },
+      {
+        "family": "Wagner",
+        "given": "Reid"
+      },
+      {
+        "family": "Watson",
+        "given": "Gregory R"
+      },
+      {
+        "family": "Weber",
+        "given": "Ralf J M"
+      },
+      {
+        "family": "Whitaker-Allen",
+        "given": "Natalie"
+      },
+      {
+        "family": "Zambelli",
+        "given": "Federico"
+      },
+      {
+        "family": "Zierep",
+        "given": "Paul"
+      },
+      {
+        "family": "Zoabi",
+        "given": "Rand"
+      }
+    ],
+    "authors_display": "The Galaxy Community, Afgan E, Amoukou N, Buono RA, Anton M, Antoniewski C, Austin P, Awan AH, Backofen R, Bacon WA, Baker D, Barreau A, Batut B, Bernt M, Blankenberg D, Bretaudeau A, Bromhead CJ, Burhans R, Burke M, Cain S, Callan D, Cech M, Chavero-Díez M, Chei H, Chen Y, Chiang D, Chilton JM, Collins TJ, Coppens F, Coraor N, Coulombe C, Crusoe MR, Cumbo F, Cumunel T, D'Silva M, Dadras A, Dalle C, Dang K, Davis JY, De Geest P, de Koning W, Defazio G, Depoortere B, Do K, Domínguez Begines JM, Droesbeke B, Duarte EN, Fernández-del-Castillo E, Fix J, Formenti G, Frey J, Föll MC, Gauthier C, Gerberding K, Giacomoni F, Goecks J, Goonasekera NA, Goué N, Griffin TJ, Grüning BA, Guerler A, Guitton Y, Gustafsson OJR, Gömöryová K, Harakalova M, Hecht H, Heidari A, Heyl F, Hillman-Jackson J, Hiltemann S, Ansari MH, Hotz HR, Hyde CJ, Jacques PÉ, Jagtap PD, Joshi J, Jossé M, Jumah KMA, Elyaderani AK, Kamieniecka K, Kattenborn T, Konkol M, Kostrykin L, Kucher N, Kumar A, Kuntz M, Langhorst BW, Lariviere D, Le Bras Y, Le Corguillé G, Le Cras J, Lee J, Leendertse J, Lefeuvre H, Leskošek B, Liborio LM, Libouban R, Loach M, Tabernero JDL, Lopez-Delisle L, Lusk D, Mahmoud A, Mahé M, Maier W, Makunin I, McCaffrey K, Medico JA, Mehta S, Mei H, Minkova M, Momin S, Junior PCML, Müller T, Nilchi AN, Nandi T, Nasr EMT, Nekrutenko A, Nelson T, Nussbaum J, Oba AJ, Opioła Ł, Payet K, Petera M, Polunina PV, Pond S, Poterlowicz K, Price GR, Qiu J, Rasche H, Raubenolt B, Reynolds TN, Rogers D, Rohr K, Saudade GF, Savage MT, Savchenko V, Schatz MC, Schmitz I, Schneider D, Seguineau P, Serrano-Solano B, Siguret C, Smeds P, Sollitto M, Soranzo N, Srikakulam SK, Sterck L, Strepis N, Stubbs A, Suderman K, Syme A, Tangaro MA, Koopaei RT, Tedds JA, Tekman M, Thang WC(, Thanki AS, Uhl M, Vajna-Jehle J, van den Beek M, Varshney D, Vazov NA, Vessio J, Videm P, Vondrak T, Wagner R, Watson GR, Weber RJM, Whitaker-Allen N, Zambelli F, Zierep P, Zoabi R",
+    "title": "Galaxy for accessible, reproducible, and collaborative data analyses: 2026 update",
+    "venue": "Nucleic Acids Research",
+    "year": 2026
+  },
+  "10.1371/journal.pcbi.1013869": {
+    "authors": [
+      {
+        "family": "Bacon",
+        "given": "Wendi Anne"
+      },
+      {
+        "family": "Batut",
+        "given": "Bérénice"
+      },
+      {
+        "family": "Srikakulam",
+        "given": "Sanjay Kumar"
+      },
+      {
+        "family": "Zierep",
+        "given": "Paul"
+      },
+      {
+        "family": "Bretaudeau",
+        "given": "Anthony"
+      },
+      {
+        "family": "Grüning",
+        "given": "Björn"
+      },
+      {
+        "family": "Le Corguillé",
+        "given": "Gildas"
+      },
+      {
+        "family": "Hecht",
+        "given": "Helge"
+      },
+      {
+        "family": "Davis",
+        "given": "John Y."
+      },
+      {
+        "family": "Hotz",
+        "given": "Hans-Rudolf"
+      },
+      {
+        "family": "Serrano-Solano",
+        "given": "Beatriz"
+      }
+    ],
+    "authors_display": "Bacon WA, Batut B, Srikakulam SK, Zierep P, Bretaudeau A, Grüning B, Le Corguillé G, Hecht H, Davis JY, Hotz HR, Serrano-Solano B",
+    "title": "Ten common misconceptions about Galaxy (and why they are wrong!)",
+    "venue": "PLOS Computational Biology",
+    "year": 2026
+  },
+  "10.2147/jir.s320685": {
+    "authors": [
+      {
+        "family": "Herr",
+        "given": "Christian"
+      },
+      {
+        "family": "Mang",
+        "given": "Sebastian"
+      },
+      {
+        "family": "Mozafari",
+        "given": "Bahareh"
+      },
+      {
+        "family": "Guenther",
+        "given": "Katharina"
+      },
+      {
+        "family": "Speer",
+        "given": "Thimoteus"
+      },
+      {
+        "family": "Seibert",
+        "given": "Martina"
+      },
+      {
+        "family": "Srikakulam",
+        "given": "Sanjay Kumar"
+      },
+      {
+        "family": "Beisswenger",
+        "given": "Christoph"
+      },
+      {
+        "family": "Ritzmann",
+        "given": "Felix"
+      },
+      {
+        "family": "Keller",
+        "given": "Andreas"
+      },
+      {
+        "family": "Mueller",
+        "given": "Rolf"
+      },
+      {
+        "family": "Smola",
+        "given": "Sigrun"
+      },
+      {
+        "family": "Eisinger",
+        "given": "Dominic"
+      },
+      {
+        "family": "Zemlin",
+        "given": "Michael"
+      },
+      {
+        "family": "Danziger",
+        "given": "Guy"
+      },
+      {
+        "family": "Volk",
+        "given": "Thomas"
+      },
+      {
+        "family": "Hoersch",
+        "given": "Sabrina"
+      },
+      {
+        "family": "Krawczyk",
+        "given": "Marcin"
+      },
+      {
+        "family": "Lammert",
+        "given": "Frank"
+      },
+      {
+        "family": "Adams",
+        "given": "Thomas"
+      },
+      {
+        "family": "Wagenpfeil",
+        "given": "Gudrun"
+      },
+      {
+        "family": "Kindermann",
+        "given": "Michael"
+      },
+      {
+        "family": "Marcu",
+        "given": "Constantin"
+      },
+      {
+        "family": "Ataya",
+        "given": "Zuhair Wolf Dietrich"
+      },
+      {
+        "family": "Mittag",
+        "given": "Marc"
+      },
+      {
+        "family": "Schwarzkopf",
+        "given": "Konrad"
+      },
+      {
+        "family": "Custodis",
+        "given": "Florian"
+      },
+      {
+        "family": "Grandt",
+        "given": "Daniel"
+      },
+      {
+        "family": "Schaefer",
+        "given": "Harald"
+      },
+      {
+        "family": "Eltges",
+        "given": "Kai"
+      },
+      {
+        "family": "Lepper",
+        "given": "Philipp M"
+      },
+      {
+        "family": "Bals",
+        "given": "Robert"
+      }
+    ],
+    "authors_display": "Herr C, Mang S, Mozafari B, Guenther K, Speer T, Seibert M, Srikakulam SK, Beisswenger C, Ritzmann F, Keller A, Mueller R, Smola S, Eisinger D, Zemlin M, Danziger G, Volk T, Hoersch S, Krawczyk M, Lammert F, Adams T, Wagenpfeil G, Kindermann M, Marcu C, Ataya ZWD, Mittag M, Schwarzkopf K, Custodis F, Grandt D, Schaefer H, Eltges K, Lepper PM, Bals R",
+    "title": "Distinct Patterns of Blood Cytokines Beyond a Cytokine Storm Predict Mortality in COVID-19",
+    "venue": "Journal of Inflammation Research",
+    "year": 2021
+  },
+  "10.37044/osf.io/pzmue_v1": {
+    "authors": [
+      {
+        "family": "Braun",
+        "given": "Martin"
+      },
+      {
+        "family": "Kanitz",
+        "given": "Alexander"
+      },
+      {
+        "family": "Krüger",
+        "given": "Jan"
+      },
+      {
+        "family": "Kraatz",
+        "given": "Landfried"
+      },
+      {
+        "family": "Miranda",
+        "given": "Jacobo"
+      },
+      {
+        "family": "Schelp",
+        "given": "Carsten"
+      },
+      {
+        "family": "Schneider-Lunitz",
+        "given": "Valentin"
+      },
+      {
+        "family": "Srikakulam",
+        "given": "Sanjay Kumar"
+      },
+      {
+        "family": "Stiensmeier",
+        "given": "Xaver"
+      },
+      {
+        "family": "Hoffmann",
+        "given": "Nils"
+      },
+      {
+        "family": "Twardziok",
+        "given": "Sven"
+      }
+    ],
+    "authors_display": "Braun M, Kanitz A, Krüger J, Kraatz L, Miranda J, Schelp C, Schneider-Lunitz V, Srikakulam SK, Stiensmeier X, Hoffmann N, Twardziok S",
+    "title": "Secure Processing Environments as a Service in the de.NBI Cloud",
+    "venue": null,
+    "year": 2025
+  },
+  "10.52825/cordi.v1i.417": {
+    "authors": [
+      {
+        "family": "Zierep",
+        "given": "Paul"
+      },
+      {
+        "family": "Srikakulam",
+        "given": "Sanjay Kumar"
+      },
+      {
+        "family": "Schaaf",
+        "given": "Sebastian"
+      },
+      {
+        "family": "Grüning",
+        "given": "Björn"
+      }
+    ],
+    "authors_display": "Zierep P, Srikakulam SK, Schaaf S, Grüning B",
+    "title": "Conda, Container and Bots",
+    "venue": "Proceedings of the Conference on Research Data Infrastructure",
+    "year": 2023
+  }
+}

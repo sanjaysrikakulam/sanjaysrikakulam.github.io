@@ -361,12 +361,13 @@ h1 em {
 
 .work {
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 .card {
   border: 1px solid var(--color-line);
   border-radius: 14px;
-  padding: 32px;
+  padding: 28px;
   background: var(--color-bg);
   display: flex;
   flex-direction: column;
@@ -768,6 +769,15 @@ h1 em {
 .orglink:hover {
   text-decoration: underline;
 }
+/* Inline links inside role responsibilities read as links through the accent
+   colour, with the underline held back for hover to match the site's links. */
+.role-entry li a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+.role-entry li a:hover {
+  text-decoration: underline;
+}
 .role-entry ul {
   margin: 0;
   padding: 0 0 0 20px;
@@ -953,6 +963,44 @@ h1 em {
   color: var(--color-bg);
 }
 
+.pager {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0 0;
+}
+.pg {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--color-ink-2);
+  background: none;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  min-width: 36px;
+  padding: 7px 13px;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+.pg:hover:not(:disabled) {
+  border-color: var(--color-line-2);
+  color: var(--color-ink);
+}
+.pg[aria-current='page'] {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-bg);
+}
+.pg:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
 .plinks {
   display: flex;
   flex-wrap: wrap;
@@ -1024,9 +1072,15 @@ h1 em {
   padding: 18px 0;
   border-top: 1px solid var(--color-line);
 }
-.conf:first-child {
+.conf:first-child,
+.conf.lead {
   border-top: none;
   padding-top: 0;
+}
+/* .conf is display:grid, which would otherwise beat the hidden attribute's
+   display:none and leave paginated-out entries on the page. */
+.conferences .conf[hidden] {
+  display: none;
 }
 .conf .yr {
   font-family: var(--font-mono);
@@ -1062,6 +1116,18 @@ h1 em {
   text-align: right;
 }
 
+.award {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  border-radius: 999px;
+  padding: 3px 9px;
+  margin-left: 8px;
+}
 .kind {
   display: inline-block;
   font-family: var(--font-mono);
@@ -1072,7 +1138,7 @@ h1 em {
   border: 1px solid var(--color-line-2);
   border-radius: 999px;
   padding: 3px 10px;
-  margin-right: 8px;
+  margin-left: 8px;
 }
 
 .hk {
@@ -1217,6 +1283,9 @@ h1 em {
   }
   .skills {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .work {
+    grid-template-columns: 1fr;
   }
   .pub {
     grid-template-columns: 1fr;

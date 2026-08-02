@@ -46,7 +46,7 @@ describe('fetchOpenAlex', () => {
 });
 
 describe('fetchZenodo', () => {
-  it('extracts view and download counts and carries metadata forward', async () => {
+  it('extracts view and download counts and carries bibliographic metadata forward', async () => {
     const fetchImpl = createFetchMock(async () =>
       jsonResponse({
         hits: {
@@ -55,6 +55,24 @@ describe('fetchZenodo', () => {
               doi: '10.5281/zenodo.19882942',
               stats: { unique_views: 508, unique_downloads: 464 },
               metadata: {
+                title: 'Towards Federated, Certified Infrastructures',
+                publication_date: '2026-01-15',
+                creators: [
+                  {
+                    person_or_org: {
+                      type: 'personal',
+                      family_name: 'Twardziok',
+                      given_name: 'Sven',
+                    },
+                  },
+                  {
+                    person_or_org: {
+                      type: 'personal',
+                      family_name: 'Srikakulam',
+                      given_name: 'Sanjay Kumar',
+                    },
+                  },
+                ],
                 resource_type: { title: { en: 'Publication' } },
                 subjects: [{ subject: 'federated infrastructure' }],
               },
@@ -69,10 +87,17 @@ describe('fetchZenodo', () => {
       downloads: 464,
       resource_type: 'Publication',
       keywords: ['federated infrastructure'],
+      title: 'Towards Federated, Certified Infrastructures',
+      authors_display: 'Twardziok S, Srikakulam SK',
+      authors: [
+        { given: 'Sven', family: 'Twardziok' },
+        { given: 'Sanjay Kumar', family: 'Srikakulam' },
+      ],
+      year: 2026,
     });
   });
 
-  it('defaults missing statistics to zero instead of undefined', async () => {
+  it('defaults missing statistics to zero and bibliographic fields to empty', async () => {
     const fetchImpl = createFetchMock(async () =>
       jsonResponse({ hits: { hits: [{ doi: '10.5281/zenodo.1', stats: {}, metadata: {} }] } }),
     );
@@ -82,7 +107,55 @@ describe('fetchZenodo', () => {
       downloads: 0,
       resource_type: null,
       keywords: [],
+      title: null,
+      authors_display: '',
+      authors: [],
+      year: null,
     });
+  });
+
+  it('parses legacy "Family, Given" creator names', async () => {
+    const fetchImpl = createFetchMock(async () =>
+      jsonResponse({
+        hits: {
+          hits: [
+            {
+              doi: '10.5281/zenodo.10',
+              stats: {},
+              metadata: {
+                publication_date: '2023-09-01',
+                creators: [{ name: 'Srikakulam, Sanjay Kumar' }, { name: 'Keller, Sebastian' }],
+              },
+            },
+          ],
+        },
+      }),
+    );
+    const result = await fetchZenodo({ dois: ['10.5281/zenodo.10'], fetchImpl });
+    expect(result['10.5281/zenodo.10'].authors_display).toBe('Srikakulam SK, Keller S');
+    expect(result['10.5281/zenodo.10'].year).toBe(2023);
+  });
+
+  it('keeps an organizational creator name verbatim', async () => {
+    const fetchImpl = createFetchMock(async () =>
+      jsonResponse({
+        hits: {
+          hits: [
+            {
+              doi: '10.5281/zenodo.11',
+              stats: {},
+              metadata: {
+                creators: [
+                  { person_or_org: { type: 'organizational', name: 'The Galaxy Community' } },
+                ],
+              },
+            },
+          ],
+        },
+      }),
+    );
+    const result = await fetchZenodo({ dois: ['10.5281/zenodo.11'], fetchImpl });
+    expect(result['10.5281/zenodo.11'].authors_display).toBe('The Galaxy Community');
   });
 
   it('handles a plain string resource type as well as a localised object', async () => {

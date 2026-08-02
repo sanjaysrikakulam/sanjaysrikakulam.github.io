@@ -1,3 +1,17 @@
+# Site configuration: one file, edited in place (not a list of entries). Keys:
+#
+#   profile   name, headline (headline_accent must be a substring of it),
+#             location, optional email, avatar path, and bio (hero and CV summary).
+#   links     label: url pairs, rendered as the contact and profile icons.
+#   sections  ordered page sections (id, optional title/description); set a
+#             section's `visible: false` to hide it. Some ids carry subsections.
+#   display   photo, proof_strip, theme_toggle, grid_includes_featured, and the
+#             open_source carousel settings.
+#   proof     the stat strip; each item has a label and either a live `metric`
+#             (resolved in src/lib/proof.ts) or a literal `value`.
+#   pdf       page_size (A4 | Letter), the ordered `sections` in the CV, and
+#             optional per-type `max_items` caps.
+#
 profile:
   name: Sanjay Kumar Srikakulam
   headline: Computational methods for biology, and the infrastructure that runs them.
@@ -7,11 +21,13 @@ profile:
   available: true
   available_text: Open to collaboration and opportunities
   bio: >
-    Postdoctoral researcher at Forschungszentrum Jülich, building small language models
-    and agentic systems for mass spectrometry, including spectral annotation for
-    lipidomics. Earlier work spans molecular dynamics and structure-based drug discovery,
-    sequence indexing at petabyte scale, and three years running Galaxy Europe for over
-    170,000 researchers.
+    From the atoms of a single protein to petabytes of sequencing data, Sanjay works
+    across both the research and the infrastructure of computational biology. A
+    postdoctoral researcher at Forschungszentrum Jülich, he applies AI and agentic
+    frameworks to the biocuration of metabolomics and lipidomics literature, and builds
+    algorithms for large-scale sequence indexing. His earlier work spanned structural
+    bioinformatics and molecular dynamics, and he has run the Galaxy Europe platform. He
+    also works with de.NBI and ELIXIR Germany on research cloud infrastructure.
 
 links:
   github: https://github.com/sanjaysrikakulam
@@ -67,5 +83,3 @@ proof:
 pdf:
   page_size: A4
   sections: [profile, education, experience, publications, skills]
-  max_items:
-    publications: 10

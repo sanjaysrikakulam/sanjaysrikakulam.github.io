@@ -22,6 +22,15 @@ export function experienceId(entry: Entry): string {
 }
 
 /**
+ * Title, venue, and year are fetched from the DOI, so they are not available
+ * when the loader assigns ids. The identifier is, and it is unique per entry,
+ * which is why publication identity is derived from it rather than the title.
+ */
+export function publicationId(entry: Entry): string {
+  return String(entry.doi ?? entry.zenodo_doi);
+}
+
+/**
  * The timeline bar and the role's detail entry further down the page must
  * share one id so the bar's link actually lands on the entry. Deriving the
  * anchor from experienceId, rather than re-deriving it from org and start

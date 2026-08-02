@@ -115,6 +115,98 @@ describe('mergePublications', () => {
   });
 });
 
+describe('mergePublications hydration', () => {
+  const stub = {
+    type: 'journal' as const,
+    author_role: 'contributing' as const,
+    bibtex: true,
+    visible: true,
+    featured: false,
+  };
+
+  const bib = {
+    openalex: {},
+    zenodo: {
+      '10.5281/zenodo.500': {
+        views: 1,
+        downloads: 2,
+        resource_type: 'Presentation',
+        keywords: [],
+        title: 'A Zenodo talk',
+        authors_display: 'Srikakulam SK',
+        authors: [],
+        year: 2025,
+      },
+    },
+    crossref: {
+      '10.1/paper': {
+        title: 'Fetched Title',
+        authors_display: 'Doe J, Srikakulam SK',
+        authors: [],
+        venue: 'Journal of Things',
+        year: 2022,
+      },
+    },
+  };
+
+  it('hydrates title, venue, year, and authors from the CrossRef cache', () => {
+    const [entry] = mergePublications([{ ...stub, doi: '10.1/paper' }], bib);
+    expect(entry.title).toBe('Fetched Title');
+    expect(entry.venue).toBe('Journal of Things');
+    expect(entry.year).toBe(2022);
+    expect(entry.authors_display).toBe('Doe J, Srikakulam SK');
+  });
+
+  it('lets YAML fields override the cache', () => {
+    const [entry] = mergePublications(
+      [
+        {
+          ...stub,
+          doi: '10.1/paper',
+          title: 'My Title',
+          venue: 'My Venue',
+          year: 2099,
+          authors_display: 'Custom Authors',
+        },
+      ],
+      bib,
+    );
+    expect(entry.title).toBe('My Title');
+    expect(entry.venue).toBe('My Venue');
+    expect(entry.year).toBe(2099);
+    expect(entry.authors_display).toBe('Custom Authors');
+  });
+
+  it('hydrates a Zenodo-only entry from the Zenodo cache', () => {
+    const [entry] = mergePublications([{ ...stub, zenodo_doi: '10.5281/zenodo.500' }], bib);
+    expect(entry.title).toBe('A Zenodo talk');
+    expect(entry.year).toBe(2025);
+    expect(entry.authors_display).toBe('Srikakulam SK');
+  });
+
+  it('throws naming the identifier when no title can be resolved', () => {
+    expect(() => mergePublications([{ ...stub, doi: '10.1/unknown' }], bib)).toThrow(
+      /10\.1\/unknown/,
+    );
+  });
+
+  it('throws when no year can be resolved', () => {
+    const caches = {
+      ...bib,
+      crossref: {
+        '10.1/noyear': {
+          title: 'Has a title',
+          authors_display: '',
+          authors: [],
+          venue: null,
+          year: null,
+        },
+      },
+    };
+    expect(() => mergePublications([{ ...stub, doi: '10.1/noyear' }], caches)).toThrow(/year/i);
+  });
+});
+
 describe('findDuplicateTitles', () => {
   it('reports two entries whose titles normalise identically', () => {
     const duplicates = findDuplicateTitles([

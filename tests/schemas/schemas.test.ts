@@ -52,6 +52,17 @@ describe('publicationSchema', () => {
     expect(() => publicationSchema.parse(valid)).toThrow(/doi/i);
   });
 
+  it('accepts an entry without title, venue, or year, since the DOI supplies them', () => {
+    const parsed = publicationSchema.parse({
+      type: 'journal',
+      author_role: 'first',
+      doi: '10.1093/x',
+    });
+    expect(parsed.title).toBeUndefined();
+    expect(parsed.year).toBeUndefined();
+    expect(parsed.venue).toBeUndefined();
+  });
+
   it('rejects an unknown publication type', () => {
     expect(() => publicationSchema.parse({ ...valid, type: 'blogpost', doi: '10.1/x' })).toThrow();
   });

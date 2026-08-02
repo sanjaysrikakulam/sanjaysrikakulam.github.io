@@ -12,4 +12,38 @@
 #   url: https://example.org/event      # optional, link to the event or project
 #   featured: true                      # optional, pull to the top
 #   visible: false                      # optional, hide without deleting
-[]
+- name: BioHackathon Europe
+  year: 2026
+  led: true
+  summary: >
+    Project lead: bridging ELIXIR nodes for collaborative and scalable Bring Your Own Compute
+    (BYOC) in Galaxy and trusted research environments.
+  url: https://github.com/elixir-europe/biohackathon-projects-2026/blob/main/1.md
+
+- name: BioHackathon Germany
+  year: 2025
+  summary: >
+    Fourth de.NBI BioHackathon: detection and extraction of datasets for training machine learning
+    methods from scientific literature.
+  url: https://www.denbi.de/de-nbi-events/1935-4th-biohackathon-germany-detection-and-extraction-of-datasets-for-training-machine-learning-methods-from-literature
+
+- name: BioHackathon Europe
+  year: 2025
+  led: true
+  summary: >
+    Project lead: sustainable computing in Galaxy through job reuse and energy-aware scheduling.
+  url: https://github.com/elixir-europe/biohackathon-projects-2025/blob/main/24.md
+
+- name: BioHackathon Germany
+  year: 2024
+  summary: >
+    Third de.NBI BioHackathon: secure processing environments as a service in the de.NBI Cloud,
+    published as a BioHackrXiv preprint.
+  url: https://www.denbi.de/de-nbi-events/1760-3rd-biohackathon-germany-secure-environments-cloud
+
+- name: BioHackathon Europe
+  year: 2024
+  summary: >
+    Reducing the environmental impact of Galaxy through job caching and sustainability-aware
+    scheduling.
+  url: https://github.com/elixir-europe/biohackathon-projects-2024/blob/main/26.md
