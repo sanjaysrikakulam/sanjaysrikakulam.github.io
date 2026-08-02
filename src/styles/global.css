@@ -470,7 +470,7 @@ h1 em {
   grid-auto-columns: calc((100% - 32px) / 3);
   gap: 16px;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
   scrollbar-width: none;
   padding: 4px 4px 8px;
   margin: -4px;
