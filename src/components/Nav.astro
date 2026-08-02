@@ -45,7 +45,7 @@ const { site, sections } = Astro.props;
           stroke-width="1.6"
           stroke-linecap="round"
         >
-          <path d="M2 4h12M2 8h12M2 12h12" />
+          <path d="M2 4h12M2 8h12M2 12h12"></path>
         </svg>
       </button>
     </div>
@@ -66,9 +66,7 @@ const { site, sections } = Astro.props;
     navLinks?.classList.toggle('open', open);
     navToggle?.setAttribute('aria-expanded', open ? 'true' : 'false');
   };
-  navToggle?.addEventListener('click', () =>
-    setMenu(!navLinks?.classList.contains('open')),
-  );
+  navToggle?.addEventListener('click', () => setMenu(!navLinks?.classList.contains('open')));
   navLinks
     ?.querySelectorAll('a')
     .forEach((link) => link.addEventListener('click', () => setMenu(false)));
