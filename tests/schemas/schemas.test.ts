@@ -171,21 +171,77 @@ describe('siteSchema', () => {
     expect(siteSchema.parse(valid).analytics).toEqual({});
   });
 
-  it('accepts an analytics block carrying a goatcounter endpoint', () => {
+  it('accepts an analytics block carrying a umami tracker', () => {
     const parsed = siteSchema.parse({
       ...valid,
-      analytics: { goatcounter: 'https://code.goatcounter.com/count' },
+      analytics: {
+        umami: {
+          script_url: 'https://umami.example.com/script.js',
+          website_id: '4f94f13d-eac8-4e45-9ec0-af31e280b0de',
+          domains: ['example.com'],
+        },
+      },
     });
-    expect(parsed.analytics.goatcounter).toBe('https://code.goatcounter.com/count');
+    expect(parsed.analytics.umami).toEqual({
+      script_url: 'https://umami.example.com/script.js',
+      website_id: '4f94f13d-eac8-4e45-9ec0-af31e280b0de',
+      domains: ['example.com'],
+    });
   });
 
-  it('rejects a malformed goatcounter endpoint', () => {
-    expect(() => siteSchema.parse({ ...valid, analytics: { goatcounter: 'not-a-url' } })).toThrow();
+  it('defaults umami domains to an empty list when omitted', () => {
+    const parsed = siteSchema.parse({
+      ...valid,
+      analytics: {
+        umami: {
+          script_url: 'https://umami.example.com/script.js',
+          website_id: '4f94f13d-eac8-4e45-9ec0-af31e280b0de',
+        },
+      },
+    });
+    expect(parsed.analytics.umami?.domains).toEqual([]);
+  });
+
+  it('rejects a malformed umami script URL', () => {
+    expect(() =>
+      siteSchema.parse({
+        ...valid,
+        analytics: {
+          umami: { script_url: 'not-a-url', website_id: '4f94f13d-eac8-4e45-9ec0-af31e280b0de' },
+        },
+      }),
+    ).toThrow();
+  });
+
+  it('rejects a website id that is not a UUID', () => {
+    expect(() =>
+      siteSchema.parse({
+        ...valid,
+        analytics: {
+          umami: { script_url: 'https://umami.example.com/script.js', website_id: 'nope' },
+        },
+      }),
+    ).toThrow();
   });
 
   it('rejects an unknown field under analytics', () => {
     expect(() =>
-      siteSchema.parse({ ...valid, analytics: { goatcounde: 'https://x.goatcounter.com/count' } }),
+      siteSchema.parse({ ...valid, analytics: { umani: { website_id: 'x' } } }),
+    ).toThrow();
+  });
+
+  it('rejects an unknown field under umami', () => {
+    expect(() =>
+      siteSchema.parse({
+        ...valid,
+        analytics: {
+          umami: {
+            script_url: 'https://umami.example.com/script.js',
+            website_id: '4f94f13d-eac8-4e45-9ec0-af31e280b0de',
+            data_domains: 'example.com',
+          },
+        },
+      }),
     ).toThrow();
   });
 });

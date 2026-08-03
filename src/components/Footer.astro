@@ -47,6 +47,7 @@ const ICONS: Record<string, string> = {
               rel="noopener noreferrer"
               aria-label={LABELS[key] ?? key}
               title={LABELS[key] ?? key}
+              data-umami-event={analytics ? `profile-${key}` : undefined}
             >
               <Icon name={ICONS[key] ?? 'github'} />
             </a>
@@ -58,7 +59,7 @@ const ICONS: Record<string, string> = {
           rel="noopener noreferrer"
           aria-label="Download CV (PDF)"
           title="Download CV (PDF)"
-          data-goatcounter-click={analytics ? 'download-cv' : undefined}
+          data-umami-event={analytics ? 'download-cv' : undefined}
         >
           <Icon name="download" />
         </a>
@@ -67,9 +68,9 @@ const ICONS: Record<string, string> = {
     {
       analytics && (
         <p class="privacy">
-          Analytics by{' '}
-          <a href="https://www.goatcounter.com" target="_blank" rel="noopener noreferrer">
-            GoatCounter
+          Analytics by self-hosted{' '}
+          <a href="https://umami.is" target="_blank" rel="noopener noreferrer">
+            Umami
           </a>{' '}
           &mdash; no cookies, no personal data.
         </p>
@@ -79,6 +80,15 @@ const ICONS: Record<string, string> = {
 </footer>
 
 <style>
+  /* The contact block closes the page rather than opening a section, so it
+     reads a step below the global heading and body scale. Scoped to .fgrid so
+     the disclosure line below keeps its own smaller size. */
+  .fgrid h2 {
+    font-size: clamp(1.5rem, 2.2vw, 1.9rem);
+  }
+  .fgrid p {
+    font-size: 0.9375rem;
+  }
   .privacy {
     margin-top: 32px;
     font-size: 0.8125rem;

@@ -137,27 +137,46 @@ test.describe('cv route', () => {
 });
 
 test.describe('analytics', () => {
-  // The tracker is off unless an endpoint is set in site.yml, so this asserts
+  // The tracker is off unless a umami block is set in site.yml, so this asserts
   // the whole feature is consistent in whichever state the site was built in:
-  // when enabled, the GoatCounter script, its endpoint, and the footer note all
-  // appear; when disabled (the default), none of them do and nothing breaks.
-  test('the GoatCounter tag and privacy note appear together, or not at all', async ({ page }) => {
+  // when enabled, the Umami script, its website id, the click attributes, and
+  // the footer note all appear; when disabled, none of them do and nothing
+  // breaks.
+  test('the Umami tag, click events, and privacy note appear together, or not at all', async ({
+    page,
+  }) => {
     await page.goto('/');
-    const script = page.locator('script[src="https://gc.zgo.at/count.js"]');
+    const script = page.locator('script[data-website-id]');
     const note = page.locator('footer .privacy');
-    // The PDF download links carry a GoatCounter click event so downloads (a
-    // static PDF that cannot run the tracker) are counted; the attribute is
-    // present only when analytics is enabled.
+    // The PDF download links carry a Umami click event so downloads (a static
+    // PDF that cannot run the tracker) are counted; the profile icons carry one
+    // each so outbound clicks are attributed. Both are present only when
+    // analytics is enabled.
     const downloads = page.locator('a[href="/Sanjay_Srikakulam_CV.pdf"]');
-    const tracked = page.locator('a[href="/Sanjay_Srikakulam_CV.pdf"][data-goatcounter-click]');
+    const trackedDownloads = page.locator(
+      'a[href="/Sanjay_Srikakulam_CV.pdf"][data-umami-event="download-cv"]',
+    );
+    const icons = page.locator('footer .ficons a');
+    const trackedIcons = page.locator('footer .ficons a[data-umami-event]');
     if ((await script.count()) > 0) {
-      await expect(script).toHaveAttribute('data-goatcounter', /goatcounter\.com\/count/);
+      await expect(script).toHaveAttribute('src', /umami/);
+      await expect(script).toHaveAttribute(
+        'data-website-id',
+        /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/,
+      );
       await expect(note).toHaveCount(1);
-      await expect(note.locator('a')).toHaveAttribute('href', 'https://www.goatcounter.com');
-      await expect(tracked).toHaveCount(await downloads.count());
+      await expect(note.locator('a')).toHaveAttribute('href', 'https://umami.is');
+      await expect(trackedDownloads).toHaveCount(await downloads.count());
+      // Every footer icon is tracked: the profile links as profile-<key>, plus
+      // the download link sharing the hero's download-cv event.
+      await expect(trackedIcons).toHaveCount(await icons.count());
+      await expect(page.locator('footer .ficons a[data-umami-event^="profile-"]')).toHaveCount(
+        (await icons.count()) - 1,
+      );
     } else {
       await expect(note).toHaveCount(0);
-      await expect(tracked).toHaveCount(0);
+      await expect(trackedDownloads).toHaveCount(0);
+      await expect(trackedIcons).toHaveCount(0);
     }
   });
 });

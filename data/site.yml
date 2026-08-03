@@ -11,11 +11,14 @@
 #             (resolved in src/lib/proof.ts) or a literal `value`.
 #   pdf       page_size (A4 | Letter), the ordered `sections` in the CV, and
 #             optional per-type `max_items` caps.
-#   analytics optional. Set `goatcounter` to your GoatCounter count endpoint
-#             (https://YOURCODE.goatcounter.com/count) to enable privacy-friendly
-#             page-view analytics. Omit or leave it out and no tracker, pixel, or
-#             footer note is rendered. GoatCounter sets no cookies and stores no
-#             personal data, so no consent banner is needed.
+#   analytics optional. Set `umami.script_url` and `umami.website_id` from your
+#             self-hosted Umami instance to enable privacy-friendly analytics.
+#             Omit the block and no tracker, click attribute, or footer note is
+#             rendered. Umami sets no cookies and stores no personal data, so no
+#             consent banner is needed. `domains` lists the hostnames the tracker
+#             may run on; it is an exact hostname match with no wildcards, so
+#             adding a CNAME custom domain without adding it here stops all
+#             tracking silently. Leave it empty to track on every host.
 #
 profile:
   name: Sanjay Kumar Srikakulam
@@ -91,4 +94,8 @@ pdf:
   sections: [profile, education, experience, publications, skills]
 
 analytics:
-  goatcounter: https://sansrikaku.goatcounter.com/count
+  umami:
+    script_url: https://umami.srikakulam.xyz/hedgehog.js
+    website_id: 4f94f13d-eac8-4e45-9ec0-af31e280b0de
+    domains:
+      - sanjaysrikakulam.github.io

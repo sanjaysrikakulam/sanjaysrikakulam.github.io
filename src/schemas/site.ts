@@ -83,10 +83,22 @@ export const siteSchema = z
       .strict()
       .prefault({}),
     analytics: z
-      .object({ goatcounter: z.url().optional() })
+      .object({
+        umami: z
+          .object({
+            script_url: z.url(),
+            website_id: z.uuid(),
+            // Hostnames the tracker is allowed to run on, rendered as
+            // data-domains. Empty means "run anywhere", which also counts
+            // `astro dev` and the CI PDF render.
+            domains: z.array(z.string().min(1)).default([]),
+          })
+          .strict()
+          .optional(),
+      })
       .strict()
       // prefault (not default) so an absent analytics block is still parsed
-      // through the schema; with no goatcounter set the feature stays off.
+      // through the schema; with no umami block the feature stays off.
       .prefault({}),
   })
   .strict()

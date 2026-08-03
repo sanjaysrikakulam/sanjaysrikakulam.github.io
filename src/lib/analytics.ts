@@ -1,24 +1,43 @@
-// Resolves the site's optional GoatCounter configuration to a single endpoint,
-// or null when analytics are not configured. Keeping the on/off decision here
-// (rather than in the Astro components) means the script tag, the no-script
-// pixel, and the footer disclosure all agree, and the logic is unit-testable.
+// Resolves the site's optional Umami configuration into the attributes the
+// tracker tag needs, or null when analytics are not configured. Keeping the
+// on/off decision here (rather than in the Astro components) means the script
+// tag, the click-event attributes, and the footer disclosure all agree, and the
+// logic is unit-testable.
 //
-// GoatCounter sets no cookies and stores no personal data, so no consent banner
-// is needed; the feature is simply absent until an endpoint is set in site.yml.
+// Umami sets no cookies and stores no personal data, so no consent banner is
+// needed; the feature is simply absent until a umami block is set in site.yml.
+
+export interface UmamiConfig {
+  script_url: string;
+  website_id: string;
+  domains?: string[];
+}
 
 export interface AnalyticsConfig {
-  goatcounter?: string;
+  umami?: UmamiConfig;
 }
 
 export interface Analytics {
-  // The GoatCounter count endpoint, e.g. https://code.goatcounter.com/count.
-  // Used both as the script's data-goatcounter and, with `?p=<path>`, as the
-  // no-script pixel source.
-  endpoint: string;
+  // The self-hosted tracker script, e.g. https://umami.example.com/script.js.
+  scriptUrl: string;
+  // The website UUID from the Umami dashboard, rendered as data-website-id.
+  websiteId: string;
+  // Comma-joined hostnames for data-domains, or undefined when unrestricted so
+  // the attribute is omitted rather than rendered empty. This is an exact
+  // hostname match: the tracker does no-op entirely on any host not listed.
+  domains?: string;
 }
 
 export function getAnalytics(site: { analytics?: AnalyticsConfig }): Analytics | null {
-  const endpoint = site.analytics?.goatcounter?.trim();
-  if (!endpoint) return null;
-  return { endpoint };
+  const umami = site.analytics?.umami;
+  const scriptUrl = umami?.script_url?.trim();
+  const websiteId = umami?.website_id?.trim();
+  if (!scriptUrl || !websiteId) return null;
+
+  const domains = (umami?.domains ?? []).map((domain) => domain.trim()).filter(Boolean);
+  return {
+    scriptUrl,
+    websiteId,
+    domains: domains.length > 0 ? domains.join(',') : undefined,
+  };
 }

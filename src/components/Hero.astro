@@ -11,9 +11,9 @@ const { before, accent, after } = splitHeadline(
   site.profile.headline,
   site.profile.headline_accent,
 );
-// GoatCounter binds a click event to elements carrying data-goatcounter-click,
-// so the CV download (a static PDF that cannot run the tracker itself) is still
-// counted. The attributes stay off entirely when analytics is not configured.
+// Umami binds a click event to elements carrying data-umami-event, so the CV
+// download (a static PDF that cannot run the tracker itself) is still counted.
+// The attribute stays off entirely when analytics is not configured.
 const download = getAnalytics(site) ? 'download-cv' : undefined;
 ---
 
@@ -37,7 +37,7 @@ const download = getAnalytics(site) ? 'download-cv' : undefined;
           href="/Sanjay_Srikakulam_CV.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          data-goatcounter-click={download}
+          data-umami-event={download}
         >
           Download CV
         </a>
