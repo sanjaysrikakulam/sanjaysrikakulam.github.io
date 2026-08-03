@@ -80,18 +80,12 @@ const ICONS: Record<string, string> = {
 </footer>
 
 <style>
-  /* The contact block closes the page rather than opening a section, so it
-     reads a step below the global heading and body scale. Scoped to .fgrid so
-     the disclosure line below keeps its own smaller size. */
-  .fgrid h2 {
-    font-size: clamp(1.5rem, 2.2vw, 1.9rem);
-  }
-  .fgrid p {
-    font-size: 0.9375rem;
-  }
+  /* The disclosure is a footnote, not part of the contact block, so it sits
+     below the body scale. The contact heading and description keep the global
+     sizes. */
   .privacy {
     margin-top: 32px;
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     color: var(--color-ink-3);
   }
   .privacy a {
