@@ -25,6 +25,13 @@ profile:
   headline: Computational methods for biology, and the infrastructure that runs them.
   headline_accent: infrastructure
   location: Germany
+  # Contact facts for the business-card QR routes (/c/m, /c/v) and the vCard
+  # download. Not shown on the public pages; edit here to change what the
+  # printed card resolves to: a job change is a commit, not a reprint.
+  email: s.srikakulam@fz-juelich.de
+  prefix: Dr.
+  title: Postdoctoral Researcher
+  org: Forschungszentrum Jülich
   avatar: /avatar.jpg
   available: true
   available_text: Open to collaboration and opportunities

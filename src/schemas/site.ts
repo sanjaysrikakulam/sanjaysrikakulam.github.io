@@ -30,6 +30,11 @@ export const siteSchema = z
         headline_accent: z.string().min(1),
         location: z.string().min(1),
         email: z.email().optional(),
+        // Contact facts used by the /c/* card routes and the vCard download.
+        // All optional so the site renders unchanged when they are absent.
+        prefix: z.string().optional(),
+        title: z.string().optional(),
+        org: z.string().optional(),
         avatar: z.string().default('/avatar.jpg'),
         bio: z.string().optional(),
         available: z.boolean().default(true),
