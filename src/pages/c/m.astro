@@ -1,11 +1,12 @@
 ---
 // Email landing for the business-card QR (utm_campaign=email). A page, not an
-// instant mailto: redirect — some mobile browsers mangle auto-mailto and the
+// instant mailto: redirect; some mobile browsers mangle auto-mailto and the
 // analytics hit is lost. Umami loads via Base, so the scan is counted as a
 // pageview; the button carries data-umami-event for the click-through.
 import Base from '../../layouts/Base.astro';
 import { loadSite } from '../../lib/site';
 import { getAnalytics } from '../../lib/analytics';
+import { buildMailto } from '../../lib/mailto';
 
 const site = loadSite();
 const { profile } = site;
@@ -13,6 +14,11 @@ const fullName = [profile.prefix, profile.name].filter(Boolean).join(' ');
 const roleLine = [profile.title, profile.org].filter(Boolean).join(' · ');
 const email = profile.email;
 const track = getAnalytics(site) ? 'card-email' : undefined;
+
+// Prefill the mail client with the optional subject/body from site.yml.
+const mailtoHref = email
+  ? buildMailto(email, { subject: profile.email_subject, body: profile.email_body })
+  : undefined;
 ---
 
 <Base title={`Email ${profile.name}`} description={`Contact ${fullName}`} noindex site={site}>
@@ -24,7 +30,7 @@ const track = getAnalytics(site) ? 'card-email' : undefined;
       {
         email ? (
           <>
-            <a class="btn" href={`mailto:${email}`} data-umami-event={track}>
+            <a class="btn" href={mailtoHref} data-umami-event={track}>
               Send email
             </a>
             <a class="addr" href={`mailto:${email}`}>

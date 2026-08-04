@@ -32,6 +32,13 @@ profile:
   prefix: Dr.
   title: Postdoctoral Researcher
   org: Forschungszentrum Jülich
+  # Prefilled into the /c/m mailto so the mail client opens ready to type.
+  # Placeholder wording: reword freely. Remove both to open a blank email.
+  email_subject: Hello, Sanjay
+  email_body: |
+    Hi Sanjay,
+
+    Great to connect — [your note].
   avatar: /avatar.jpg
   available: true
   available_text: Open to collaboration and opportunities

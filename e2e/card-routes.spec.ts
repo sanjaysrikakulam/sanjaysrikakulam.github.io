@@ -10,8 +10,17 @@ test.describe('business-card QR routes', () => {
     await expect(page.locator('h1')).toHaveCount(1);
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
     const button = page.locator('a.btn');
-    await expect(button).toHaveAttribute('href', 'mailto:s.srikakulam@fz-juelich.de');
+    // Prefilled subject and body, percent-encoded (no `+` for spaces).
+    await expect(button).toHaveAttribute(
+      'href',
+      /^mailto:s\.srikakulam@fz-juelich\.de\?subject=[^+]+&body=/,
+    );
     await expect(button).toHaveAttribute('data-umami-event', 'card-email');
+    // The plain address line stays a bare mailto for copying.
+    await expect(page.locator('a.addr')).toHaveAttribute(
+      'href',
+      'mailto:s.srikakulam@fz-juelich.de',
+    );
   });
 
   test('/c/v is a noindex vCard landing with a tracked download button', async ({ page }) => {
