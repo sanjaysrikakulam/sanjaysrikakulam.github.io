@@ -1,4 +1,4 @@
-# sanjaysrikakulam.github.io
+# sanjay.srikakulam.de
 
 Source for my personal site. Built with Astro, deployed to GitHub Pages.
 

@@ -6,7 +6,7 @@ import { GET } from '../../src/pages/contact.vcf';
 // data regression. The context is trimmed to the one field the route reads.
 type Context = Parameters<typeof GET>[0];
 const context = {
-  site: new URL('https://sanjaysrikakulam.github.io/'),
+  site: new URL('https://sanjay.srikakulam.de/'),
 } as unknown as Context;
 
 describe('GET /contact.vcf', () => {

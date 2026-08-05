@@ -34,7 +34,7 @@ describe('splitName', () => {
 });
 
 describe('buildVCard', () => {
-  const vcard = buildVCard(site, { url: 'https://sanjaysrikakulam.github.io/' });
+  const vcard = buildVCard(site, { url: 'https://sanjay.srikakulam.de/' });
   const lines = vcard.split('\r\n');
 
   it('opens and closes a version 3.0 card', () => {
@@ -57,7 +57,7 @@ describe('buildVCard', () => {
     expect(lines).toContain('TITLE:Postdoctoral Researcher');
     expect(lines).toContain('ORG:Forschungszentrum Jülich');
     expect(lines).toContain('EMAIL;TYPE=INTERNET,WORK:s.srikakulam@fz-juelich.de');
-    expect(lines).toContain('URL:https://sanjaysrikakulam.github.io/');
+    expect(lines).toContain('URL:https://sanjay.srikakulam.de/');
     expect(lines).toContain('URL:https://orcid.org/0000-0002-1752-5060');
   });
 

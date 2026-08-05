@@ -74,7 +74,7 @@ const markup = `<!doctype html>
   <h1>${before}<em>${accentWord}</em>${after}</h1>
   <div class="foot">
     <span class="who">Bioinformatics, research infrastructure, AI</span>
-    <span class="url">sanjaysrikakulam.github.io</span>
+    <span class="url">sanjay.srikakulam.de</span>
   </div>
 </body></html>`;
 
