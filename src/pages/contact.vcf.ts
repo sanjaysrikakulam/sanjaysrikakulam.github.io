@@ -1,5 +1,5 @@
 // Static vCard download served at /contact.vcf, generated from the site
-// profile at build time. The /c/v card route links here with a download
+// profile at build time. The /c hub's save-contact action links here with a download
 // attribute so the file saves with a friendly name. Editing data/site.yml
 // changes the downloaded contact without touching the printed card.
 import type { APIRoute } from 'astro';

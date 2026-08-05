@@ -35,7 +35,7 @@ export const siteSchema = z
         prefix: z.string().optional(),
         title: z.string().optional(),
         org: z.string().optional(),
-        // Optional prefilled subject/body for the /c/m mailto. Absent means the
+        // Optional prefilled subject/body for the /c hub mailto. Absent means the
         // mail client opens with just the address, as before.
         email_subject: z.string().optional(),
         email_body: z.string().optional(),

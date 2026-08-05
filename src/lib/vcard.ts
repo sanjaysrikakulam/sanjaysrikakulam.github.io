@@ -1,4 +1,5 @@
-// Builds a vCard from the site profile for the /c/v card route. Version 3.0 is
+// Builds a vCard from the site profile for the /c hub's save-contact action.
+// Version 3.0 is
 // used deliberately: it is the most broadly compatible with iOS Contacts,
 // Android, and Outlook. Keeping the string-building here (rather than in the
 // endpoint) makes escaping and the name split unit-testable.

@@ -1,37 +1,40 @@
 import { expect, test } from '@playwright/test';
 
-// The two business-card QR landing pages plus the vCard file they point at.
-// Both pages are noindex, inherit Umami from Base, and carry a data-umami-event
-// on their primary action so scans and click-throughs are both attributable.
+// The business-card QR points at a single hub, /c, which fires all three contact
+// actions directly (one tap each): email, website, save-contact. The hub is
+// noindex, inherits Umami from Base (its pageview records the scan), and each
+// action carries a data-umami-event for the click-through. /contact.vcf is the
+// file the save-contact action downloads.
 test.describe('business-card QR routes', () => {
-  test('/c/m is a noindex email landing with a tracked mailto button', async ({ page }) => {
-    await page.goto('/c/m');
+  test('/c is a noindex contact hub with three tracked actions', async ({ page }) => {
+    await page.goto('/c');
     await expect(page.locator('h1')).toHaveText('Dr. Sanjay Kumar Srikakulam');
     await expect(page.locator('h1')).toHaveCount(1);
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
-    const button = page.locator('a.btn');
-    // Prefilled subject and body, percent-encoded (no `+` for spaces).
-    await expect(button).toHaveAttribute(
+
+    // Email, the primary action, is a prefilled mailto (percent-encoded, no `+`).
+    const email = page.locator('a[data-a="email"]');
+    await expect(email).toHaveAttribute(
       'href',
       /^mailto:s\.srikakulam@fz-juelich\.de\?subject=[^+]+&body=/,
     );
-    await expect(button).toHaveAttribute('data-umami-event', 'card-email');
-    // The plain address line stays a bare mailto for copying.
-    await expect(page.locator('a.addr')).toHaveAttribute(
-      'href',
-      'mailto:s.srikakulam@fz-juelich.de',
-    );
+    await expect(email).toHaveAttribute('data-umami-event', 'card-email');
+
+    // Website goes to the home page.
+    const website = page.locator('a[data-a="website"]');
+    await expect(website).toHaveAttribute('href', '/');
+    await expect(website).toHaveAttribute('data-umami-event', 'card-website');
+
+    // Save contact downloads the vCard with a friendly filename.
+    const save = page.locator('a[data-a="save"]');
+    await expect(save).toHaveAttribute('href', '/contact.vcf');
+    await expect(save).toHaveAttribute('download', /\.vcf$/);
+    await expect(save).toHaveAttribute('data-umami-event', 'card-vcard');
   });
 
-  test('/c/v is a noindex vCard landing with a tracked download button', async ({ page }) => {
-    await page.goto('/c/v');
-    await expect(page.locator('h1')).toHaveText('Dr. Sanjay Kumar Srikakulam');
-    await expect(page.locator('h1')).toHaveCount(1);
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
-    const button = page.locator('a.btn');
-    await expect(button).toHaveAttribute('href', '/contact.vcf');
-    await expect(button).toHaveAttribute('download', /\.vcf$/);
-    await expect(button).toHaveAttribute('data-umami-event', 'card-vcard');
+  test('the retired /c/m and /c/v landing routes are gone', async ({ page }) => {
+    expect((await page.goto('/c/m'))?.status()).toBe(404);
+    expect((await page.goto('/c/v'))?.status()).toBe(404);
   });
 
   test('/contact.vcf returns the profile as a vCard', async ({ request }) => {

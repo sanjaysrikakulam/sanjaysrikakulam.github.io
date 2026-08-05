@@ -1,0 +1,248 @@
+---
+// The /c contact hub: the single target of the printed business-card QR. It is a
+// self-contained page — each action (email, website, save-contact) fires directly,
+// so a scanner needs one tap. The hub's own pageview (Umami, loaded via Base)
+// records the scan; each action carries a data-umami-event for the click-through.
+// noindex, and excluded from the sitemap by the /c/ filter in astro.config.mjs.
+import Base from '../../layouts/Base.astro';
+import { loadSite } from '../../lib/site';
+import { getAnalytics } from '../../lib/analytics';
+import { buildHubActions } from '../../lib/card-hub';
+
+const site = loadSite();
+const { profile } = site;
+const fullName = [profile.prefix, profile.name].filter(Boolean).join(' ');
+const roleLine = [profile.title, profile.org].filter(Boolean).join(' · ');
+const actions = buildHubActions(profile, { analytics: getAnalytics(site) !== null });
+
+// Decorative inline icons, keyed by action. Trusted static markup (set:html).
+const icons: Record<string, string> = {
+  website:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>',
+  email:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>',
+  save: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="3.2"/><path d="M4 19c0-2.8 2.2-5 5-5s5 2.2 5 5"/><path d="M18 8v6M15 11h6"/></svg>',
+};
+const chevron =
+  '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>';
+---
+
+<Base title={`Contact ${profile.name}`} description={`Contact ${fullName}`} noindex site={site}>
+  <main id="main" class="landing">
+    <div class="hub">
+      <p class="eyebrow">Contact</p>
+      <h1>{fullName}</h1>
+      {roleLine && <p class="role">{roleLine}</p>}
+      <div class="rule"></div>
+
+      <div class="actions">
+        {
+          actions.map((a) => (
+            <a
+              class:list={['act', { primary: a.primary }]}
+              data-a={a.key}
+              href={a.href}
+              download={a.download}
+              data-umami-event={a.event}
+            >
+              <span class="ic" aria-hidden="true" set:html={icons[a.key]} />
+              <span class="tx">
+                <span class="lb">{a.label}</span>
+                <span class="sb">{a.sub}</span>
+              </span>
+              <span class="ch" aria-hidden="true" set:html={chevron} />
+            </a>
+          ))
+        }
+      </div>
+
+      <a class="home" href="/">sanjay.srikakulam.de ↗</a>
+    </div>
+  </main>
+</Base>
+
+<style>
+  .landing {
+    min-height: 82vh;
+    display: grid;
+    place-items: center;
+    padding: 72px 20px;
+  }
+  .hub {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    animation: rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+    margin: 0 0 14px;
+  }
+  .hub h1 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .role {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--color-ink-2);
+    margin: 12px 0 0;
+  }
+  .rule {
+    width: 34px;
+    height: 2px;
+    background: var(--color-accent);
+    border-radius: 2px;
+    margin: 26px auto 30px;
+    opacity: 0.85;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .act {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-align: left;
+    text-decoration: none;
+    padding: 15px 18px;
+    border-radius: 14px;
+    border: 1px solid var(--color-line);
+    background: var(--color-surface-2);
+    color: var(--color-ink);
+    transition:
+      transform 0.15s ease,
+      border-color 0.15s ease,
+      box-shadow 0.2s ease,
+      background 0.15s ease;
+  }
+  .act:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-line-2);
+    box-shadow: 0 14px 30px -22px rgba(0, 0, 0, 0.4);
+  }
+  .act .ic {
+    flex: none;
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    background: var(--color-bg);
+    border: 1px solid var(--color-line);
+    color: var(--color-ink-2);
+    transition: 0.15s;
+  }
+  .act .ic :global(svg) {
+    width: 20px;
+    height: 20px;
+  }
+  .act .tx {
+    flex: 1;
+    min-width: 0;
+  }
+  .act .lb {
+    display: block;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 15.5px;
+    line-height: 1.2;
+  }
+  .act .sb {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-ink-3);
+    margin-top: 3px;
+  }
+  .act .ch {
+    flex: none;
+    display: grid;
+    place-items: center;
+    color: var(--color-ink-3);
+    transition:
+      transform 0.15s ease,
+      color 0.15s ease;
+  }
+  .act:hover .ch {
+    transform: translateX(3px);
+    color: var(--color-accent);
+  }
+
+  /* Primary action — floated to the top and carried in the accent colour. */
+  .act.primary {
+    order: -1;
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #fff;
+  }
+  .act.primary .ic {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: transparent;
+    color: #fff;
+  }
+  .act.primary .sb,
+  .act.primary .ch {
+    color: rgba(255, 255, 255, 0.82);
+  }
+  .act.primary:hover .ch {
+    color: #fff;
+  }
+
+  .home {
+    display: inline-block;
+    margin-top: 32px;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--color-ink-3);
+    text-decoration: none;
+  }
+  .home:hover {
+    color: var(--color-accent);
+  }
+
+  /* Mobile: smaller heading, roomier tap targets, edge breathing room. */
+  @media (max-width: 430px) {
+    .landing {
+      padding: 48px 16px;
+    }
+    .hub h1 {
+      font-size: 33px;
+    }
+    .rule {
+      margin: 22px auto 26px;
+    }
+    .act {
+      padding: 14px 15px;
+      gap: 13px;
+    }
+    .act .ic {
+      width: 38px;
+      height: 38px;
+    }
+    .act .lb {
+      font-size: 15px;
+    }
+  }
+</style>
