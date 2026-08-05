@@ -31,7 +31,7 @@
     "keywords": [],
     "resource_type": "Preprint",
     "title": "Optimized meta-scheduling in Galaxy using TPV Broker",
-    "views": 745,
+    "views": 747,
     "year": 2025
   },
   "10.5281/zenodo.15362960": {
@@ -51,7 +51,7 @@
     ],
     "resource_type": "Presentation",
     "title": "Data Snack - Galaxy a research data powerhouse from analysis to FAIR management",
-    "views": 149,
+    "views": 150,
     "year": 2025
   },
   "10.5281/zenodo.15729502": {
@@ -519,7 +519,7 @@
       }
     ],
     "authors_display": "Twardziok S, Barysch SV, Braun M, Buchhalter I, Grüning B, Kraft P, Krüger J, Kuchenbecker L, Srikakulam SK, Lawerenz C, Sczyrba A, Wagener H, Hoffmann N, Kohlbacher O, German Network for Bioinformatics Infrastructure - de.NBI",
-    "downloads": 466,
+    "downloads": 473,
     "keywords": [
       "NFDI",
       "de.NBI",
@@ -540,7 +540,7 @@
     ],
     "resource_type": "Publication",
     "title": "Towards Federated, Certified Infrastructures for Sensitive Data Research in Germany and Europe with the de.NBI Cloud",
-    "views": 515,
+    "views": 520,
     "year": 2026
   },
   "10.5281/zenodo.8335099": {
