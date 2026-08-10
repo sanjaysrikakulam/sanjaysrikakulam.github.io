@@ -27,11 +27,11 @@
       }
     ],
     "authors_display": "Azab A, De Geest P, Srikakulam SK, Vondra T, Kuntz M, Grüning B",
-    "downloads": 327,
+    "downloads": 329,
     "keywords": [],
     "resource_type": "Preprint",
     "title": "Optimized meta-scheduling in Galaxy using TPV Broker",
-    "views": 747,
+    "views": 756,
     "year": 2025
   },
   "10.5281/zenodo.15362960": {
@@ -51,7 +51,7 @@
     ],
     "resource_type": "Presentation",
     "title": "Data Snack - Galaxy a research data powerhouse from analysis to FAIR management",
-    "views": 150,
+    "views": 152,
     "year": 2025
   },
   "10.5281/zenodo.15729502": {
@@ -90,7 +90,7 @@
       }
     ],
     "authors_display": "Pedersen M, Srikakulam SK, De Geest P, Fernandez-del-Castillo E, Cristofori A, Luna-Valero S, Tangaro MA, Nicotri S",
-    "downloads": 107,
+    "downloads": 110,
     "keywords": [
       "Galaxy platform",
       "Federated access",
@@ -158,7 +158,7 @@
       }
     ],
     "authors_display": "Azab A, Srikakulam SK, De Geest P, Vondrák T, Grüning B, Kuntz M, Fernandez-del-Castillo E, Luna-Valero S",
-    "downloads": 74,
+    "downloads": 76,
     "keywords": [
       "Smart Job Scheduling",
       "Meta-Scheduler",
@@ -173,7 +173,7 @@
     ],
     "resource_type": "Project deliverable",
     "title": "Publication on the smart job scheduler implementation",
-    "views": 219,
+    "views": 220,
     "year": 2025
   },
   "10.5281/zenodo.15920451": {
@@ -247,7 +247,7 @@
     ],
     "resource_type": "Project deliverable",
     "title": "D3.1 Operations documentation on the Open Infrastructure deployment",
-    "views": 175,
+    "views": 178,
     "year": 2024
   },
   "10.5281/zenodo.16312227": {
@@ -282,7 +282,7 @@
       }
     ],
     "authors_display": "Srikakulam SK, Azab A, De Geest P, Vondrák T, Kuntz M, Luna-Valero S, Grüning B",
-    "downloads": 98,
+    "downloads": 99,
     "keywords": [
       "Galaxy",
       "TPV Broker",
@@ -304,7 +304,7 @@
     ],
     "resource_type": "Poster",
     "title": "Dynamic meta-scheduling in Galaxy with TPV Broker for smarter workload distribution",
-    "views": 181,
+    "views": 183,
     "year": 2025
   },
   "10.5281/zenodo.16735306": {
@@ -327,7 +327,7 @@
       }
     ],
     "authors_display": "Zierep P, Kuntz M, Srikakulam SK, Grüning B",
-    "downloads": 117,
+    "downloads": 118,
     "keywords": [
       "Interactive Tools",
       "Galaxy",
@@ -338,7 +338,7 @@
     ],
     "resource_type": "Conference paper",
     "title": "Interactive Galaxy Tools: Combining real-time user interaction with scientific workflows",
-    "views": 121,
+    "views": 122,
     "year": 2025
   },
   "10.5281/zenodo.16761933": {
@@ -433,7 +433,7 @@
       }
     ],
     "authors_display": "Tangaro MA, Nicotri S, Grüning B, Srikakulam SK, Dadras A, Kaiser O, Kuntz M, Bretaudeau A, De Geest P, Luna-Valero S, Chavero Díez M, Fernández González JM, Capella-Gutierrez S, Gelpí JL, Astalos J, Jurič B, Ruda M, Opioła Ł, Bayındır H, GIOIOSA S, De Sanctis G, Zambelli F",
-    "downloads": 206,
+    "downloads": 208,
     "keywords": [
       "Galaxy Project",
       "Pulsar",
@@ -453,7 +453,7 @@
     ],
     "resource_type": "Preprint",
     "title": "Scaling Scientific Workflows in Europe: Architecture and Deployment of the Galaxy-Pulsar Computational Network",
-    "views": 347,
+    "views": 351,
     "year": 2025
   },
   "10.5281/zenodo.19882942": {
@@ -519,7 +519,7 @@
       }
     ],
     "authors_display": "Twardziok S, Barysch SV, Braun M, Buchhalter I, Grüning B, Kraft P, Krüger J, Kuchenbecker L, Srikakulam SK, Lawerenz C, Sczyrba A, Wagener H, Hoffmann N, Kohlbacher O, German Network for Bioinformatics Infrastructure - de.NBI",
-    "downloads": 473,
+    "downloads": 487,
     "keywords": [
       "NFDI",
       "de.NBI",
@@ -540,7 +540,7 @@
     ],
     "resource_type": "Publication",
     "title": "Towards Federated, Certified Infrastructures for Sensitive Data Research in Germany and Europe with the de.NBI Cloud",
-    "views": 520,
+    "views": 530,
     "year": 2026
   },
   "10.5281/zenodo.8335099": {
