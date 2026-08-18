@@ -62,6 +62,114 @@ describe('resolveProof', () => {
     expect(resolveProof(entries, { publications: [{}, {}, {}] })[0].display).toBe('3');
   });
 
+  it('sums openalex citations across every cache entry', () => {
+    const entries: ProofEntry[] = [{ metric: 'openalex.citations', label: 'OpenAlex citations' }];
+    const caches: ProofCaches = {
+      openalex: { a: { citations: 900 }, b: { citations: 105 } },
+    };
+    expect(resolveProof(entries, caches)[0].display).toBe('1,005');
+  });
+
+  it('computes the h-index from openalex citation counts', () => {
+    const entries: ProofEntry[] = [{ metric: 'openalex.h_index', label: 'h-index' }];
+    // 3 papers with >= 3 citations (5, 3, 3); the 4th (1) has fewer than 4.
+    const caches: ProofCaches = {
+      openalex: {
+        a: { citations: 5 },
+        b: { citations: 3 },
+        c: { citations: 3 },
+        d: { citations: 1 },
+      },
+    };
+    expect(resolveProof(entries, caches)[0].display).toBe('3');
+  });
+
+  it('reports an h-index of zero when no work has any citations', () => {
+    const entries: ProofEntry[] = [{ metric: 'openalex.h_index', label: 'h-index' }];
+    const caches: ProofCaches = { openalex: { a: { citations: 0 }, b: { citations: 0 } } };
+    expect(resolveProof(entries, caches)[0].display).toBe('0');
+  });
+
+  it('falls back to the literal value when the openalex cache is absent', () => {
+    const entries: ProofEntry[] = [
+      { metric: 'openalex.citations', value: '0', label: 'OpenAlex citations' },
+    ];
+    expect(resolveProof(entries, {})[0].display).toBe('0');
+  });
+
+  it('treats an openalex entry missing citations as zero instead of throwing', () => {
+    const entries: ProofEntry[] = [{ metric: 'openalex.citations', label: 'OpenAlex citations' }];
+    const caches: ProofCaches = {
+      openalex: { a: {} as unknown as { citations: number }, b: { citations: 7 } },
+    };
+    expect(() => resolveProof(entries, caches)).not.toThrow();
+    expect(resolveProof(entries, caches)[0].display).toBe('7');
+  });
+
+  it('substitutes a {metric} placeholder in the source line', () => {
+    const entries: ProofEntry[] = [
+      {
+        metric: 'openalex.citations',
+        label: 'OpenAlex citations',
+        source: 'h-index {openalex.h_index}',
+      },
+    ];
+    const caches: ProofCaches = {
+      openalex: {
+        a: { citations: 5 },
+        b: { citations: 3 },
+        c: { citations: 3 },
+        d: { citations: 1 },
+      },
+    };
+    expect(resolveProof(entries, caches)[0].source).toBe('h-index 3');
+  });
+
+  it('renders a placeholder in the source line when its metric cannot resolve', () => {
+    const entries: ProofEntry[] = [
+      {
+        metric: 'openalex.citations',
+        label: 'OpenAlex citations',
+        source: 'h-index {openalex.h_index}',
+      },
+    ];
+    expect(resolveProof(entries, {})[0].source).toBe('h-index n/a');
+  });
+
+  it('computes full years since the earliest experience start', () => {
+    const entries: ProofEntry[] = [
+      { metric: 'experience.years', label: 'Research and infrastructure' },
+    ];
+    const caches: ProofCaches = { experience: [{ start: '2015-09' }, { start: '2013-05' }] };
+    // August 2026 is past May, so 2013-05 is 13 full years.
+    expect(resolveProof(entries, caches, new Date(2026, 7, 18))[0].display).toBe('13');
+  });
+
+  it('does not count the current year until the anchor month is reached', () => {
+    const entries: ProofEntry[] = [{ metric: 'experience.years', label: 'Years' }];
+    const caches: ProofCaches = { experience: [{ start: '2015-09' }] };
+    // April 2026 is before September, so 2015-09 is only 10 full years.
+    expect(resolveProof(entries, caches, new Date(2026, 3, 1))[0].display).toBe('10');
+  });
+
+  it('falls back to the literal value when there is no experience data', () => {
+    const entries: ProofEntry[] = [{ metric: 'experience.years', value: '13 yrs', label: 'Years' }];
+    expect(resolveProof(entries, {})[0].display).toBe('13 yrs');
+  });
+
+  it('appends a suffix to a resolved numeric figure', () => {
+    const entries: ProofEntry[] = [{ metric: 'experience.years', suffix: ' yrs', label: 'Years' }];
+    const caches: ProofCaches = { experience: [{ start: '2013-05' }] };
+    expect(resolveProof(entries, caches, new Date(2026, 7, 18))[0].display).toBe('13 yrs');
+  });
+
+  it('does not append the suffix when the figure falls back to a literal value', () => {
+    const entries: ProofEntry[] = [
+      { metric: 'experience.years', suffix: ' yrs', value: '13 yrs', label: 'Years' },
+    ];
+    expect(resolveProof(entries, {})[0].display).toBe('13 yrs');
+  });
+
   it('falls back to a placeholder when neither a metric nor a value resolves', () => {
     const entries: ProofEntry[] = [{ label: 'Nothing to show' }];
     expect(resolveProof(entries, {})[0].display).toBe('n/a');

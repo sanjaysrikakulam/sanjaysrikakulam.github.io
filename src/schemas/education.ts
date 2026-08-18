@@ -8,7 +8,13 @@ export const educationSchema = z
     institution: z.string().min(1),
     location: z.string().optional(),
     thesis: z
-      .object({ title: z.string().min(1), url: z.url().optional() })
+      .object({
+        title: z.string().min(1),
+        // Institution where the thesis was carried out, when it differs from the
+        // degree-awarding institution. Omit when they are the same.
+        at: z.string().min(1).optional(),
+        url: z.url().optional(),
+      })
       .strict()
       .optional(),
     ...commonFlags,
