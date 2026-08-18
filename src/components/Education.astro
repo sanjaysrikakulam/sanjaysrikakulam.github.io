@@ -18,15 +18,19 @@ const { education } = Astro.props;
           {degree.location ? `, ${degree.location}` : ''}
         </p>
         {degree.thesis && (
-          <p class="thesis">
-            {degree.thesis.url ? (
-              <a href={degree.thesis.url} target="_blank" rel="noopener noreferrer">
-                {degree.thesis.title}
-              </a>
-            ) : (
-              degree.thesis.title
-            )}
-          </p>
+          <>
+            <p class="thesis">
+              <span class="thesis-k">Thesis:</span>{' '}
+              {degree.thesis.url ? (
+                <a href={degree.thesis.url} target="_blank" rel="noopener noreferrer">
+                  {degree.thesis.title}
+                </a>
+              ) : (
+                degree.thesis.title
+              )}
+            </p>
+            {degree.thesis.at && <p class="thesis-at">at {degree.thesis.at}</p>}
+          </>
         )}
       </div>
     ))

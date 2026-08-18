@@ -347,7 +347,7 @@ h1 em {
 .proof .wrap {
   padding: 40px 24px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
 .pcell .n {
@@ -666,6 +666,16 @@ h1 em {
 }
 .edu .thesis a {
   color: var(--color-accent);
+}
+.edu .thesis-k {
+  font-weight: 600;
+  color: var(--color-ink-2);
+}
+.edu .thesis-at {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-ink-3);
+  margin: 2px 0 0;
 }
 
 .tl {

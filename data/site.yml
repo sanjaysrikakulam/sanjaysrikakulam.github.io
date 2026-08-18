@@ -98,9 +98,13 @@ display:
 proof:
   - metric: publications.count
     label: Publications, deliverables and reports
+  - metric: openalex.citations
+    label: OpenAlex citations
+    source: h-index {openalex.h_index}
   - metric: zenodo.downloads
     label: Zenodo downloads
-  - value: 11 yrs
+  - metric: experience.years
+    suffix: ' yrs'
     label: Research and infrastructure
 
 pdf:

@@ -13,10 +13,18 @@ import { readCacheFile } from '../lib/section-config';
 
 const data = await loadPageData();
 
-// ProofStrip resolves zenodo.downloads against the raw cache, which
-// loadPageData folds into publication metrics rather than exposing directly.
+// ProofStrip resolves zenodo.downloads and openalex.citations against the raw
+// caches, which loadPageData folds into publication metrics rather than
+// exposing directly.
 const zenodo = readCacheFile<Record<string, { views: number; downloads: number }>>('zenodo', {});
-const proofCaches = { github: data.github, zenodo, publications: data.publications };
+const openalex = readCacheFile<Record<string, { citations: number }>>('openalex', {});
+const proofCaches = {
+  github: data.github,
+  zenodo,
+  openalex,
+  publications: data.publications,
+  experience: data.experience,
+};
 
 const NAV_LABELS: Record<string, string> = {
   work: 'Work',

@@ -75,6 +75,7 @@ export const siteSchema = z
             metric: z.string().optional(),
             label: z.string(),
             source: z.string().optional(),
+            suffix: z.string().optional(),
           })
           .strict()
           .refine((entry) => Boolean(entry.metric ?? entry.value), {

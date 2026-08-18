@@ -10,6 +10,7 @@
 #   location: Saarbrücken, Germany        # optional
 #   thesis:                               # optional block
 #     title: Thesis title                 #   required inside `thesis`
+#     at: Host institution                 #   optional, if different from institution
 #     url: https://example.org/thesis     #   optional
 #   featured: true                        # optional, pull to the top
 #   visible: false                        # optional, hide without deleting
@@ -17,13 +18,21 @@
   year: 2024
   institution: Helmholtz Institute for Pharmaceutical Research Saarland and Saarland University
   location: Saarbrücken, Germany
+  thesis:
+    title: Simulations and data structures to study drug resistance
 
 - degree: M.Sc., Bioinformatics
   year: 2018
   institution: Saarland University
   location: Saarbrücken, Germany
+  thesis:
+    title: Studying mutations associated with drug resistance in tyrosine kinases using molecular dynamics approach
+    at: Max Planck Institute for Informatics
 
 - degree: B.Tech., Bioinformatics
   year: 2014
   institution: SRM University
   location: Kancheepuram, India
+  thesis:
+    title: Comparative Structural Analysis of HIV Protease protein
+    at: ICMR National Institute for Research in Tuberculosis
