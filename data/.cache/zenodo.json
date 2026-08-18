@@ -31,7 +31,7 @@
     "keywords": [],
     "resource_type": "Preprint",
     "title": "Optimized meta-scheduling in Galaxy using TPV Broker",
-    "views": 760,
+    "views": 761,
     "year": 2025
   },
   "10.5281/zenodo.15362960": {
@@ -51,7 +51,7 @@
     ],
     "resource_type": "Presentation",
     "title": "Data Snack - Galaxy a research data powerhouse from analysis to FAIR management",
-    "views": 153,
+    "views": 157,
     "year": 2025
   },
   "10.5281/zenodo.15729502": {
@@ -119,7 +119,7 @@
     ],
     "resource_type": "Project deliverable",
     "title": "Bring Your Own Infrastructure",
-    "views": 248,
+    "views": 250,
     "year": 2024
   },
   "10.5281/zenodo.15827107": {
@@ -247,7 +247,7 @@
     ],
     "resource_type": "Project deliverable",
     "title": "D3.1 Operations documentation on the Open Infrastructure deployment",
-    "views": 180,
+    "views": 181,
     "year": 2024
   },
   "10.5281/zenodo.16312227": {
@@ -304,7 +304,7 @@
     ],
     "resource_type": "Poster",
     "title": "Dynamic meta-scheduling in Galaxy with TPV Broker for smarter workload distribution",
-    "views": 186,
+    "views": 187,
     "year": 2025
   },
   "10.5281/zenodo.16735306": {
@@ -327,7 +327,7 @@
       }
     ],
     "authors_display": "Zierep P, Kuntz M, Srikakulam SK, Grüning B",
-    "downloads": 118,
+    "downloads": 121,
     "keywords": [
       "Interactive Tools",
       "Galaxy",
@@ -338,7 +338,7 @@
     ],
     "resource_type": "Conference paper",
     "title": "Interactive Galaxy Tools: Combining real-time user interaction with scientific workflows",
-    "views": 125,
+    "views": 126,
     "year": 2025
   },
   "10.5281/zenodo.16761933": {
@@ -519,7 +519,7 @@
       }
     ],
     "authors_display": "Twardziok S, Barysch SV, Braun M, Buchhalter I, Grüning B, Kraft P, Krüger J, Kuchenbecker L, Srikakulam SK, Lawerenz C, Sczyrba A, Wagener H, Hoffmann N, Kohlbacher O, German Network for Bioinformatics Infrastructure - de.NBI",
-    "downloads": 491,
+    "downloads": 494,
     "keywords": [
       "NFDI",
       "de.NBI",
@@ -540,7 +540,7 @@
     ],
     "resource_type": "Publication",
     "title": "Towards Federated, Certified Infrastructures for Sensitive Data Research in Germany and Europe with the de.NBI Cloud",
-    "views": 553,
+    "views": 557,
     "year": 2026
   },
   "10.5281/zenodo.8335099": {
@@ -563,7 +563,7 @@
       }
     ],
     "authors_display": "Kayikcioglu T, Srikakulam SK, Maier W, Grüning B",
-    "downloads": 69,
+    "downloads": 70,
     "keywords": [
       "Interactive Tools, Galaxy, workflows, notebooks, Jupyter, R Studio"
     ],
