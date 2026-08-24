@@ -10,7 +10,7 @@
     "deNBI/service-registry": {
       "forks": 1,
       "language": "Python",
-      "pushed_at": "2026-08-09T04:39:52Z",
+      "pushed_at": "2026-08-19T03:23:17Z",
       "stars": 0,
       "url": "https://github.com/deNBI/service-registry"
     },
@@ -18,7 +18,7 @@
       "forks": 125,
       "language": "Shell",
       "pushed_at": "2023-11-24T13:09:36Z",
-      "stars": 379,
+      "stars": 380,
       "url": "https://github.com/kalininalab/alphafold_non_docker"
     },
     "kalininalab/d-StructMAn": {
@@ -50,9 +50,9 @@
       "url": "https://github.com/sanjaysrikakulam/terraform_clum2025"
     },
     "usegalaxy-eu/infrastructure-playbook": {
-      "forks": 115,
+      "forks": 116,
       "language": "Jinja",
-      "pushed_at": "2026-08-17T17:12:10Z",
+      "pushed_at": "2026-08-23T17:45:34Z",
       "stars": 25,
       "url": "https://github.com/usegalaxy-eu/infrastructure-playbook"
     },
