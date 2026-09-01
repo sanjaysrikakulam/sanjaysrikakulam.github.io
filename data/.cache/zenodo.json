@@ -51,7 +51,7 @@
     ],
     "resource_type": "Presentation",
     "title": "Data Snack - Galaxy a research data powerhouse from analysis to FAIR management",
-    "views": 168,
+    "views": 169,
     "year": 2025
   },
   "10.5281/zenodo.15729502": {
@@ -519,7 +519,7 @@
       }
     ],
     "authors_display": "Twardziok S, Barysch SV, Braun M, Buchhalter I, Grüning B, Kraft P, Krüger J, Kuchenbecker L, Srikakulam SK, Lawerenz C, Sczyrba A, Wagener H, Hoffmann N, Kohlbacher O, German Network for Bioinformatics Infrastructure - de.NBI",
-    "downloads": 507,
+    "downloads": 508,
     "keywords": [
       "NFDI",
       "de.NBI",
@@ -540,7 +540,7 @@
     ],
     "resource_type": "Publication",
     "title": "Towards Federated, Certified Infrastructures for Sensitive Data Research in Germany and Europe with the de.NBI Cloud",
-    "views": 576,
+    "views": 581,
     "year": 2026
   },
   "10.5281/zenodo.8335099": {
@@ -569,7 +569,7 @@
     ],
     "resource_type": "Poster",
     "title": "Interactive Tools (IT) in Galaxy",
-    "views": 113,
+    "views": 114,
     "year": 2023
   }
 }
