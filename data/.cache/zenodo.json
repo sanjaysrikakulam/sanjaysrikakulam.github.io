@@ -27,11 +27,11 @@
       }
     ],
     "authors_display": "Azab A, De Geest P, Srikakulam SK, Vondra T, Kuntz M, Grüning B",
-    "downloads": 346,
+    "downloads": 350,
     "keywords": [],
     "resource_type": "Preprint",
     "title": "Optimized meta-scheduling in Galaxy using TPV Broker",
-    "views": 785,
+    "views": 789,
     "year": 2025
   },
   "10.5281/zenodo.15362960": {
@@ -42,7 +42,7 @@
       }
     ],
     "authors_display": "Srikakulam SK",
-    "downloads": 135,
+    "downloads": 139,
     "keywords": [
       "Research Data Management",
       "Reproducible research",
@@ -51,7 +51,7 @@
     ],
     "resource_type": "Presentation",
     "title": "Data Snack - Galaxy a research data powerhouse from analysis to FAIR management",
-    "views": 175,
+    "views": 180,
     "year": 2025
   },
   "10.5281/zenodo.15729502": {
@@ -90,7 +90,7 @@
       }
     ],
     "authors_display": "Pedersen M, Srikakulam SK, De Geest P, Fernandez-del-Castillo E, Cristofori A, Luna-Valero S, Tangaro MA, Nicotri S",
-    "downloads": 124,
+    "downloads": 125,
     "keywords": [
       "Galaxy platform",
       "Federated access",
@@ -158,7 +158,7 @@
       }
     ],
     "authors_display": "Azab A, Srikakulam SK, De Geest P, Vondrák T, Grüning B, Kuntz M, Fernandez-del-Castillo E, Luna-Valero S",
-    "downloads": 83,
+    "downloads": 84,
     "keywords": [
       "Smart Job Scheduling",
       "Meta-Scheduler",
@@ -173,7 +173,7 @@
     ],
     "resource_type": "Project deliverable",
     "title": "Publication on the smart job scheduler implementation",
-    "views": 242,
+    "views": 243,
     "year": 2025
   },
   "10.5281/zenodo.15920451": {
@@ -224,7 +224,7 @@
       }
     ],
     "authors_display": "Nicotri S, Tangaro MA, Zambelli F, Ruda M, Krenek A, Grüning B, Srikakulam SK, Bretaudeau A, Batalden S, Chavero Díez M, De Geest P",
-    "downloads": 75,
+    "downloads": 76,
     "keywords": [
       "Galaxy Project",
       "Pulsar",
@@ -247,7 +247,7 @@
     ],
     "resource_type": "Project deliverable",
     "title": "D3.1 Operations documentation on the Open Infrastructure deployment",
-    "views": 190,
+    "views": 192,
     "year": 2024
   },
   "10.5281/zenodo.16312227": {
@@ -304,7 +304,7 @@
     ],
     "resource_type": "Poster",
     "title": "Dynamic meta-scheduling in Galaxy with TPV Broker for smarter workload distribution",
-    "views": 194,
+    "views": 195,
     "year": 2025
   },
   "10.5281/zenodo.16735306": {
@@ -327,7 +327,7 @@
       }
     ],
     "authors_display": "Zierep P, Kuntz M, Srikakulam SK, Grüning B",
-    "downloads": 124,
+    "downloads": 128,
     "keywords": [
       "Interactive Tools",
       "Galaxy",
@@ -338,7 +338,7 @@
     ],
     "resource_type": "Conference paper",
     "title": "Interactive Galaxy Tools: Combining real-time user interaction with scientific workflows",
-    "views": 143,
+    "views": 144,
     "year": 2025
   },
   "10.5281/zenodo.16761933": {
@@ -433,7 +433,7 @@
       }
     ],
     "authors_display": "Tangaro MA, Nicotri S, Grüning B, Srikakulam SK, Dadras A, Kaiser O, Kuntz M, Bretaudeau A, De Geest P, Luna-Valero S, Chavero Díez M, Fernández González JM, Capella-Gutierrez S, Gelpí JL, Astalos J, Jurič B, Ruda M, Opioła Ł, Bayındır H, GIOIOSA S, De Sanctis G, Zambelli F",
-    "downloads": 218,
+    "downloads": 220,
     "keywords": [
       "Galaxy Project",
       "Pulsar",
@@ -453,7 +453,7 @@
     ],
     "resource_type": "Preprint",
     "title": "Scaling Scientific Workflows in Europe: Architecture and Deployment of the Galaxy-Pulsar Computational Network",
-    "views": 375,
+    "views": 381,
     "year": 2025
   },
   "10.5281/zenodo.19882942": {
@@ -519,7 +519,7 @@
       }
     ],
     "authors_display": "Twardziok S, Barysch SV, Braun M, Buchhalter I, Grüning B, Kraft P, Krüger J, Kuchenbecker L, Srikakulam SK, Lawerenz C, Sczyrba A, Wagener H, Hoffmann N, Kohlbacher O, German Network for Bioinformatics Infrastructure - de.NBI",
-    "downloads": 516,
+    "downloads": 525,
     "keywords": [
       "NFDI",
       "de.NBI",
@@ -540,7 +540,7 @@
     ],
     "resource_type": "Publication",
     "title": "Towards Federated, Certified Infrastructures for Sensitive Data Research in Germany and Europe with the de.NBI Cloud",
-    "views": 597,
+    "views": 613,
     "year": 2026
   },
   "10.5281/zenodo.8335099": {
@@ -563,13 +563,13 @@
       }
     ],
     "authors_display": "Kayikcioglu T, Srikakulam SK, Maier W, Grüning B",
-    "downloads": 72,
+    "downloads": 75,
     "keywords": [
       "Interactive Tools, Galaxy, workflows, notebooks, Jupyter, R Studio"
     ],
     "resource_type": "Poster",
     "title": "Interactive Tools (IT) in Galaxy",
-    "views": 114,
+    "views": 119,
     "year": 2023
   }
 }
