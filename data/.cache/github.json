@@ -4,18 +4,18 @@
       "galaxyproject": 39,
       "usegalaxy-eu": 358
     },
-    "total": 437
+    "total": 438
   },
   "repos": {
     "deNBI/service-registry": {
       "forks": 1,
       "language": "Python",
-      "pushed_at": "2026-08-25T05:50:07Z",
+      "pushed_at": "2026-09-28T10:16:21Z",
       "stars": 0,
       "url": "https://github.com/deNBI/service-registry"
     },
     "kalininalab/alphafold_non_docker": {
-      "forks": 125,
+      "forks": 124,
       "language": "Shell",
       "pushed_at": "2023-11-24T13:09:36Z",
       "stars": 380,
@@ -52,7 +52,7 @@
     "usegalaxy-eu/infrastructure-playbook": {
       "forks": 116,
       "language": "Jinja",
-      "pushed_at": "2026-09-19T22:03:04Z",
+      "pushed_at": "2026-09-28T07:36:49Z",
       "stars": 25,
       "url": "https://github.com/usegalaxy-eu/infrastructure-playbook"
     },
