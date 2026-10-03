@@ -49,6 +49,21 @@ test.describe('page structure', () => {
   });
 });
 
+test.describe('contact', () => {
+  test('the footer offers the profile email as a visible mailto link and an icon', async ({
+    page,
+  }) => {
+    await page.goto('/');
+    const mailto = 'mailto:s.srikakulam@fz-juelich.de';
+    await expect(page.locator(`footer .femail a[href="${mailto}"]`)).toHaveText(
+      's.srikakulam@fz-juelich.de',
+    );
+    const icon = page.locator(`footer .ficons a[href="${mailto}"]`);
+    await expect(icon).toHaveAttribute('aria-label', 'Email');
+    await expect(icon).not.toHaveAttribute('target', '_blank');
+  });
+});
+
 test.describe('theme', () => {
   test('toggles and survives a reload', async ({ page }) => {
     await page.goto('/');
@@ -168,11 +183,13 @@ test.describe('analytics', () => {
       await expect(note.locator('a')).toHaveAttribute('href', 'https://umami.is');
       await expect(trackedDownloads).toHaveCount(await downloads.count());
       // Every footer icon is tracked: the profile links as profile-<key>, plus
-      // the download link sharing the hero's download-cv event.
+      // the email link as contact-email and the download link sharing the
+      // hero's download-cv event.
       await expect(trackedIcons).toHaveCount(await icons.count());
       await expect(page.locator('footer .ficons a[data-umami-event^="profile-"]')).toHaveCount(
-        (await icons.count()) - 1,
+        (await icons.count()) - 2,
       );
+      await expect(page.locator('footer a[data-umami-event="contact-email"]')).toHaveCount(2);
     } else {
       await expect(note).toHaveCount(0);
       await expect(trackedDownloads).toHaveCount(0);

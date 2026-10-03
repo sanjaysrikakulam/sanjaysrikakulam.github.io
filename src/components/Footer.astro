@@ -10,7 +10,9 @@ interface Props {
 const { data } = Astro.props;
 const config = sectionConfig(data.site, 'contact');
 const { links } = data.site;
+const { email } = data.site.profile;
 const analytics = getAnalytics(data.site);
+const emailEvent = analytics ? 'contact-email' : undefined;
 
 const LABELS: Record<string, string> = {
   github: 'GitHub',
@@ -37,8 +39,25 @@ const ICONS: Record<string, string> = {
       <div>
         <h2>{config.title}</h2>
         <p>{config.description}</p>
+        {email && (
+          <p class="femail">
+            <a href={`mailto:${email}`} data-umami-event={emailEvent}>
+              {email}
+            </a>
+          </p>
+        )}
       </div>
       <div class="ficons">
+        {email && (
+          <a
+            href={`mailto:${email}`}
+            aria-label="Email"
+            title="Email"
+            data-umami-event={emailEvent}
+          >
+            <Icon name="mail" />
+          </a>
+        )}
         {Object.entries(links).map(([key, url]) => (
           <a
             href={url}
@@ -83,6 +102,16 @@ const ICONS: Record<string, string> = {
     margin-top: 32px;
     font-size: 0.75rem;
     color: var(--color-ink-3);
+  }
+  .femail {
+    margin-top: 12px;
+  }
+  .femail a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .femail a:hover {
+    text-decoration: underline;
   }
   .privacy a {
     color: var(--color-accent);
