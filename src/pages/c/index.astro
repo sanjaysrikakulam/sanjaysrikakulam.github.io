@@ -36,27 +36,27 @@ const chevron =
       <div class="rule"></div>
 
       <div class="actions">
-        {
-          actions.map((a) => (
-            <a
-              class:list={['act', { primary: a.primary }]}
-              data-a={a.key}
-              href={a.href}
-              download={a.download}
-              data-umami-event={a.event}
-            >
-              <span class="ic" aria-hidden="true" set:html={icons[a.key]} />
-              <span class="tx">
-                <span class="lb">{a.label}</span>
-                <span class="sb">{a.sub}</span>
-              </span>
-              <span class="ch" aria-hidden="true" set:html={chevron} />
-            </a>
-          ))
-        }
+        {actions.map((a) => (
+          <a
+            class:list={['act', { primary: a.primary }]}
+            data-a={a.key}
+            href={a.href}
+            download={a.download}
+            data-umami-event={a.event}
+          >
+            <span class="ic" aria-hidden="true" set:html={icons[a.key]} />
+            <span class="tx">
+              <span class="lb">{a.label}</span>
+              <span class="sb">{a.sub}</span>
+            </span>
+            <span class="ch" aria-hidden="true" set:html={chevron} />
+          </a>
+        ))}
       </div>
 
-      <a class="home" href="/">sanjay.srikakulam.de ↗</a>
+      <a class="home" href="/">
+        sanjay.srikakulam.de ↗
+      </a>
     </div>
   </main>
 </Base>

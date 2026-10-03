@@ -16,14 +16,12 @@ const { site } = Astro.props;
 const analytics = getAnalytics(site);
 ---
 
-{
-  analytics && (
-    <script
-      is:inline
-      defer
-      src={analytics.scriptUrl}
-      data-website-id={analytics.websiteId}
-      data-domains={analytics.domains}
-    />
-  )
-}
+{analytics && (
+  <script
+    is:inline
+    defer
+    src={analytics.scriptUrl}
+    data-website-id={analytics.websiteId}
+    data-domains={analytics.domains}
+  />
+)}

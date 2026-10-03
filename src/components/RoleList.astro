@@ -15,48 +15,46 @@ const monthName = (value: string | null) => {
 ---
 
 <div class="rolelist">
-  {
-    roles.map((role) => (
-      <article class="role-entry" id={experienceAnchor(role)}>
-        <p class="when">
-          {monthName(role.start)} to {monthName(role.end)}
+  {roles.map((role) => (
+    <article class="role-entry" id={experienceAnchor(role)}>
+      <p class="when">
+        {monthName(role.start)} to {monthName(role.end)}
+      </p>
+      <div>
+        <h3 class="t">{role.title}</h3>
+        <p class="o">
+          {role.org_url ? (
+            <a class="orglink" href={role.org_url} target="_blank" rel="noopener noreferrer">
+              {role.org}
+            </a>
+          ) : (
+            role.org
+          )}
+          {role.location ? `, ${role.location}` : ''}
         </p>
-        <div>
-          <h3 class="t">{role.title}</h3>
-          <p class="o">
-            {role.org_url ? (
-              <a class="orglink" href={role.org_url} target="_blank" rel="noopener noreferrer">
-                {role.org}
-              </a>
-            ) : (
-              role.org
-            )}
-            {role.location ? `, ${role.location}` : ''}
-          </p>
-          <ul>
-            {role.highlights.map((item) => (
-              <li set:html={item} />
+        <ul>
+          {role.highlights.map((item) => (
+            <li set:html={item} />
+          ))}
+        </ul>
+        {role.affiliations.length > 0 && (
+          <p class="affil">
+            {role.affiliations.map((name) => (
+              <span>{name}</span>
             ))}
-          </ul>
-          {role.affiliations.length > 0 && (
-            <p class="affil">
-              {role.affiliations.map((name) => (
-                <span>{name}</span>
+          </p>
+        )}
+        {role.details.length > 0 && (
+          <details class="more">
+            <summary>{role.details.length} more responsibilities</summary>
+            <ul>
+              {role.details.map((item) => (
+                <li set:html={item} />
               ))}
-            </p>
-          )}
-          {role.details.length > 0 && (
-            <details class="more">
-              <summary>{role.details.length} more responsibilities</summary>
-              <ul>
-                {role.details.map((item) => (
-                  <li set:html={item} />
-                ))}
-              </ul>
-            </details>
-          )}
-        </div>
-      </article>
-    ))
-  }
+            </ul>
+          </details>
+        )}
+      </div>
+    </article>
+  ))}
 </div>

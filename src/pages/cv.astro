@@ -46,107 +46,97 @@ const period = (start: string, end: string | null) => {
     />
   </head>
   <body>
-    {
-      include('profile') && (
-        <header>
-          <h1>{site.profile.name}</h1>
-          <p class="meta">
-            {site.profile.location}
-            {Object.entries(site.links).map(([key, url]) => (
-              <>
-                {' · '}
-                <a href={url}>{LINK_LABELS[key] ?? key}</a>
-              </>
-            ))}
-          </p>
-          {site.profile.bio && <p>{site.profile.bio}</p>}
-        </header>
-      )
-    }
-
-    {
-      include('education') && (
-        <section>
-          <h2>Education</h2>
-          {education.map((degree) => (
-            <div class="entry">
-              <h3>{degree.degree}</h3>
-              <p class="meta">
-                {degree.year} · {degree.institution}
-                {degree.location ? `, ${degree.location}` : ''}
-              </p>
-            </div>
+    {include('profile') && (
+      <header>
+        <h1>{site.profile.name}</h1>
+        <p class="meta">
+          {site.profile.location}
+          {Object.entries(site.links).map(([key, url]) => (
+            <>
+              {' · '}
+              <a href={url}>{LINK_LABELS[key] ?? key}</a>
+            </>
           ))}
-        </section>
-      )
-    }
+        </p>
+        {site.profile.bio && <p>{site.profile.bio}</p>}
+      </header>
+    )}
 
-    {
-      include('experience') && (
-        <section>
-          <h2>Experience</h2>
-          {roles.map((role) => (
-            <div class="entry">
-              <h3>{role.title}</h3>
-              <p class="meta">
-                {period(role.start, role.end)} · {role.org}
-                {role.location ? `, ${role.location}` : ''}
-              </p>
-              <ul>
-                {role.highlights.map((item) => (
-                  <li set:html={item} />
-                ))}
-                {role.details.map((item) => (
-                  <li set:html={item} />
-                ))}
-              </ul>
-            </div>
-          ))}
-        </section>
-      )
-    }
-
-    {
-      include('publications') && (
-        <section>
-          <h2>Publications</h2>
-          {publications.map((entry) => (
-            <div class="pub-entry">
-              <p>
-                {entry.authors_display ? `${entry.authors_display}. ` : ''}
-                <strong>{entry.title}</strong>
-                {entry.venue ? `. ${entry.venue}` : ''}, {entry.year}.
-                {entry.doi && (
-                  <>
-                    {' '}
-                    <a href={`https://doi.org/${entry.doi}`}>doi:{entry.doi}</a>
-                  </>
-                )}
-                {!entry.doi && entry.zenodo_doi && (
-                  <>
-                    {' '}
-                    <a href={`https://doi.org/${entry.zenodo_doi}`}>doi:{entry.zenodo_doi}</a>
-                  </>
-                )}
-              </p>
-            </div>
-          ))}
-        </section>
-      )
-    }
-
-    {
-      include('skills') && (
-        <section>
-          <h2>Skills</h2>
-          {skills.map((group) => (
-            <p class="entry">
-              <strong>{group.group}:</strong> {group.items.join(', ')}
+    {include('education') && (
+      <section>
+        <h2>Education</h2>
+        {education.map((degree) => (
+          <div class="entry">
+            <h3>{degree.degree}</h3>
+            <p class="meta">
+              {degree.year} · {degree.institution}
+              {degree.location ? `, ${degree.location}` : ''}
             </p>
-          ))}
-        </section>
-      )
-    }
+          </div>
+        ))}
+      </section>
+    )}
+
+    {include('experience') && (
+      <section>
+        <h2>Experience</h2>
+        {roles.map((role) => (
+          <div class="entry">
+            <h3>{role.title}</h3>
+            <p class="meta">
+              {period(role.start, role.end)} · {role.org}
+              {role.location ? `, ${role.location}` : ''}
+            </p>
+            <ul>
+              {role.highlights.map((item) => (
+                <li set:html={item} />
+              ))}
+              {role.details.map((item) => (
+                <li set:html={item} />
+              ))}
+            </ul>
+          </div>
+        ))}
+      </section>
+    )}
+
+    {include('publications') && (
+      <section>
+        <h2>Publications</h2>
+        {publications.map((entry) => (
+          <div class="pub-entry">
+            <p>
+              {entry.authors_display ? `${entry.authors_display}. ` : ''}
+              <strong>{entry.title}</strong>
+              {entry.venue ? `. ${entry.venue}` : ''}, {entry.year}.
+              {entry.doi && (
+                <>
+                  {' '}
+                  <a href={`https://doi.org/${entry.doi}`}>doi:{entry.doi}</a>
+                </>
+              )}
+              {!entry.doi && entry.zenodo_doi && (
+                <>
+                  {' '}
+                  <a href={`https://doi.org/${entry.zenodo_doi}`}>doi:{entry.zenodo_doi}</a>
+                </>
+              )}
+            </p>
+          </div>
+        ))}
+      </section>
+    )}
+
+    {include('skills') && (
+      <section>
+        <h2>Skills</h2>
+        {skills.map((group) => (
+          <p class="entry">
+            <strong>{group.group}:</strong> {group.items.join(', ')}
+          </p>
+        ))}
+      </section>
+    )}
     <Analytics site={site} />
   </body>
 </html>

@@ -15,32 +15,30 @@ const citationFor = (doi?: string) =>
   doi ? data.publications.find((entry) => entry.doi === doi)?.metrics.citations : undefined;
 ---
 
-{
-  config.visible && (
-    <section id="work">
-      <div class="wrap">
-        <div class="shead">
-          <p class="slabel">Work</p>
-          <h2>{config.title}</h2>
-          <p>{config.description}</p>
-        </div>
-        <div class="work">
-          {featured.map((project) => (
-            <ProjectCard
-              project={project}
-              github={data.github}
-              citations={citationFor(project.paper)}
-            />
-          ))}
-        </div>
-
-        <h3 class="sub">Open source</h3>
-        <p class="snote">
-          Most of my code lives in organisation repositories. A selection of the public ones I
-          contribute to:
-        </p>
-        <RepoCarousel projects={data.projects} github={data.github} site={data.site} />
+{config.visible && (
+  <section id="work">
+    <div class="wrap">
+      <div class="shead">
+        <p class="slabel">Work</p>
+        <h2>{config.title}</h2>
+        <p>{config.description}</p>
       </div>
-    </section>
-  )
-}
+      <div class="work">
+        {featured.map((project) => (
+          <ProjectCard
+            project={project}
+            github={data.github}
+            citations={citationFor(project.paper)}
+          />
+        ))}
+      </div>
+
+      <h3 class="sub">Open source</h3>
+      <p class="snote">
+        Most of my code lives in organisation repositories. A selection of the public ones I
+        contribute to:
+      </p>
+      <RepoCarousel projects={data.projects} github={data.github} site={data.site} />
+    </div>
+  </section>
+)}

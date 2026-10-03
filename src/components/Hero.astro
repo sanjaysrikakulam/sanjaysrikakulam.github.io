@@ -20,18 +20,22 @@ const download = getAnalytics(site) ? 'download-cv' : undefined;
 <header class="hero" id="top">
   <div class="wrap">
     <div>
-      {
-        site.profile.available && (
-          <p class="eyebrow">
-            <span class="dot" aria-hidden="true" />
-            {site.profile.available_text}
-          </p>
-        )
-      }
-      <h1>{before}<em>{accent}</em>{after}</h1>
+      {site.profile.available && (
+        <p class="eyebrow">
+          <span class="dot" aria-hidden="true" />
+          {site.profile.available_text}
+        </p>
+      )}
+      <h1>
+        {before}
+        <em>{accent}</em>
+        {after}
+      </h1>
       <p class="lede" set:html={site.profile.bio} />
       <div class="cta-row">
-        <a class="btn btn-p" href="#work">See the work</a>
+        <a class="btn btn-p" href="#work">
+          See the work
+        </a>
         <a
           class="btn btn-s"
           href="/Sanjay_Srikakulam_CV.pdf"
@@ -43,16 +47,14 @@ const download = getAnalytics(site) ? 'download-cv' : undefined;
         </a>
       </div>
     </div>
-    {
-      site.display.photo && (
-        <img
-          class="avatar"
-          src={site.profile.avatar}
-          width="180"
-          height="180"
-          alt={`Portrait of ${site.profile.name}`}
-        />
-      )
-    }
+    {site.display.photo && (
+      <img
+        class="avatar"
+        src={site.profile.avatar}
+        width="180"
+        height="180"
+        alt={`Portrait of ${site.profile.name}`}
+      />
+    )}
   </div>
 </header>

@@ -39,20 +39,18 @@ const ICONS: Record<string, string> = {
         <p>{config.description}</p>
       </div>
       <div class="ficons">
-        {
-          Object.entries(links).map(([key, url]) => (
-            <a
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={LABELS[key] ?? key}
-              title={LABELS[key] ?? key}
-              data-umami-event={analytics ? `profile-${key}` : undefined}
-            >
-              <Icon name={ICONS[key] ?? 'github'} />
-            </a>
-          ))
-        }
+        {Object.entries(links).map(([key, url]) => (
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={LABELS[key] ?? key}
+            title={LABELS[key] ?? key}
+            data-umami-event={analytics ? `profile-${key}` : undefined}
+          >
+            <Icon name={ICONS[key] ?? 'github'} />
+          </a>
+        ))}
         <a
           href="/Sanjay_Srikakulam_CV.pdf"
           target="_blank"
@@ -65,17 +63,15 @@ const ICONS: Record<string, string> = {
         </a>
       </div>
     </div>
-    {
-      analytics && (
-        <p class="privacy">
-          Analytics by self-hosted{' '}
-          <a href="https://umami.is" target="_blank" rel="noopener noreferrer">
-            Umami
-          </a>{' '}
-          &mdash; no cookies, no personal data.
-        </p>
-      )
-    }
+    {analytics && (
+      <p class="privacy">
+        Analytics by self-hosted{' '}
+        <a href="https://umami.is" target="_blank" rel="noopener noreferrer">
+          Umami
+        </a>{' '}
+        &mdash; no cookies, no personal data.
+      </p>
+    )}
   </div>
 </footer>
 
