@@ -10,7 +10,7 @@
     "deNBI/service-registry": {
       "forks": 1,
       "language": "Python",
-      "pushed_at": "2026-09-28T10:16:21Z",
+      "pushed_at": "2026-10-01T21:24:49Z",
       "stars": 0,
       "url": "https://github.com/deNBI/service-registry"
     },
@@ -50,9 +50,9 @@
       "url": "https://github.com/sanjaysrikakulam/terraform_clum2025"
     },
     "usegalaxy-eu/infrastructure-playbook": {
-      "forks": 116,
+      "forks": 115,
       "language": "Jinja",
-      "pushed_at": "2026-09-28T07:36:49Z",
+      "pushed_at": "2026-10-02T13:39:16Z",
       "stars": 25,
       "url": "https://github.com/usegalaxy-eu/infrastructure-playbook"
     },
