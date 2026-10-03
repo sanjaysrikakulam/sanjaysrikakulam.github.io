@@ -61,65 +61,61 @@ const presentCategories = new Set(entries.flatMap(categoriesFor));
 const filters = CATEGORIES.filter((category) => presentCategories.has(category.id));
 ---
 
-{
-  filters.length > 1 && (
-    <div class="pubfilter" role="group" aria-label="Filter publications by type">
-      <button type="button" class="pf on" data-filter="all" aria-pressed="true">
-        All
+{filters.length > 1 && (
+  <div class="pubfilter" role="group" aria-label="Filter publications by type">
+    <button type="button" class="pf on" data-filter="all" aria-pressed="true">
+      All
+    </button>
+    {filters.map((category) => (
+      <button type="button" class="pf" data-filter={category.id} aria-pressed="false">
+        {category.label}
       </button>
-      {filters.map((category) => (
-        <button type="button" class="pf" data-filter={category.id} aria-pressed="false">
-          {category.label}
-        </button>
-      ))}
-    </div>
-  )
-}
+    ))}
+  </div>
+)}
 
 <div class="publications">
-  {
-    entries.map((entry) => (
-      <article class="pub" data-cats={categoriesFor(entry).join(' ')}>
-        <p class="yr">{entry.year}</p>
-        <div>
-          <h3 class="ti">
-            {entry.links.doi || entry.links.zenodo ? (
-              <a
-                href={entry.links.doi ?? entry.links.zenodo}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {entry.title}
-              </a>
-            ) : (
-              entry.title
-            )}
-            {labelsFor(entry).map((type) => (
-              <span class="abadge">{TYPE_LABEL[type]}</span>
-            ))}
-          </h3>
-          {entry.authors_display && <p class="au" set:html={emphasise(entry.authors_display)} />}
-          {entry.role_note && <p class="au">{entry.role_note}</p>}
-          {entry.venue && <p class="vn">{entry.venue}</p>}
-          <PublicationLinks entry={entry} />
-        </div>
-        <div class="cite">
-          {entry.metrics.citations !== undefined && (
-            <p>
-              <span class="c">{entry.metrics.citations}</span>
-              <span class="cl">OpenAlex citations</span>
-            </p>
+  {entries.map((entry) => (
+    <article class="pub" data-cats={categoriesFor(entry).join(' ')}>
+      <p class="yr">{entry.year}</p>
+      <div>
+        <h3 class="ti">
+          {entry.links.doi || entry.links.zenodo ? (
+            <a
+              href={entry.links.doi ?? entry.links.zenodo}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {entry.title}
+            </a>
+          ) : (
+            entry.title
           )}
-          {entry.metrics.downloads !== undefined && (
-            <p class={entry.metrics.citations !== undefined ? 'u' : ''}>
-              <span class="c">{entry.metrics.downloads}</span>
-              <span class="cl">Zenodo downloads</span>
-            </p>
-          )}
-        </div>
-      </article>
-    ))
-  }
+          {labelsFor(entry).map((type) => (
+            <span class="abadge">{TYPE_LABEL[type]}</span>
+          ))}
+        </h3>
+        {entry.authors_display && <p class="au" set:html={emphasise(entry.authors_display)} />}
+        {entry.role_note && <p class="au">{entry.role_note}</p>}
+        {entry.venue && <p class="vn">{entry.venue}</p>}
+        <PublicationLinks entry={entry} />
+      </div>
+      <div class="cite">
+        {entry.metrics.citations !== undefined && (
+          <p>
+            <span class="c">{entry.metrics.citations}</span>
+            <span class="cl">OpenAlex citations</span>
+          </p>
+        )}
+        {entry.metrics.downloads !== undefined && (
+          <p class={entry.metrics.citations !== undefined ? 'u' : ''}>
+            <span class="c">{entry.metrics.downloads}</span>
+            <span class="cl">Zenodo downloads</span>
+          </p>
+        )}
+      </div>
+    </article>
+  ))}
 </div>
 
 <nav class="pager" id="pub-pager" aria-label="Publication pages" hidden></nav>

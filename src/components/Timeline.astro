@@ -11,38 +11,36 @@ const yearOf = (value: string) => (value === 'Present' ? 'Present' : value.split
 const periodOf = (bar: Bar) => `${yearOf(bar.from)} to ${yearOf(bar.to)}`;
 ---
 
-{
-  bars.length > 0 && (
-    <div class="tl">
-      <div class="tl-axis">
-        {ticks.map((year) => (
-          <span>{year}</span>
-        ))}
-      </div>
-      <div class="tl-lanes">
-        {bars.map((bar) => (
-          <div class="lane">
-            <div class="ll">
-              <span class="lldot" style={`background:${bar.colour}`} aria-hidden="true" />
-              <span class="llrole">{bar.sublabel}</span>
-              <span class="llorg">{bar.label}</span>
-              <span class="llper">{periodOf(bar)}</span>
-            </div>
-            <div class="track">
-              <a
-                class="bar"
-                href={`#${bar.id}`}
-                style={`left:${bar.left}%;width:${bar.width}%;background:${bar.colour}`}
-                title={`${bar.sublabel} · ${bar.label} · ${periodOf(bar)}`}
-                aria-label={`Jump to ${bar.sublabel} at ${bar.label}, ${bar.from} to ${bar.to}`}
-              />
-            </div>
-          </div>
-        ))}
-      </div>
+{bars.length > 0 && (
+  <div class="tl">
+    <div class="tl-axis">
+      {ticks.map((year) => (
+        <span>{year}</span>
+      ))}
     </div>
-  )
-}
+    <div class="tl-lanes">
+      {bars.map((bar) => (
+        <div class="lane">
+          <div class="ll">
+            <span class="lldot" style={`background:${bar.colour}`} aria-hidden="true" />
+            <span class="llrole">{bar.sublabel}</span>
+            <span class="llorg">{bar.label}</span>
+            <span class="llper">{periodOf(bar)}</span>
+          </div>
+          <div class="track">
+            <a
+              class="bar"
+              href={`#${bar.id}`}
+              style={`left:${bar.left}%;width:${bar.width}%;background:${bar.colour}`}
+              title={`${bar.sublabel} · ${bar.label} · ${periodOf(bar)}`}
+              aria-label={`Jump to ${bar.sublabel} at ${bar.label}, ${bar.from} to ${bar.to}`}
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
 
 <script>
   for (const bar of document.querySelectorAll<HTMLAnchorElement>('.bar')) {

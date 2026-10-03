@@ -13,21 +13,19 @@ const { data } = Astro.props;
 const config = sectionConfig(data.site, 'experience');
 ---
 
-{
-  config.visible && (
-    <section id="experience" class="alt">
-      <div class="wrap">
-        <div class="shead">
-          <p class="slabel">Experience</p>
-          <h2>{config.title}</h2>
-          {config.description && <p>{config.description}</p>}
-        </div>
-        <Education education={data.education} />
-        <Timeline bars={data.timeline.bars} ticks={data.timeline.ticks} />
-        <RoleList roles={data.experience} />
-        <h3 class="sub">Skills</h3>
-        <Skills skills={data.skills} />
+{config.visible && (
+  <section id="experience" class="alt">
+    <div class="wrap">
+      <div class="shead">
+        <p class="slabel">Experience</p>
+        <h2>{config.title}</h2>
+        {config.description && <p>{config.description}</p>}
       </div>
-    </section>
-  )
-}
+      <Education education={data.education} />
+      <Timeline bars={data.timeline.bars} ticks={data.timeline.ticks} />
+      <RoleList roles={data.experience} />
+      <h3 class="sub">Skills</h3>
+      <Skills skills={data.skills} />
+    </div>
+  </section>
+)}

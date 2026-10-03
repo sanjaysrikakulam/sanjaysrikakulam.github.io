@@ -9,32 +9,28 @@ const { skills } = Astro.props;
 const { tabs, showTabs } = skillTabs(skills);
 ---
 
-{
-  showTabs && (
-    <div class="pubfilter skilltabs" role="group" aria-label="Filter skills by area">
-      {tabs.map((tab, index) => (
-        <button
-          type="button"
-          class:list={['pf', { on: index === 0 }]}
-          data-skilltab={tab.id}
-          aria-pressed={index === 0 ? 'true' : 'false'}
-        >
-          {tab.label}
-        </button>
-      ))}
-    </div>
-  )
-}
+{showTabs && (
+  <div class="pubfilter skilltabs" role="group" aria-label="Filter skills by area">
+    {tabs.map((tab, index) => (
+      <button
+        type="button"
+        class:list={['pf', { on: index === 0 }]}
+        data-skilltab={tab.id}
+        aria-pressed={index === 0 ? 'true' : 'false'}
+      >
+        {tab.label}
+      </button>
+    ))}
+  </div>
+)}
 
 <div class="skills">
-  {
-    skills.map((group) => (
-      <div class="sk" data-cat={group.category}>
-        <h4>{group.group}</h4>
-        <p>{group.items.join(', ')}</p>
-      </div>
-    ))
-  }
+  {skills.map((group) => (
+    <div class="sk" data-cat={group.category}>
+      <h4>{group.group}</h4>
+      <p>{group.items.join(', ')}</p>
+    </div>
+  ))}
 </div>
 
 <script>

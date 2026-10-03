@@ -39,7 +39,9 @@ const { title, description, noindex = false, site } = Astro.props;
     <ThemeScript />
   </head>
   <body>
-    <a class="skip" href="#main">Skip to content</a>
+    <a class="skip" href="#main">
+      Skip to content
+    </a>
     <slot />
     {site && <Analytics site={site} />}
   </body>

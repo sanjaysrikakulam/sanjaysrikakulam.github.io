@@ -19,30 +19,32 @@ const linkAttrs = href ? { href, target: '_blank', rel: 'noopener noreferrer' } 
   <div>
     <h3>{project.name}</h3>
     <p>{project.summary}</p>
-    <ul class="tags">{project.tags.map((tag) => <li class="tag">{tag}</li>)}</ul>
+    <ul class="tags">
+      {project.tags.map((tag) => (
+        <li class="tag">{tag}</li>
+      ))}
+    </ul>
   </div>
-  {
-    (stats || citations !== undefined) && (
-      <div class="stats">
-        {stats && (
-          <>
-            <p class="stat">
-              <span class="v">{stats.stars}</span>
-              <span class="k">Stars</span>
-            </p>
-            <p class="stat">
-              <span class="v">{stats.forks}</span>
-              <span class="k">Forks</span>
-            </p>
-          </>
-        )}
-        {citations !== undefined && (
+  {(stats || citations !== undefined) && (
+    <div class="stats">
+      {stats && (
+        <>
           <p class="stat">
-            <span class="v">{citations}</span>
-            <span class="k">Citations</span>
+            <span class="v">{stats.stars}</span>
+            <span class="k">Stars</span>
           </p>
-        )}
-      </div>
-    )
-  }
+          <p class="stat">
+            <span class="v">{stats.forks}</span>
+            <span class="k">Forks</span>
+          </p>
+        </>
+      )}
+      {citations !== undefined && (
+        <p class="stat">
+          <span class="v">{citations}</span>
+          <span class="k">Citations</span>
+        </p>
+      )}
+    </div>
+  )}
 </Tag>
