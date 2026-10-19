@@ -2,15 +2,15 @@
   "contributions": {
     "byOrg": {
       "galaxyproject": 39,
-      "usegalaxy-eu": 358
+      "usegalaxy-eu": 359
     },
-    "total": 439
+    "total": 445
   },
   "repos": {
     "deNBI/service-registry": {
       "forks": 1,
       "language": "Python",
-      "pushed_at": "2026-10-08T13:35:46Z",
+      "pushed_at": "2026-10-17T00:41:03Z",
       "stars": 0,
       "url": "https://github.com/deNBI/service-registry"
     },
@@ -52,7 +52,7 @@
     "usegalaxy-eu/infrastructure-playbook": {
       "forks": 114,
       "language": "Jinja",
-      "pushed_at": "2026-10-12T07:56:14Z",
+      "pushed_at": "2026-10-19T08:43:10Z",
       "stars": 25,
       "url": "https://github.com/usegalaxy-eu/infrastructure-playbook"
     },
