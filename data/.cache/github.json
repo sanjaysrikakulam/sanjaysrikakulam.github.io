@@ -2,9 +2,9 @@
   "contributions": {
     "byOrg": {
       "galaxyproject": 39,
-      "usegalaxy-eu": 359
+      "usegalaxy-eu": 360
     },
-    "total": 446
+    "total": 448
   },
   "repos": {
     "deNBI/service-registry": {
@@ -52,7 +52,7 @@
     "usegalaxy-eu/infrastructure-playbook": {
       "forks": 114,
       "language": "Jinja",
-      "pushed_at": "2026-11-02T11:00:02Z",
+      "pushed_at": "2026-11-09T10:48:44Z",
       "stars": 25,
       "url": "https://github.com/usegalaxy-eu/infrastructure-playbook"
     },
