@@ -4,13 +4,13 @@
       "galaxyproject": 39,
       "usegalaxy-eu": 360
     },
-    "total": 448
+    "total": 456
   },
   "repos": {
     "deNBI/service-registry": {
       "forks": 1,
       "language": "Python",
-      "pushed_at": "2026-10-26T20:55:09Z",
+      "pushed_at": "2026-11-15T16:15:03Z",
       "stars": 0,
       "url": "https://github.com/deNBI/service-registry"
     },
@@ -50,9 +50,9 @@
       "url": "https://github.com/sanjaysrikakulam/terraform_clum2025"
     },
     "usegalaxy-eu/infrastructure-playbook": {
-      "forks": 114,
+      "forks": 113,
       "language": "Jinja",
-      "pushed_at": "2026-11-09T10:48:44Z",
+      "pushed_at": "2026-11-16T08:59:09Z",
       "stars": 25,
       "url": "https://github.com/usegalaxy-eu/infrastructure-playbook"
     },
