@@ -18,7 +18,7 @@
       "forks": 124,
       "language": "Shell",
       "pushed_at": "2023-11-24T13:09:36Z",
-      "stars": 380,
+      "stars": 378,
       "url": "https://github.com/kalininalab/alphafold_non_docker"
     },
     "kalininalab/d-StructMAn": {
@@ -52,7 +52,7 @@
     "usegalaxy-eu/infrastructure-playbook": {
       "forks": 113,
       "language": "Jinja",
-      "pushed_at": "2026-11-16T08:59:09Z",
+      "pushed_at": "2026-11-23T13:09:15Z",
       "stars": 25,
       "url": "https://github.com/usegalaxy-eu/infrastructure-playbook"
     },
