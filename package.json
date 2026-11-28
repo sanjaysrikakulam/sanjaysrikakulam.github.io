@@ -20,8 +20,8 @@
     "og": "node scripts/generate-og-image.mjs"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.4",
-    "astro": "^7.4.2",
+    "@astrojs/sitemap": "^3.7.6",
+    "astro": "^7.4.13",
     "js-yaml": "^5.5.0",
     "zod": "^4.4.3"
   },
